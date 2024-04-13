@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import javax.swing.JInternalFrame;
 
 public class PaginaPrincipal extends JFrame {
 	public PaginaPrincipal() {
@@ -28,12 +29,38 @@ public class PaginaPrincipal extends JFrame {
 		panel.add(lblNewLabel);
 		
 		JLabel lblImagenPersonaje = new JLabel("IMAGEN PERSONAJE");
-		lblImagenPersonaje.setBounds(109, 28, 95, 136);
+		lblImagenPersonaje.setBounds(110, 28, 95, 136);
 		panel.add(lblImagenPersonaje);
 		
 		JLabel lblNewLabel_1 = new JLabel("NOMBRE PERSONAJE");
 		lblNewLabel_1.setBounds(95, 182, 131, 14);
 		panel.add(lblNewLabel_1);
+		
+		JInternalFrame internalFrame = new JInternalFrame("New JInternalFrame");
+		internalFrame.setBounds(41, 11, 245, 185);
+		panel.add(internalFrame);
+		internalFrame.getContentPane().setLayout(null);
+		
+		JButton btnNewButton_4 = new JButton("PARTIDA 1");
+		btnNewButton_4.setBounds(61, 11, 89, 23);
+		internalFrame.getContentPane().add(btnNewButton_4);
+		
+		JButton btnNewButton_4_1 = new JButton("PARTIDA 2");
+		btnNewButton_4_1.setBounds(61, 45, 89, 23);
+		internalFrame.getContentPane().add(btnNewButton_4_1);
+		
+		JButton btnNewButton_4_1_1 = new JButton("PARTIDA 3");
+		btnNewButton_4_1_1.setBounds(61, 78, 89, 23);
+		internalFrame.getContentPane().add(btnNewButton_4_1_1);
+		
+		JButton btnNewButton_5 = new JButton("ENTRAR AL MUNDO");
+		btnNewButton_5.setBounds(86, 121, 133, 23);
+		internalFrame.getContentPane().add(btnNewButton_5);
+		
+		JButton btnNewButton_6 = new JButton("VOLVER");
+		btnNewButton_6.setBounds(0, 121, 71, 23);
+		internalFrame.getContentPane().add(btnNewButton_6);
+		internalFrame.setVisible(true);
 		
 		JButton btnNewButton = new JButton("JUGAR");
 		btnNewButton.setBounds(125, 227, 89, 23);

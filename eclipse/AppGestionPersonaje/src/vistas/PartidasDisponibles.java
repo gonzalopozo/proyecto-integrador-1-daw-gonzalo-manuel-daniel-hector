@@ -21,7 +21,7 @@ public class PartidasDisponibles extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(91, 190, 136, 31);
+		btnNewButton.setBounds(153, 198, 136, 31);
 		getContentPane().add(btnNewButton);
 		
 		JLabel lblNewLabel_4 = new JLabel("PARTIDAS DISPONIBLES");
@@ -29,7 +29,7 @@ public class PartidasDisponibles extends JFrame {
 		getContentPane().add(lblNewLabel_4);
 		
 		JButton btnNewButton_1 = new JButton("PARTIDA #1");
-		btnNewButton_1.setBounds(34, 88, 107, 23);
+		btnNewButton_1.setBounds(167, 88, 107, 23);
 		getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_1_1 = new JButton("PARTIDA #2");
@@ -37,15 +37,11 @@ public class PartidasDisponibles extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1_1.setBounds(34, 122, 107, 23);
+		btnNewButton_1_1.setBounds(167, 122, 107, 23);
 		getContentPane().add(btnNewButton_1_1);
 		
 		JButton btnNewButton_1_2 = new JButton("PARTIDA #3");
-		btnNewButton_1_2.setBounds(34, 156, 107, 23);
+		btnNewButton_1_2.setBounds(167, 156, 107, 23);
 		getContentPane().add(btnNewButton_1_2);
-		
-		JButton btnUnirseAPartida = new JButton("UNIRSE A PARTIDA");
-		btnUnirseAPartida.setBounds(235, 190, 136, 31);
-		getContentPane().add(btnUnirseAPartida);
 	}
 }

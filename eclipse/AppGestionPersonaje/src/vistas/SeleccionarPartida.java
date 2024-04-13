@@ -16,12 +16,12 @@ public class SeleccionarPartida extends JFrame {
 		lblNewLabel.setBounds(167, 11, 66, 61);
 		getContentPane().add(lblNewLabel);
 		
-		JButton btnNewButton = new JButton("ENTRAR A PARTIDA");
+		JButton btnNewButton = new JButton("ENTRAR AL MUNDO");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(91, 190, 136, 31);
+		btnNewButton.setBounds(159, 204, 136, 31);
 		getContentPane().add(btnNewButton);
 		
 		JLabel lblNewLabel_4 = new JLabel("SELECCIONAR PARTIDA");
@@ -44,8 +44,12 @@ public class SeleccionarPartida extends JFrame {
 		btnNewButton_1_2.setBounds(167, 155, 107, 23);
 		getContentPane().add(btnNewButton_1_2);
 		
-		JButton btnUnirseAPartida = new JButton("UNIRSE A PARTIDA");
-		btnUnirseAPartida.setBounds(235, 190, 136, 31);
-		getContentPane().add(btnUnirseAPartida);
+		JButton btnNewButton_1_2_1 = new JButton("VOLVER");
+		btnNewButton_1_2_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_1_2_1.setBounds(10, 227, 107, 23);
+		getContentPane().add(btnNewButton_1_2_1);
 	}
 }
