@@ -57,7 +57,7 @@ public class App {
                     ex.printStackTrace();
                 }
 
-                  CrearPartida iniciar = new CrearPartida();
+                  SeleccionarPartida iniciar = new SeleccionarPartida();
 	              iniciar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	              iniciar.setTitle("Black Temple");
 	              Toolkit miPantalla = Toolkit.getDefaultToolkit();
