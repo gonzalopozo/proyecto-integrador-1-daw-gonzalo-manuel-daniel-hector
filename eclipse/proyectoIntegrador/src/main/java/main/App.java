@@ -38,9 +38,8 @@ public class App {
 
                 try {
                     UIManager.setLookAndFeel(new FlatMacLightLaf());
-//                    UIManager.put("Button.background", new Color(247, 178, 44));
-                    UIManager.put("Component.focusColor", COLOR_LIGHTING_YELLOW); // For focus indicator color
-                    UIManager.put("Button.arc", 20); // For rounded corners on buttons (optional) 
+                    UIManager.put("Component.focusColor", COLOR_LIGHTING_YELLOW);
+                    UIManager.put("Button.arc", 20);
                     UIManager.put("RootPane.background", COLOR_BIANCA);
                     UIManager.put("TitlePane.foreground", COLOR_NERO);
                     UIManager.put("Panel.background", COLOR_ALLPORTS);
@@ -58,7 +57,7 @@ public class App {
                     ex.printStackTrace();
                 }
 
-	              SeleccionRol iniciar = new SeleccionRol();
+                  CrearPartida iniciar = new CrearPartida();
 	              iniciar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	              iniciar.setTitle("Black Temple");
 	              Toolkit miPantalla = Toolkit.getDefaultToolkit();

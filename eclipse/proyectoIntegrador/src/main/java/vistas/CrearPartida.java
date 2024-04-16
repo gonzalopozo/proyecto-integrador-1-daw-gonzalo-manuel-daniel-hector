@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 
 public class CrearPartida extends JFrame {
 	private JTextField textField;
@@ -18,16 +19,16 @@ public class CrearPartida extends JFrame {
 		logo = new JLabel();
 		
 		textField = new JTextField();
-		textField.setBounds(440, 310, 86, 20);
+		textField.setBounds(400, 310, 200, 20);
 		getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("CREAR PARTIDA");
-		btnNewButton.setBounds(417, 390, 150, 31);
+		btnNewButton.setBounds(419, 390, 162, 31);
 		getContentPane().add(btnNewButton);
 		
 		JLabel lblNewLabel_1 = new JLabel("NOMBRE PARTIDA");
-		lblNewLabel_1.setBounds(440, 289, 186, 14);
+		lblNewLabel_1.setBounds(400, 292, 186, 14);
 		getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("AMBIENTACIÓN");
@@ -35,13 +36,14 @@ public class CrearPartida extends JFrame {
 		getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_4 = new JLabel("CREAR PARTIDA");
-		lblNewLabel_4.setBounds(440, 263, 186, 14);
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4.setBounds(400, 263, 200, 14);
 		getContentPane().add(lblNewLabel_4);
 		
 		String [] nombres = {"Estepas de Tong Long", "Suramar", "Cementerio de Dragones", "Zul`Drak", "Sueño Esmeralda", "Argus"};
 		JComboBox comboBox = new JComboBox(nombres);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Estepas de Tong Long", "Suramar", "Cementerio de Dragones", "Zul`Drak", "Sueño Esmeralda", "Argus"}));
-		comboBox.setBounds(401, 354, 166, 22);
+		comboBox.setBounds(400, 358, 200, 22);
 		getContentPane().add(comboBox);
 	}
 	public void hacerVisible(){

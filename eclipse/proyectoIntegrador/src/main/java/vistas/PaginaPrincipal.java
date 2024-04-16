@@ -29,28 +29,28 @@ public class PaginaPrincipal extends JFrame {
 		getContentPane().add(btnNewButton);
 		
 		JButton btnVolver = new JButton("VOLVER");
-		btnVolver.setBounds(10, 524, 89, 23);
+		btnVolver.setBounds(10, 524, 128, 23);
 		getContentPane().add(btnVolver);
 		
 		Panel panel_1 = new Panel();
-		panel_1.setBounds(784, 10, 175, 539);
+		panel_1.setBounds(754, 10, 211, 539);
 		getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
 		JButton btnNewButton_1 = new JButton("CREAR PERSONAJE");
-		btnNewButton_1.setBounds(0, 510, 175, 23);
+		btnNewButton_1.setBounds(0, 510, 211, 23);
 		panel_1.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("PERSONAJE 1");
-		btnNewButton_2.setBounds(0, 11, 175, 23);
+		btnNewButton_2.setBounds(0, 11, 211, 23);
 		panel_1.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("PERSONAJE 2");
-		btnNewButton_3.setBounds(0, 45, 175, 23);
+		btnNewButton_3.setBounds(0, 45, 211, 23);
 		panel_1.add(btnNewButton_3);
 		
 		JInternalFrame internalFrame = new JInternalFrame("New JInternalFrame");
-		internalFrame.setBounds(441, 78, 245, 185);
+		internalFrame.setBounds(283, 102, 245, 185);
 		getContentPane().add(internalFrame);
 		internalFrame.getContentPane().setLayout(null);
 		

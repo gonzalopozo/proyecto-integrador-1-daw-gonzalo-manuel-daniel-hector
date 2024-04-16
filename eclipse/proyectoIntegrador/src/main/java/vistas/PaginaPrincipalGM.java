@@ -20,7 +20,7 @@ public class PaginaPrincipalGM extends JFrame {
 		logo = new JLabel();
 		
 		JButton btnNewButton_1 = new JButton("CONTINUAR");
-		btnNewButton_1.setForeground(new Color(255, 255, 255));
+		btnNewButton_1.setForeground(Color.BLACK);
 		btnNewButton_1.setBackground(new Color(247, 178, 44));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

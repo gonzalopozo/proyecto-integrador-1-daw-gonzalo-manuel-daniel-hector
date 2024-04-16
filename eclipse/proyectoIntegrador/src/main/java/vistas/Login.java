@@ -46,20 +46,20 @@ public class Login extends JFrame {
 		JLabel lblNewLabel_2 = new JLabel("CONTRASEÑA");
 		lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 14));
 		lblNewLabel_2.setForeground(new Color (247, 178, 44));
-		lblNewLabel_2.setBounds(400, 366, 100, 14);
+		lblNewLabel_2.setBounds(400, 366, 200, 14);
 		getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("¿Todavía no tienes cuenta?");
 		lblNewLabel_3.setFont(new Font("Arial", Font.BOLD, 12));
 		lblNewLabel_3.setForeground(new Color (247, 178, 44));
-		lblNewLabel_3.setBounds(356, 460, 156, 19);
+		lblNewLabel_3.setBounds(348, 460, 164, 19);
 		getContentPane().add(lblNewLabel_3);
 		
 		JButton btnNewButton_1 = new JButton("CREAR CUENTA");
 		btnNewButton_1.setFont(new Font("Arial", Font.BOLD, 14));
 		btnNewButton_1.setForeground(new Color (42, 42, 42));
 		btnNewButton_1.setBackground(new Color(247, 178,44));
-		btnNewButton_1.setBounds(524, 453, 147, 31);
+		btnNewButton_1.setBounds(524, 453, 164, 31);
 		getContentPane().add(btnNewButton_1);
 		
 		logo = new JLabel();
