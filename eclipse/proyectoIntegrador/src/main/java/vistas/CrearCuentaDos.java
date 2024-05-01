@@ -32,8 +32,8 @@ public class CrearCuentaDos extends JFrame {
 		getContentPane().add(textField_1);
 		textField_1.setColumns(10);
 		
-		JButton btnNewButton = new JButton("CONTINUAR");
-		btnNewButton.setBounds(280, 450, 124, 31);
+		JButton btnNewButton = new JButton("CREAR CUENTA");
+		btnNewButton.setBounds(265, 450, 153, 31);
 		getContentPane().add(btnNewButton);
 		
 		JLabel lblNewLabel_1 = new JLabel("CREAR CUENTA");

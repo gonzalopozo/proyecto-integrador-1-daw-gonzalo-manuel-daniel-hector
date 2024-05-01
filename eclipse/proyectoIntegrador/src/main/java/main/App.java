@@ -25,6 +25,7 @@ public class App {
 	private final static Color COLOR_REGAL_BLUE = new Color(19, 27, 66);
 	private final static Color COLOR_NERO = new Color(42, 42, 42);
 	private final static Color COLOR_BLUE_LABEL = new Color(38, 102, 165);
+	private final static Color COLOR_ESPANA = new Color(255, 92, 92);
 	private final static Font LABEL_FONT_BOLD = new Font("Arial", Font.BOLD, 14);
 	private final static Font LABEL_FONT = new Font("Arial", Font.PLAIN, 12);
 
@@ -50,6 +51,9 @@ public class App {
                     UIManager.put("Button.foreground", COLOR_NERO);
                     UIManager.put("Button.font", LABEL_FONT_BOLD);
                     UIManager.put("Button.background", COLOR_LIGHTING_YELLOW);
+                    UIManager.put("ToggleButton.foreground", COLOR_NERO);
+                    UIManager.put("ToggleButton.font", LABEL_FONT_BOLD);
+                    UIManager.put("ToggleButton.background", COLOR_ESPANA);
                     UIManager.put("CheckBox.foreground", COLOR_LIGHTING_YELLOW);
                     UIManager.put("CheckBox.font", LABEL_FONT);
                     
@@ -57,17 +61,17 @@ public class App {
                     ex.printStackTrace();
                 }
 
-                  SeleccionarPartida iniciar = new SeleccionarPartida();
-	              iniciar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	              iniciar.setTitle("Black Temple");
-	              Toolkit miPantalla = Toolkit.getDefaultToolkit();
-	              Image logoIcono = miPantalla.getImage("src/main/resources/logoIcono.png");
-	              iniciar.setIconImage(logoIcono);
-	              //iniciar.setSize(1000,600);
-		          iniciar.setLocationRelativeTo(null);
-		          ImageIcon logo = new ImageIcon("src/main/resources/logoTitulo.png");
-		          //iniciar.asignarLogo(logo);
-	              iniciar.hacerVisible();
+                CrearPartida iniciar = new CrearPartida();
+	            iniciar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	            iniciar.setTitle("Black Temple");
+	            Toolkit miPantalla = Toolkit.getDefaultToolkit();
+	            Image logoIcono = miPantalla.getImage("src/main/resources/logoIcono.png");
+	            iniciar.setIconImage(logoIcono);
+	            iniciar.setSize(1000,600);
+		        iniciar.setLocationRelativeTo(null);
+		        ImageIcon logo = new ImageIcon("src/main/resources/logoTitulo.png");
+		        // iniciar.asignarLogo(logo);
+	            iniciar.hacerVisible();
 
 	              
             }

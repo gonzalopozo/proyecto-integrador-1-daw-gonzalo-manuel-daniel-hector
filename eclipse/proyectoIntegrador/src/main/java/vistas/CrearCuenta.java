@@ -78,7 +78,8 @@ public class CrearCuenta extends JFrame {
 		textField_3.setColumns(10);
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox("TÉRMINOS Y CONDICIONES");
-		chckbxNewCheckBox.setBounds(216, 466, 252, 23);
+		chckbxNewCheckBox.setHorizontalAlignment(SwingConstants.CENTER);
+		chckbxNewCheckBox.setBounds(242, 466, 200, 23);
 		getContentPane().add(chckbxNewCheckBox);
 	}
 	public void hacerVisible(){
