@@ -16,25 +16,27 @@ import javax.swing.JRadioButton;
 public class SeleccionarPartida extends JFrame {
 	private JLabel logo;
 	public SeleccionarPartida() {
+		
 		getContentPane().setLayout(null);
+		setSize(600,400);
 		
 		logo = new JLabel();
 		
-		JButton btnNewButton = new JButton("ENTRAR AL MUNDO");
+		JButton btnNewButton = new JButton("JUGAR");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(497, 441, 208, 31);
+		btnNewButton.setBounds(311, 266, 208, 31);
 		getContentPane().add(btnNewButton);
 		
 		JLabel lblNewLabel_4 = new JLabel("SELECCIONAR PARTIDA");
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4.setBounds(387, 300, 208, 14);
+		lblNewLabel_4.setBounds(188, 54, 208, 14);
 		getContentPane().add(lblNewLabel_4);
 		
 		JButton btnNewButton_1 = new JButton("PARTIDA #1");
-		btnNewButton_1.setBounds(387, 328, 208, 23);
+		btnNewButton_1.setBounds(188, 111, 208, 23);
 		getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_1_1 = new JButton("PARTIDA #2");
@@ -42,11 +44,11 @@ public class SeleccionarPartida extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1_1.setBounds(387, 362, 208, 23);
+		btnNewButton_1_1.setBounds(188, 148, 208, 23);
 		getContentPane().add(btnNewButton_1_1);
 		
 		JButton btnNewButton_1_2 = new JButton("PARTIDA #3");
-		btnNewButton_1_2.setBounds(387, 396, 208, 23);
+		btnNewButton_1_2.setBounds(188, 182, 208, 23);
 		getContentPane().add(btnNewButton_1_2);
 		
 		JButton btnNewButton_1_2_1 = new JButton("VOLVER");
@@ -54,76 +56,20 @@ public class SeleccionarPartida extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1_2_1.setBounds(10, 529, 107, 23);
+		btnNewButton_1_2_1.setBounds(10, 327, 107, 23);
 		getContentPane().add(btnNewButton_1_2_1);
 		
-		JButton btnIniciarPartida = new JButton("UNIRSE A PARTIDA");
+		JButton btnIniciarPartida = new JButton("UNIRSE A NUEVA PARTIDA");
 		btnIniciarPartida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnIniciarPartida.setBounds(260, 441, 208, 31);
+		btnIniciarPartida.setBounds(59, 266, 223, 31);
 		getContentPane().add(btnIniciarPartida);
 		
 		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(625, 328, 17, 86);
+		scrollBar.setBounds(406, 111, 17, 86);
 		getContentPane().add(scrollBar);
-		
-		JInternalFrame internalFrame = new JInternalFrame("New JInternalFrame");
-		internalFrame.setBounds(60, 11, 449, 290);
-		getContentPane().add(internalFrame);
-		internalFrame.getContentPane().setLayout(null);
-		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("PARTIDA 45");
-		rdbtnNewRadioButton.setBounds(6, 40, 109, 23);
-		internalFrame.getContentPane().add(rdbtnNewRadioButton);
-		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("PARTIDA 46");
-		rdbtnNewRadioButton_1.setBounds(6, 66, 109, 23);
-		internalFrame.getContentPane().add(rdbtnNewRadioButton_1);
-		
-		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("PARTIDA 47");
-		rdbtnNewRadioButton_2.setBounds(6, 92, 109, 23);
-		internalFrame.getContentPane().add(rdbtnNewRadioButton_2);
-		
-		JButton btnNewButton_2 = new JButton("VOLVER");
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton_2.setBounds(6, 226, 109, 23);
-		internalFrame.getContentPane().add(btnNewButton_2);
-		
-		JButton btnNewButton_3 = new JButton("UNIRSE");
-		btnNewButton_3.setBounds(334, 226, 89, 23);
-		internalFrame.getContentPane().add(btnNewButton_3);
-		
-		JButton btnNewButton_4 = new JButton("DETALLES");
-		btnNewButton_4.setBounds(168, 226, 122, 23);
-		internalFrame.getContentPane().add(btnNewButton_4);
-		
-		JLabel lblNewLabel = new JLabel("AMBIENTACIÓN");
-		lblNewLabel.setBounds(168, 11, 122, 14);
-		internalFrame.getContentPane().add(lblNewLabel);
-		
-		JLabel lblNivelMedio = new JLabel("NIVEL MEDIO");
-		lblNivelMedio.setBounds(322, 11, 101, 14);
-		internalFrame.getContentPane().add(lblNivelMedio);
-		
-		JLabel lblNewLabel_1 = new JLabel("PARTIDA");
-		lblNewLabel_1.setBounds(24, 11, 71, 14);
-		internalFrame.getContentPane().add(lblNewLabel_1);
-		
-		JInternalFrame internalFrame_1 = new JInternalFrame("New JInternalFrame");
-		internalFrame_1.setBounds(63, 311, 261, 191);
-		getContentPane().add(internalFrame_1);
-		internalFrame_1.getContentPane().setLayout(null);
-		
-		JLabel lblNewLabel_2 = new JLabel("meter detalles personajes");
-		lblNewLabel_2.setBounds(22, 11, 142, 96);
-		internalFrame_1.getContentPane().add(lblNewLabel_2);
-		internalFrame_1.setVisible(true);
-		internalFrame.setVisible(true);
 	}
 	public void hacerVisible(){
 		setVisible(true);

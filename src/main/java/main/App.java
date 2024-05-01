@@ -21,7 +21,7 @@ public class App {
 	
 	private final static Color COLOR_BIANCA = new Color(249,247,238);
 	private final static Color COLOR_LIGHTING_YELLOW = new Color(247,178,44);
-	private final static Color COLOR_ALLPORTS = new Color(25, 69, 122);
+	private final static Color COLOR_ALLPORTS = new Color(25,69,122);
 	private final static Color COLOR_REGAL_BLUE = new Color(19, 27, 66);
 	private final static Color COLOR_NERO = new Color(42, 42, 42);
 	private final static Color COLOR_BLUE_LABEL = new Color(38, 102, 165);
@@ -63,10 +63,10 @@ public class App {
 	              Toolkit miPantalla = Toolkit.getDefaultToolkit();
 	              Image logoIcono = miPantalla.getImage("src/main/resources/logoIcono.png");
 	              iniciar.setIconImage(logoIcono);
-	              iniciar.setSize(1000,600);
+	              //iniciar.setSize(1000,600);
 		          iniciar.setLocationRelativeTo(null);
 		          ImageIcon logo = new ImageIcon("src/main/resources/logoTitulo.png");
-		          iniciar.asignarLogo(logo);
+		          //iniciar.asignarLogo(logo);
 	              iniciar.hacerVisible();
 
 	              
