@@ -81,4 +81,8 @@ public class PaginaPrincipal extends VistaDefault {
 	public void setListenerBotonCrearPersonaje(MoverseListener listener) {
 		btnCrearPersonaje.addActionListener(listener);
 	}
+
+	public void setListenerBotonVerPartidas(MoverseListener listener) {
+		btnVerPartidas.addActionListener(listener);
+	}
 }

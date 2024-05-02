@@ -28,7 +28,7 @@ public class CuentaCreada extends VistaDefault {
 		continuar.setBounds(174, 294, 136, 31);
 		getContentPane().add(continuar);
 		
-		lblListo = new JLabel("¡lblListo!");
+		lblListo = new JLabel("¡Listo!");
 		lblListo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblListo.setBounds(199, 233, 85, 14);
 		getContentPane().add(lblListo);

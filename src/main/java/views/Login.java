@@ -2,6 +2,7 @@ package views;
 
 import javax.swing.*;
 import java.awt.*;
+import control.*;
 
 public class Login extends VistaDefault {
     private JTextField txtUsuario;
@@ -9,7 +10,7 @@ public class Login extends VistaDefault {
     private JLabel lblusuario;
     private JLabel lblcontraseña;
     private JLabel lblpregunta;
-    private JButton btnIniciarSesion;
+    private JButton btnCrearCuenta;
 
     public Login() {
         super();
@@ -30,12 +31,12 @@ public class Login extends VistaDefault {
         getContentPane().add(txtNombre);
         txtNombre.setColumns(10);
 
-        btnIniciarSesion = new JButton("INICIAR SESIÓN");
-        btnIniciarSesion.setFont(new Font("Arial", Font.BOLD, 14));
-        btnIniciarSesion.setForeground(new Color(42, 42, 42));
-        btnIniciarSesion.setBackground(new Color(247, 178, 44));
-        btnIniciarSesion.setBounds(214, 329, 156, 31);
-        getContentPane().add(btnIniciarSesion);
+        continuar = new JButton("INICIAR SESIÓN");
+        continuar.setFont(new Font("Arial", Font.BOLD, 14));
+        continuar.setForeground(new Color(42, 42, 42));
+        continuar.setBackground(new Color(247, 178, 44));
+        continuar.setBounds(214, 329, 156, 31);
+        getContentPane().add(continuar);
 
         lblusuario = new JLabel("USUARIO");
         lblusuario.setFont(new Font("Arial", Font.BOLD, 14));
@@ -55,12 +56,15 @@ public class Login extends VistaDefault {
         lblpregunta.setBounds(129, 389, 179, 19);
         getContentPane().add(lblpregunta);
 
-        continuar = new JButton("CREAR CUENTA");
-        continuar.setFont(new Font("Arial", Font.BOLD, 14));
-        continuar.setForeground(new Color(42, 42, 42));
-        continuar.setBackground(new Color(247, 178, 44));
-        continuar.setBounds(318, 382, 164, 31);
-        getContentPane().add(continuar);
+        btnCrearCuenta = new JButton("CREAR CUENTA");
+        btnCrearCuenta.setFont(new Font("Arial", Font.BOLD, 14));
+        btnCrearCuenta.setForeground(new Color(42, 42, 42));
+        btnCrearCuenta.setBackground(new Color(247, 178, 44));
+        btnCrearCuenta.setBounds(318, 382, 164, 31);
+        getContentPane().add(btnCrearCuenta);
+    }
 
+    public void setListenerBotonCrearCuenta(MoverseListener listener) {
+        btnCrearCuenta.addActionListener(listener);
     }
 }

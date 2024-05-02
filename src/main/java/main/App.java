@@ -76,8 +76,14 @@ public class App {
                 
                 login.hacerVisible();
 
+                MoverseListener loginSeleccionRol = new MoverseListener(login, seleccionRol);
+                login.setListenerBotonContinuar(loginSeleccionRol);
+
+                MoverseListener seleccionRolLogin = new MoverseListener(seleccionRol, login);
+                seleccionRol.setListenerBotonVolver(seleccionRolLogin);
+
                 MoverseListener loginCrearCuenta = new MoverseListener(login, crearCuenta);
-                login.setListenerBotonContinuar(loginCrearCuenta);
+                login.setListenerBotonCrearCuenta(loginCrearCuenta);
 
                 MoverseListener crearCuentaCrearCuentaDos = new MoverseListener(crearCuenta, crearCuentaDos);
                 crearCuenta.setListenerBotonContinuar(crearCuentaCrearCuentaDos);
@@ -88,11 +94,35 @@ public class App {
                 MoverseListener cuentaCreadaSeleccionRol = new MoverseListener(cuentaCreada, seleccionRol);
                 cuentaCreada.setListenerBotonContinuar(cuentaCreadaSeleccionRol);
 
-                MoverseListener rolJugador = new MoverseListener(seleccionRol, paginaPrincipal);
+                MoverseListener rolJugador = new MoverseListener(seleccionRol, paginaPrincipalGM);
                 seleccionRol.setListenerBotonContinuar(rolJugador);
 
                 MoverseListener jugadorCrearPersonaje = new MoverseListener(paginaPrincipal, crearPersonaje);
                 paginaPrincipal.setListenerBotonCrearPersonaje(jugadorCrearPersonaje);
+
+                MoverseListener paginaPrincipalSeleccionRol = new MoverseListener(paginaPrincipal, seleccionRol);
+                paginaPrincipal.setListenerBotonVolver(paginaPrincipalSeleccionRol);
+
+                MoverseListener crearPersonajePaginaPrincipal = new MoverseListener(crearPersonaje, paginaPrincipal);
+                crearPersonaje.setListenerBotonVolver(crearPersonajePaginaPrincipal);
+
+                MoverseListener paginaPrincipalDetallesPersonajeCuenta = new MoverseListener (paginaPrincipal, detallesPersonajesCuenta);
+                paginaPrincipal.setListenerBotonVerPartidas(paginaPrincipalDetallesPersonajeCuenta);
+
+                MoverseListener detallesPersonajesCuentaPaginaPrincipal = new MoverseListener (detallesPersonajesCuenta, paginaPrincipal);
+                detallesPersonajesCuenta.setListenerBotonVolver(detallesPersonajesCuentaPaginaPrincipal);
+
+                MoverseListener paginaPrincipalUnirsePartida = new MoverseListener(paginaPrincipal, unirsePartida);
+                paginaPrincipal.setListenerBotonJugar(paginaPrincipalUnirsePartida);
+
+                MoverseListener unirsePartidaPaginaPrincipal = new MoverseListener(unirsePartida, paginaPrincipal);
+                unirsePartida.setListenerBotonVolver(unirsePartidaPaginaPrincipal);
+                
+                MoverseListener unirsePartidaDetallesPersonajesPartida = new MoverseListener(unirsePartida, detallesPersonajesPartida);
+                unirsePartida.setListenerBotonDetalles(unirsePartidaDetallesPersonajesPartida);
+                
+                MoverseListener detallesPersonajesPartidaUnirsePartida = new MoverseListener(detallesPersonajesPartida, unirsePartida);
+                detallesPersonajesPartida.setListenerBotonVolver(detallesPersonajesPartidaUnirsePartida);
 
                 // MoverseListener cuentaCreadaDos = new MoverseListener(crearCuentaDos, cuentaCreada);
                 // crearCuentaDos.setListenerBotonContinuar(cuentaCreadaDos);

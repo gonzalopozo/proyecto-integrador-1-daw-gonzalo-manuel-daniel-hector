@@ -1,6 +1,7 @@
 package views;
 
 import javax.swing.*;
+import control.*;
 
 public class UnirsePartida extends VistaDefault {
     private JTable table;
@@ -43,8 +44,8 @@ public class UnirsePartida extends VistaDefault {
         getContentPane().add(btnDetalles);
     }
 
-    // public void setListenerBotonDetalles(ActionListener list) {
-    //     btnDetalles.addActionListener(list);
-    // }
+    public void setListenerBotonDetalles(MoverseListener listener) {
+        btnDetalles.addActionListener(listener);
+    }
 
 }
