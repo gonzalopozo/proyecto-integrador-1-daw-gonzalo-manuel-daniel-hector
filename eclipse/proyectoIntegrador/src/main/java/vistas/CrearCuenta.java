@@ -19,10 +19,22 @@ public class CrearCuenta extends JFrame {
 	private JLabel logo;
 	public CrearCuenta() {
 		
-		getContentPane().setBackground(new Color(25,69,122));
+		setSize(700,600);
+		
+	}
+	public void hacerVisible(){
+		setVisible(true);
+	}
+	public void asignarLogo(ImageIcon img) {
+        logo.setIcon(img);
+		logo.setBounds(250, 50, 200, 145);
+		getContentPane().add(logo);
+	}
+
+	private void inicializarComponentes(){
+
 		getContentPane().setLayout(null);
 		
-		setSize(700,600);
 		
 		logo = new JLabel();
 		
@@ -81,13 +93,5 @@ public class CrearCuenta extends JFrame {
 		chckbxNewCheckBox.setHorizontalAlignment(SwingConstants.CENTER);
 		chckbxNewCheckBox.setBounds(242, 466, 200, 23);
 		getContentPane().add(chckbxNewCheckBox);
-	}
-	public void hacerVisible(){
-		setVisible(true);
-	}
-	public void asignarLogo(ImageIcon img) {
-        logo.setIcon(img);
-		logo.setBounds(250, 50, 200, 145);
-		getContentPane().add(logo);
 	}
 }

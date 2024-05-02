@@ -15,7 +15,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 
-import vistas.*;
+import control.MoverseListener;
+import views.*;
 
 public class App {
 	
@@ -57,19 +58,46 @@ public class App {
                     ex.printStackTrace();
                 }
 
-                  SeleccionarPartida iniciar = new SeleccionarPartida();
-	              iniciar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	              iniciar.setTitle("Black Temple");
-	              Toolkit miPantalla = Toolkit.getDefaultToolkit();
-	              Image logoIcono = miPantalla.getImage("src/main/resources/logoIcono.png");
-	              iniciar.setIconImage(logoIcono);
-	              //iniciar.setSize(1000,600);
-		          iniciar.setLocationRelativeTo(null);
-		          ImageIcon logo = new ImageIcon("src/main/resources/logoTitulo.png");
-		          //iniciar.asignarLogo(logo);
-	              iniciar.hacerVisible();
+	            
+                Login login = new Login();
+		        CrearCuenta crearCuenta = new CrearCuenta();
+                CrearCuentaDos crearCuentaDos = new CrearCuentaDos();
+                CuentaCreada cuentaCreada = new CuentaCreada();
+                CrearPartida crearPartida = new CrearPartida();
+                CrearPersonaje crearPersonaje = new CrearPersonaje();
+                DetallesPersonajesCuenta detallesPersonajesCuenta = new DetallesPersonajesCuenta();
+                DetallesPersonajesPartida detallesPersonajesPartida = new DetallesPersonajesPartida();
+                PaginaPrincipal paginaPrincipal = new PaginaPrincipal();
+                PaginaPrincipalGM paginaPrincipalGM = new PaginaPrincipalGM();
+                SeleccionarPartida seleccionarPartida = new SeleccionarPartida();
+                PartidasDisponibles partidasDisponibles = new PartidasDisponibles();
+                SeleccionRol seleccionRol = new SeleccionRol();
+                UnirsePartida unirsePartida = new UnirsePartida();
+                
+                login.hacerVisible();
 
-	              
+                MoverseListener loginCrearCuenta = new MoverseListener(login, crearCuenta);
+                login.setListenerBotonContinuar(loginCrearCuenta);
+
+                MoverseListener crearCuentaCrearCuentaDos = new MoverseListener(crearCuenta, crearCuentaDos);
+                crearCuenta.setListenerBotonContinuar(crearCuentaCrearCuentaDos);
+
+                MoverseListener cuentaCreadaDos = new MoverseListener(crearCuentaDos, cuentaCreada);
+                crearCuentaDos.setListenerBotonContinuar(cuentaCreadaDos);
+
+                MoverseListener cuentaCreadaSeleccionRol = new MoverseListener(cuentaCreada, seleccionRol);
+                cuentaCreada.setListenerBotonContinuar(cuentaCreadaSeleccionRol);
+
+                MoverseListener rolJugador = new MoverseListener(seleccionRol, paginaPrincipal);
+                seleccionRol.setListenerBotonContinuar(rolJugador);
+
+                MoverseListener jugadorCrearPersonaje = new MoverseListener(paginaPrincipal, crearPersonaje);
+                paginaPrincipal.setListenerBotonCrearPersonaje(jugadorCrearPersonaje);
+
+                // MoverseListener cuentaCreadaDos = new MoverseListener(crearCuentaDos, cuentaCreada);
+                // crearCuentaDos.setListenerBotonContinuar(cuentaCreadaDos);
+
+                
             }
 
 
