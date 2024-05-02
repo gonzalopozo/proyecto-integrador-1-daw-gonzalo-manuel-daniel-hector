@@ -15,7 +15,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 
-import vistas.*;
+import control.MoverseListener;
+import views.*;
 
 public class App {
 	
@@ -25,7 +26,6 @@ public class App {
 	private final static Color COLOR_REGAL_BLUE = new Color(19, 27, 66);
 	private final static Color COLOR_NERO = new Color(42, 42, 42);
 	private final static Color COLOR_BLUE_LABEL = new Color(38, 102, 165);
-	private final static Color COLOR_ESPANA = new Color(255, 92, 92);
 	private final static Font LABEL_FONT_BOLD = new Font("Arial", Font.BOLD, 14);
 	private final static Font LABEL_FONT = new Font("Arial", Font.PLAIN, 12);
 
@@ -51,9 +51,6 @@ public class App {
                     UIManager.put("Button.foreground", COLOR_NERO);
                     UIManager.put("Button.font", LABEL_FONT_BOLD);
                     UIManager.put("Button.background", COLOR_LIGHTING_YELLOW);
-                    UIManager.put("ToggleButton.foreground", COLOR_NERO);
-                    UIManager.put("ToggleButton.font", LABEL_FONT_BOLD);
-                    UIManager.put("ToggleButton.background", COLOR_ESPANA);
                     UIManager.put("CheckBox.foreground", COLOR_LIGHTING_YELLOW);
                     UIManager.put("CheckBox.font", LABEL_FONT);
                     
@@ -61,19 +58,77 @@ public class App {
                     ex.printStackTrace();
                 }
 
-                CrearPartida iniciar = new CrearPartida();
-	            iniciar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	            iniciar.setTitle("Black Temple");
-	            Toolkit miPantalla = Toolkit.getDefaultToolkit();
-	            Image logoIcono = miPantalla.getImage("src/main/resources/logoIcono.png");
-	            iniciar.setIconImage(logoIcono);
-	            iniciar.setSize(1000,600);
-		        iniciar.setLocationRelativeTo(null);
-		        ImageIcon logo = new ImageIcon("src/main/resources/logoTitulo.png");
-		        // iniciar.asignarLogo(logo);
-	            iniciar.hacerVisible();
+	            
+                Login login = new Login();
+		        CrearCuenta crearCuenta = new CrearCuenta();
+                CrearCuentaDos crearCuentaDos = new CrearCuentaDos();
+                CuentaCreada cuentaCreada = new CuentaCreada();
+                CrearPartida crearPartida = new CrearPartida();
+                CrearPersonaje crearPersonaje = new CrearPersonaje();
+                DetallesPersonajesCuenta detallesPersonajesCuenta = new DetallesPersonajesCuenta();
+                DetallesPersonajesPartida detallesPersonajesPartida = new DetallesPersonajesPartida();
+                PaginaPrincipal paginaPrincipal = new PaginaPrincipal();
+                PaginaPrincipalGM paginaPrincipalGM = new PaginaPrincipalGM();
+                SeleccionarPartida seleccionarPartida = new SeleccionarPartida();
+                PartidasDisponibles partidasDisponibles = new PartidasDisponibles();
+                SeleccionRol seleccionRol = new SeleccionRol();
+                UnirsePartida unirsePartida = new UnirsePartida();
+                SeleccionarPartidaGM seleccionarPartidaGM = new SeleccionarPartidaGM();
+                
+                crearPersonaje.hacerVisible();
 
-	              
+                MoverseListener loginSeleccionRol = new MoverseListener(login, seleccionRol);
+                login.setListenerBotonContinuar(loginSeleccionRol);
+
+                MoverseListener seleccionRolLogin = new MoverseListener(seleccionRol, login);
+                seleccionRol.setListenerBotonVolver(seleccionRolLogin);
+
+                MoverseListener loginCrearCuenta = new MoverseListener(login, crearCuenta);
+                login.setListenerBotonCrearCuenta(loginCrearCuenta);
+
+                MoverseListener crearCuentaCrearCuentaDos = new MoverseListener(crearCuenta, crearCuentaDos);
+                crearCuenta.setListenerBotonContinuar(crearCuentaCrearCuentaDos);
+
+                MoverseListener cuentaCreadaDos = new MoverseListener(crearCuentaDos, cuentaCreada);
+                crearCuentaDos.setListenerBotonContinuar(cuentaCreadaDos);
+
+                MoverseListener cuentaCreadaSeleccionRol = new MoverseListener(cuentaCreada, seleccionRol);
+                cuentaCreada.setListenerBotonContinuar(cuentaCreadaSeleccionRol);
+
+                MoverseListener rolJugador = new MoverseListener(seleccionRol, paginaPrincipal);
+                seleccionRol.setListenerBotonContinuar(rolJugador);
+
+                MoverseListener jugadorCrearPersonaje = new MoverseListener(paginaPrincipal, crearPersonaje);
+                paginaPrincipal.setListenerBotonCrearPersonaje(jugadorCrearPersonaje);
+
+                MoverseListener paginaPrincipalSeleccionRol = new MoverseListener(paginaPrincipal, seleccionRol);
+                paginaPrincipal.setListenerBotonVolver(paginaPrincipalSeleccionRol);
+
+                MoverseListener crearPersonajePaginaPrincipal = new MoverseListener(crearPersonaje, paginaPrincipal);
+                crearPersonaje.setListenerBotonVolver(crearPersonajePaginaPrincipal);
+
+                MoverseListener paginaPrincipalDetallesPersonajeCuenta = new MoverseListener (paginaPrincipal, detallesPersonajesCuenta);
+                paginaPrincipal.setListenerBotonVerPartidas(paginaPrincipalDetallesPersonajeCuenta);
+
+                MoverseListener detallesPersonajesCuentaPaginaPrincipal = new MoverseListener (detallesPersonajesCuenta, paginaPrincipal);
+                detallesPersonajesCuenta.setListenerBotonVolver(detallesPersonajesCuentaPaginaPrincipal);
+
+                MoverseListener paginaPrincipalUnirsePartida = new MoverseListener(paginaPrincipal, unirsePartida);
+                paginaPrincipal.setListenerBotonJugar(paginaPrincipalUnirsePartida);
+
+                MoverseListener unirsePartidaPaginaPrincipal = new MoverseListener(unirsePartida, paginaPrincipal);
+                unirsePartida.setListenerBotonVolver(unirsePartidaPaginaPrincipal);
+                
+                MoverseListener unirsePartidaDetallesPersonajesPartida = new MoverseListener(unirsePartida, detallesPersonajesPartida);
+                unirsePartida.setListenerBotonDetalles(unirsePartidaDetallesPersonajesPartida);
+                
+                MoverseListener detallesPersonajesPartidaUnirsePartida = new MoverseListener(detallesPersonajesPartida, unirsePartida);
+                detallesPersonajesPartida.setListenerBotonVolver(detallesPersonajesPartidaUnirsePartida);
+
+                // MoverseListener cuentaCreadaDos = new MoverseListener(crearCuentaDos, cuentaCreada);
+                // crearCuentaDos.setListenerBotonContinuar(cuentaCreadaDos);
+
+                
             }
 
 
