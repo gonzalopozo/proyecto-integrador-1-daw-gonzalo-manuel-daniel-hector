@@ -17,6 +17,7 @@ public abstract class VistaDefault extends JFrame {
     public VistaDefault() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    setTitle("Black Temple");
+	    setResizable(false);
 
         Toolkit miPantalla = Toolkit.getDefaultToolkit();
 	    Image logoIcono = miPantalla.getImage("src/main/resources/logoIcono.png");
@@ -29,7 +30,7 @@ public abstract class VistaDefault extends JFrame {
 
     public void asignarLogo(ImageIcon img) {
         logo.setIcon(img);
-		logo.setBounds(200, 50, 200, 145);
+		logo.setBounds(600, 100, 200, 145);
 		getContentPane().add(logo);
 	}
 

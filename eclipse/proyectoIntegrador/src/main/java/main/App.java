@@ -75,7 +75,7 @@ public class App {
                 UnirsePartida unirsePartida = new UnirsePartida();
                 SeleccionarPartidaGM seleccionarPartidaGM = new SeleccionarPartidaGM();
                 
-                crearPersonaje.hacerVisible();
+                login.hacerVisible();
 
                 MoverseListener loginSeleccionRol = new MoverseListener(login, seleccionRol);
                 login.setListenerBotonContinuar(loginSeleccionRol);

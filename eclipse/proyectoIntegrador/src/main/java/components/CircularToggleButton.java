@@ -2,23 +2,50 @@ package components;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.*;
+import java.awt.event.*;
 
 public class CircularToggleButton extends JToggleButton {
     private Image image;
+    private Color hoverColor = new Color(247,178,44);
+    private Color borderColor = new Color(25,69,122);
+    private int borderThickness = 2; // Grosor del borde
 
     public CircularToggleButton(Image image) {
         this.image = image;
         setContentAreaFilled(false); // Para que el botón sea transparente
         setBorderPainted(false); // Para eliminar el borde
         setFocusPainted(false); // Para eliminar el efecto de enfoque
+
+        // Agrega un oyente para el efecto hover
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                if (isSelected()) {
+                    setBorder(BorderFactory.createLineBorder(borderColor, borderThickness));
+                    setBackground(hoverColor);
+                }
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                if (isSelected()) {
+                    setBorder(null); // Restaura el borde
+                    setBackground(null); // Restaura el color de fondo cuando el mouse sale
+                }
+            }
+        });
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         // Pintar el fondo
-        g.setColor(getBackground());
-        g.fillOval(0, 0, getWidth(), getHeight());
+        if (isSelected()) {
+            g.setColor(hoverColor);
+            g.fillOval(0, 0, getWidth(), getHeight());
+        } else {
+            g.setColor(getBackground());
+            g.fillOval(borderThickness, borderThickness, getWidth() - 2 * borderThickness, getHeight() - 2 * borderThickness);
+        }
 
         // Pintar la imagen en el centro del botón
         if (image != null) {
@@ -35,7 +62,7 @@ public class CircularToggleButton extends JToggleButton {
 
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(44, 44); // Tamaño predeterminado
+        return new Dimension(50, 50); // Tamaño predeterminado
     }
 
     @Override
@@ -48,24 +75,5 @@ public class CircularToggleButton extends JToggleButton {
         return getPreferredSize(); // Mismo tamaño máximo que preferido
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Circular Toggle Button");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setLayout(new FlowLayout());
-
-            // Carga la imagen desde el archivo
-            ImageIcon icon = new ImageIcon("path/to/your/image.png");
-            Image image = icon.getImage();
-
-            // Crea el botón circular
-            CircularToggleButton circularButton = new CircularToggleButton(image);
-
-            // Agrega el botón al marco
-            frame.add(circularButton);
-
-            frame.pack();
-            frame.setVisible(true);
-        });
-    }
+    
 }

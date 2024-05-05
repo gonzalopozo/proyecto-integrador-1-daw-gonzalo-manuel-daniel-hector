@@ -17,7 +17,6 @@ public class Login extends VistaDefault {
         setSize(600, 500);
         setLocationRelativeTo(null);
         inicializarComponentes();
-        asignarLogo(imagenLogo);
     }
 
     private void inicializarComponentes() {
@@ -62,6 +61,7 @@ public class Login extends VistaDefault {
         btnCrearCuenta.setBackground(new Color(247, 178, 44));
         btnCrearCuenta.setBounds(318, 382, 164, 31);
         getContentPane().add(btnCrearCuenta);
+        
     }
 
     public void setListenerBotonCrearCuenta(MoverseListener listener) {

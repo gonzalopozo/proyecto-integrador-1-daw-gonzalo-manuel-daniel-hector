@@ -13,7 +13,6 @@ public class SeleccionRol extends VistaDefault {
 		super();
 		setSize(400,230);
 		inicializarComponentes();
-		asignarLogo(imagenLogo);
 		setLocationRelativeTo(null);
 	}
 
