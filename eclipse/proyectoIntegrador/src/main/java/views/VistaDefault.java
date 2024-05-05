@@ -30,7 +30,7 @@ public abstract class VistaDefault extends JFrame {
 
     public void asignarLogo(ImageIcon img) {
         logo.setIcon(img);
-		logo.setBounds(600, 100, 200, 145);
+		logo.setBounds(170, 30, 250, 182);
 		getContentPane().add(logo);
 	}
 

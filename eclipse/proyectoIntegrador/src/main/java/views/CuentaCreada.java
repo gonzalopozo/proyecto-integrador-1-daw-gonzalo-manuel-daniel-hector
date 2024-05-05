@@ -19,9 +19,11 @@ public class CuentaCreada extends VistaDefault {
 	
 	private void inicializarComponentes(){
 		lblcheck = new JLabel();
+		lblcheck.setHorizontalAlignment(SwingConstants.CENTER);
 		imgCheck = new ImageIcon("src/main/resources/iconoCheck.png");
+		getContentPane().setLayout(null);
 		lblcheck.setIcon(imgCheck);
-		lblcheck.setBounds(168, 11, 222, 222);
+		lblcheck.setBounds(131, 11, 222, 222);
 		getContentPane().add(lblcheck);
 		
 		continuar = new JButton("CONTINUAR");
@@ -35,7 +37,7 @@ public class CuentaCreada extends VistaDefault {
 		
 		lblCuentaCreada = new JLabel("SE HA CREADO TU CUENTA");
 		lblCuentaCreada.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCuentaCreada.setBounds(136, 258, 212, 14);
+		lblCuentaCreada.setBounds(114, 184, 255, 56);
 		getContentPane().add(lblCuentaCreada);
 	}
 }

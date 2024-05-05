@@ -17,9 +17,11 @@ public class Login extends VistaDefault {
         setSize(600, 500);
         setLocationRelativeTo(null);
         inicializarComponentes();
+        asignarLogo(imagenLogo);
     }
 
     private void inicializarComponentes() {
+        getContentPane().setLayout(null);
         txtUsuario = new JTextField();
         txtUsuario.setBounds(192, 247, 200, 20);
         getContentPane().add(txtUsuario);
@@ -59,7 +61,7 @@ public class Login extends VistaDefault {
         btnCrearCuenta.setFont(new Font("Arial", Font.BOLD, 14));
         btnCrearCuenta.setForeground(new Color(42, 42, 42));
         btnCrearCuenta.setBackground(new Color(247, 178, 44));
-        btnCrearCuenta.setBounds(318, 382, 164, 31);
+        btnCrearCuenta.setBounds(318, 378, 158, 32);
         getContentPane().add(btnCrearCuenta);
         
     }
