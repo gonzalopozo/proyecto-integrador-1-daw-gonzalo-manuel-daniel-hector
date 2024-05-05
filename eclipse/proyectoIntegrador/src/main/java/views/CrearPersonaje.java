@@ -1,6 +1,12 @@
 package views;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import components.*;
 
 public class CrearPersonaje extends VistaDefault {
 
@@ -21,7 +27,7 @@ public class CrearPersonaje extends VistaDefault {
 	private JRadioButton rdbtnTroll;
 	private JRadioButton rdbtnDracthyr;
 	private JRadioButton rdbtnGuerrero;
-	private JRadioButton rdbtnCazador;
+	private CircularToggleButton btnCazador;
 	private JRadioButton rdbtnMago;
 	private JRadioButton rdbtnPicaro;
 	private JRadioButton rdbtnSacerdote;
@@ -51,6 +57,9 @@ public void inicializarComponentes(){
 		volver = new JButton("VOLVER");
 		volver.setBounds(9, 515, 150, 23);
 		getContentPane().add(volver);
+		
+		
+		
 		
 		logoAlianza = new JLabel();
 		ImageIcon imgAlianza = new ImageIcon("src/main/resources/alianzaIcono.png");
@@ -128,9 +137,17 @@ public void inicializarComponentes(){
 		rdbtnGuerrero.setBounds(426, 515, 21, 23);
 		getContentPane().add(rdbtnGuerrero);
 		
-		rdbtnCazador = new JRadioButton("Cazador");
-		rdbtnCazador.setBounds(449, 515, 21, 23);
-		getContentPane().add(rdbtnCazador);
+		File file = new File("src/main/resources/cazador.png"); // Ruta de tu imagen
+        Image image = null;
+		try {
+			image = ImageIO.read(file);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		btnCazador = new CircularToggleButton(image);
+		btnCazador.setBounds(449, 515, 44, 44);
+		getContentPane().add(btnCazador);
 		
 		rdbtnMago = new JRadioButton("Mago");
 		rdbtnMago.setBounds(472, 515, 21, 23);
@@ -173,5 +190,9 @@ public void inicializarComponentes(){
 		personaje.setIcon(orco);
 		personaje.setBounds(350, 150, 300, 300);
 		getContentPane().add(personaje);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(342, 500, 300, 44);
+		getContentPane().add(panel);
 	}
 }
