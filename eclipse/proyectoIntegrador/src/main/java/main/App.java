@@ -124,6 +124,12 @@ public class App {
                 
                 MoverseListener detallesPersonajesPartidaUnirsePartida = new MoverseListener(detallesPersonajesPartida, unirsePartida);
                 detallesPersonajesPartida.setListenerBotonVolver(detallesPersonajesPartidaUnirsePartida);
+                
+                MoverseListener crearCuentaLogin = new MoverseListener(crearCuenta, login);
+                crearCuenta.setListenerBotonVolver(crearCuentaLogin);
+                
+                MoverseListener crearCuentaDosCrearCuenta = new MoverseListener(crearCuentaDos, crearCuenta);
+                crearCuentaDos.setListenerBotonVolver(crearCuentaDosCrearCuenta);
 
                 // MoverseListener cuentaCreadaDos = new MoverseListener(crearCuentaDos, cuentaCreada);
                 // crearCuentaDos.setListenerBotonContinuar(cuentaCreadaDos);

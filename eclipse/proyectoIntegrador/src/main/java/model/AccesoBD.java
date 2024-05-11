@@ -35,6 +35,24 @@ public class AccesoBD {
         }
     }
 
+    public String comprobarLogin(Connection c, String login) throws SQLException{
+
+        String resultado = "";
+        String query = "SELECT password FROM miembros WHERE miembros = '" + login + "'";
+        Statement stmt = c.createStatement();
+
+        ResultSet resultSet = stmt.executeQuery(query);
+
+        while (resultSet.next()) {
+            resultado = resultSet.getString("PASSWORD");
+        }
+
+        resultSet.close();
+        stmt.close();
+
+        return resultado;
+
+    }
 
     public void hacerConsulta(Connection c) throws SQLException{
         String query = "SELECT * FROM MIEMBROS";
@@ -51,6 +69,23 @@ public class AccesoBD {
 
         result.close();
         stmt.close();
+    }
+
+    public void crearPersonaje(Connection c, String nombre, String raza, String clase, int miembro_id)  {
+        // insert tipo crear personaje --> INSERT INTO personajes (nombre, raza, clase, miembro_id) VALUES ('Gimli', 'Enano', 'Guerrero', 1);
+
+		String query = "INSERT INTO personajes (nombre, raza, clase, miembro_id) VALUES (?, ?, ?, ?)";
+
+        try (Connection con = getConexion(); PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setString(1, nombre);
+            pstmt.setString(2, raza);
+            pstmt.setString(3, clase);
+            pstmt.setInt(4, miembro_id);
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
     // public static void main(String[] args) {

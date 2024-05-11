@@ -4,10 +4,11 @@ DROP TABLE IF EXISTS partidas;
 DROP TABLE IF EXISTS personajes;
 DROP TABLE IF EXISTS miembros;
 
-CREATE TABLE miembros(
+CREATE TABLE miembros (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre TEXT NOT NULL,
     apellidos TEXT NOT NULL,
+    password TEXT NOT NULL,
     num_expediente INTEGER NOT NULL,
     estudios TEXT NOT NULL
 );

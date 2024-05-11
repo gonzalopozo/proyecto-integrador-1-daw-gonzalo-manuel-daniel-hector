@@ -1,11 +1,11 @@
-INSERT INTO miembros (nombre, apellidos, num_expediente, estudios)
+INSERT INTO miembros (nombre, apellidos, password, num_expediente, estudios)
 VALUES
-('Gonzalo', 'Pozo Sánchez', '10001', 'SMIR'),
-('Daniel', 'Simón del Olmo', '10002', 'Superiores'),
-('Manuel', 'Gómez Navarro', '10003', 'ED. Infantil'),
-('Héctor', 'Chango Tapia', '10004', 'Superiores'),
-('Rubén', 'Peña González', '10005', 'SMIR'),
-('Cristiano', 'Ronaldo dos Santos Aveiro', '10006', 'Escola');
+('Gonzalo', 'Pozo Sánchez', 'lebron', '10001', 'SMIR'),
+('Daniel', 'Simón del Olmo','cochecitos', '10002', 'Superiores'),
+('Manuel', 'Gómez Navarro','1234', '10003', 'ED. Infantil'),
+('Héctor', 'Chango Tapia','1111', '10004', 'Superiores'),
+('Rubén', 'Peña González','fernandoalonso', '10005', 'SMIR'),
+('Cristiano', 'Ronaldo dos Santos Aveiro','siuuu', '10006', 'Escola');
 
 INSERT INTO personajes (nombre, raza, clase, miembro_id) 
 VALUES 

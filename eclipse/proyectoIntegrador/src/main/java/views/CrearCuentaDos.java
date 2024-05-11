@@ -21,6 +21,7 @@ public class CrearCuentaDos extends VistaDefault {
 	}
 
 	private void inicializarComponentes(){
+		getContentPane().setLayout(null);
 		textField = new JTextField();
 		textField.setBounds(241, 310, 200, 20);
 		getContentPane().add(textField);
@@ -55,8 +56,12 @@ public class CrearCuentaDos extends VistaDefault {
 		
 		txtRepetirContrasena = new JPasswordField();
 		txtRepetirContrasena.setColumns(10);
-		txtRepetirContrasena.setBounds(241, 410, 200, 20);
+		txtRepetirContrasena.setBounds(241, 418, 200, 20);
 		getContentPane().add(txtRepetirContrasena);
+		
+		volver = new JButton("VOLVER");
+		volver.setBounds(10, 527, 95, 23);
+		getContentPane().add(volver);
 	}
 
 	

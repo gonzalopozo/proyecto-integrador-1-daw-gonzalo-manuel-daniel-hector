@@ -6,7 +6,7 @@ import control.*;
 
 public class Login extends VistaDefault {
     private JTextField txtUsuario;
-    private JTextField txtNombre;
+    private JPasswordField txtPassword;
     private JLabel lblusuario;
     private JLabel lblcontraseña;
     private JLabel lblpregunta;
@@ -27,10 +27,10 @@ public class Login extends VistaDefault {
         getContentPane().add(txtUsuario);
         txtUsuario.setColumns(10);
 
-        txtNombre = new JTextField();
-        txtNombre.setBounds(192, 296, 200, 20);
-        getContentPane().add(txtNombre);
-        txtNombre.setColumns(10);
+        txtPassword = new JPasswordField();
+        txtPassword.setBounds(192, 296, 200, 20);
+        getContentPane().add(txtPassword);
+        txtPassword.setColumns(10);
 
         continuar = new JButton("INICIAR SESIÓN");
         continuar.setFont(new Font("Arial", Font.BOLD, 14));
@@ -65,6 +65,78 @@ public class Login extends VistaDefault {
         getContentPane().add(btnCrearCuenta);
         
     }
+
+    public JTextField getTxtUsuario() {
+        return txtUsuario;
+    }
+
+
+
+    public void setTxtUsuario(JTextField txtUsuario) {
+        this.txtUsuario = txtUsuario;
+    }
+
+
+
+    public JPasswordField getTxtPassword() {
+        return txtPassword;
+    }
+
+
+
+    public void setTxtPassword(JPasswordField txtPassword) {
+        this.txtPassword = txtPassword;
+    }
+
+
+
+    public JLabel getLblusuario() {
+        return lblusuario;
+    }
+
+
+
+    public void setLblusuario(JLabel lblusuario) {
+        this.lblusuario = lblusuario;
+    }
+
+
+
+    public JLabel getLblcontraseña() {
+        return lblcontraseña;
+    }
+
+
+
+    public void setLblcontraseña(JLabel lblcontraseña) {
+        this.lblcontraseña = lblcontraseña;
+    }
+
+
+
+    public JLabel getLblpregunta() {
+        return lblpregunta;
+    }
+
+
+
+    public void setLblpregunta(JLabel lblpregunta) {
+        this.lblpregunta = lblpregunta;
+    }
+
+
+
+    public JButton getBtnCrearCuenta() {
+        return btnCrearCuenta;
+    }
+
+
+
+    public void setBtnCrearCuenta(JButton btnCrearCuenta) {
+        this.btnCrearCuenta = btnCrearCuenta;
+    }
+
+
 
     public void setListenerBotonCrearCuenta(MoverseListener listener) {
         btnCrearCuenta.addActionListener(listener);

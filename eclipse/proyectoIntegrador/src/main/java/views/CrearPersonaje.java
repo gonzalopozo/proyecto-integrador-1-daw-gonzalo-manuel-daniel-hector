@@ -44,6 +44,253 @@ public class CrearPersonaje extends VistaDefault {
 	private ButtonGroup raza;
 	private ButtonGroup clase;
 	
+	public JLabel getLogoAlianza() {
+		return logoAlianza;
+	}
+
+	public void setLogoAlianza(JLabel logoAlianza) {
+		this.logoAlianza = logoAlianza;
+	}
+
+	public JLabel getLogoHorda() {
+		return logoHorda;
+	}
+
+	public void setLogoHorda(JLabel logoHorda) {
+		this.logoHorda = logoHorda;
+	}
+
+	public CircularToggleButton getRdbtnHumano() {
+		return rdbtnHumano;
+	}
+
+	public void setRdbtnHumano(CircularToggleButton rdbtnHumano) {
+		this.rdbtnHumano = rdbtnHumano;
+	}
+
+	public CircularToggleButton getRdbtnEnano() {
+		return rdbtnEnano;
+	}
+
+	public void setRdbtnEnano(CircularToggleButton rdbtnEnano) {
+		this.rdbtnEnano = rdbtnEnano;
+	}
+
+	public CircularToggleButton getRdbtnElfoNoche() {
+		return rdbtnElfoNoche;
+	}
+
+	public void setRdbtnElfoNoche(CircularToggleButton rdbtnElfoNoche) {
+		this.rdbtnElfoNoche = rdbtnElfoNoche;
+	}
+
+	public CircularToggleButton getRdbtnHuargen() {
+		return rdbtnHuargen;
+	}
+
+	public void setRdbtnHuargen(CircularToggleButton rdbtnHuargen) {
+		this.rdbtnHuargen = rdbtnHuargen;
+	}
+
+	public CircularToggleButton getRdbtnPandaAlianza() {
+		return rdbtnPandaAlianza;
+	}
+
+	public void setRdbtnPandaAlianza(CircularToggleButton rdbtnPandaAlianza) {
+		this.rdbtnPandaAlianza = rdbtnPandaAlianza;
+	}
+
+	public CircularToggleButton getRdbtnOrco() {
+		return rdbtnOrco;
+	}
+
+	public void setRdbtnOrco(CircularToggleButton rdbtnOrco) {
+		this.rdbtnOrco = rdbtnOrco;
+	}
+
+	public CircularToggleButton getRdbtnNoMuerto() {
+		return rdbtnNoMuerto;
+	}
+
+	public void setRdbtnNoMuerto(CircularToggleButton rdbtnNoMuerto) {
+		this.rdbtnNoMuerto = rdbtnNoMuerto;
+	}
+
+	public CircularToggleButton getRdbtnTauren() {
+		return rdbtnTauren;
+	}
+
+	public void setRdbtnTauren(CircularToggleButton rdbtnTauren) {
+		this.rdbtnTauren = rdbtnTauren;
+	}
+
+	public CircularToggleButton getRdbtnTroll() {
+		return rdbtnTroll;
+	}
+
+	public void setRdbtnTroll(CircularToggleButton rdbtnTroll) {
+		this.rdbtnTroll = rdbtnTroll;
+	}
+
+	public CircularToggleButton getRdbtnDracthyr() {
+		return rdbtnDracthyr;
+	}
+
+	public void setRdbtnDracthyr(CircularToggleButton rdbtnDracthyr) {
+		this.rdbtnDracthyr = rdbtnDracthyr;
+	}
+
+	public CircularToggleButton getBtnGuerrero() {
+		return btnGuerrero;
+	}
+
+	public void setBtnGuerrero(CircularToggleButton btnGuerrero) {
+		this.btnGuerrero = btnGuerrero;
+	}
+
+	public CircularToggleButton getBtnCazador() {
+		return btnCazador;
+	}
+
+	public void setBtnCazador(CircularToggleButton btnCazador) {
+		this.btnCazador = btnCazador;
+	}
+
+	public CircularToggleButton getRdbtnMago() {
+		return rdbtnMago;
+	}
+
+	public void setRdbtnMago(CircularToggleButton rdbtnMago) {
+		this.rdbtnMago = rdbtnMago;
+	}
+
+	public CircularToggleButton getRdbtnPicaro() {
+		return rdbtnPicaro;
+	}
+
+	public void setRdbtnPicaro(CircularToggleButton rdbtnPicaro) {
+		this.rdbtnPicaro = rdbtnPicaro;
+	}
+
+	public CircularToggleButton getRdbtnSacerdote() {
+		return rdbtnSacerdote;
+	}
+
+	public void setRdbtnSacerdote(CircularToggleButton rdbtnSacerdote) {
+		this.rdbtnSacerdote = rdbtnSacerdote;
+	}
+
+	public CircularToggleButton getRdbtnBrujo() {
+		return rdbtnBrujo;
+	}
+
+	public void setRdbtnBrujo(CircularToggleButton rdbtnBrujo) {
+		this.rdbtnBrujo = rdbtnBrujo;
+	}
+
+	public CircularToggleButton getRdbtnPaladin() {
+		return rdbtnPaladin;
+	}
+
+	public void setRdbtnPaladin(CircularToggleButton rdbtnPaladin) {
+		this.rdbtnPaladin = rdbtnPaladin;
+	}
+
+	public CircularToggleButton getRdbtnDruida() {
+		return rdbtnDruida;
+	}
+
+	public void setRdbtnDruida(CircularToggleButton rdbtnDruida) {
+		this.rdbtnDruida = rdbtnDruida;
+	}
+
+	public CircularToggleButton getRdbtnChaman() {
+		return rdbtnChaman;
+	}
+
+	public void setRdbtnChaman(CircularToggleButton rdbtnChaman) {
+		this.rdbtnChaman = rdbtnChaman;
+	}
+
+	public CircularToggleButton getRdbtnCazadorDemonios() {
+		return rdbtnCazadorDemonios;
+	}
+
+	public void setRdbtnCazadorDemonios(CircularToggleButton rdbtnCazadorDemonios) {
+		this.rdbtnCazadorDemonios = rdbtnCazadorDemonios;
+	}
+
+	public CircularToggleButton getRdbtnCaballeroMuerte() {
+		return rdbtnCaballeroMuerte;
+	}
+
+	public void setRdbtnCaballeroMuerte(CircularToggleButton rdbtnCaballeroMuerte) {
+		this.rdbtnCaballeroMuerte = rdbtnCaballeroMuerte;
+	}
+
+	public CircularToggleButton getRdbtnEvocador() {
+		return rdbtnEvocador;
+	}
+
+	public void setRdbtnEvocador(CircularToggleButton rdbtnEvocador) {
+		this.rdbtnEvocador = rdbtnEvocador;
+	}
+
+	public CircularToggleButton getRdbtnHombre() {
+		return rdbtnHombre;
+	}
+
+	public void setRdbtnHombre(CircularToggleButton rdbtnHombre) {
+		this.rdbtnHombre = rdbtnHombre;
+	}
+
+	public CircularToggleButton getRdbtnMujer() {
+		return rdbtnMujer;
+	}
+
+	public void setRdbtnMujer(CircularToggleButton rdbtnMujer) {
+		this.rdbtnMujer = rdbtnMujer;
+	}
+
+	public JLabel getPersonaje() {
+		return personaje;
+	}
+
+	public void setPersonaje(JLabel personaje) {
+		this.personaje = personaje;
+	}
+
+	public JTextField getTextField() {
+		return textField;
+	}
+
+	public void setTextField(JTextField textField) {
+		this.textField = textField;
+	}
+
+	public ButtonGroup getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(ButtonGroup sexo) {
+		this.sexo = sexo;
+	}
+
+	public ButtonGroup getRaza() {
+		return raza;
+	}
+
+	public void setRaza(ButtonGroup raza) {
+		this.raza = raza;
+	}
+
+	public ButtonGroup getClase() {
+		return clase;
+	}
+
+	public void setClase(ButtonGroup clase) {
+		this.clase = clase;
+	}
 
 	public CrearPersonaje() {
 		super();
