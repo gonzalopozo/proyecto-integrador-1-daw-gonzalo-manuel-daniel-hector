@@ -88,4 +88,10 @@ public class PaginaPrincipal extends VistaDefault {
 	public void setListenerBotonVerPartidas(MoverseListener listener) {
 		btnVerPartidas.addActionListener(listener);
 	}
+
+	//TODO: ACTUALIZAR TABLA VER PARTIDAS (MIEMBRO) AL CLICAR EN EL LISTENER 
+
+	// public void setListenerBotonActualizarTablaPartidas(){
+	// 	btnActualizarTablaPartidas(listener);
+	// }
 }

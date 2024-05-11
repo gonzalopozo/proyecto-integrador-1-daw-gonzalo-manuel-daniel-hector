@@ -80,6 +80,11 @@ public class App {
                 MoverseListener loginSeleccionRol = new MoverseListener(login, seleccionRol);
                 login.setListenerBotonContinuar(loginSeleccionRol);
 
+                LoginListener loginCuenta = new LoginListener();
+                login.setListenerBotonContinuar(loginCuenta);
+                
+                
+                
                 MoverseListener seleccionRolLogin = new MoverseListener(seleccionRol, login);
                 seleccionRol.setListenerBotonVolver(seleccionRolLogin);
 

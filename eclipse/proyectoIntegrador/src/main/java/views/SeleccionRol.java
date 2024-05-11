@@ -21,6 +21,10 @@ public class SeleccionRol extends VistaDefault {
 		continuar.setBounds(104, 118, 175, 30);
 		getContentPane().add(continuar);
 		getContentPane().setLayout(null);
+		// Creo una instancia del listener para asignarlo al boton 
+		SeleccionRolListener rolListener = new SeleccionRolListener(this);
+        continuar.addActionListener(rolListener);
+		
 		
 		lblRol = new JLabel("ELIGE TU ROL");
 		lblRol.setFont(new Font("Arial", Font.BOLD, 18));

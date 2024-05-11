@@ -25,6 +25,7 @@ public class CrearCuenta extends VistaDefault {
 	}
 
 	private void inicializarComponentes(){
+		getContentPane().setLayout(null);
 		txtNombre = new JTextField();
 		txtNombre.setBounds(242, 295, 200, 20);
 		getContentPane().add(txtNombre);
@@ -78,7 +79,11 @@ public class CrearCuenta extends VistaDefault {
 		
 		checkBoxTerminos = new JCheckBox("TÉRMINOS Y CONDICIONES");
 		checkBoxTerminos.setHorizontalAlignment(SwingConstants.CENTER);
-		checkBoxTerminos.setBounds(242, 466, 200, 23);
+		checkBoxTerminos.setBounds(235, 474, 214, 29);
 		getContentPane().add(checkBoxTerminos);
+		
+		volver = new JButton("VOLVER");
+		volver.setBounds(10, 527, 104, 23);
+		getContentPane().add(volver);
 	}
 }

@@ -73,12 +73,18 @@ public class App {
                 PartidasDisponibles partidasDisponibles = new PartidasDisponibles();
                 SeleccionRol seleccionRol = new SeleccionRol();
                 UnirsePartida unirsePartida = new UnirsePartida();
+                SeleccionarPartidaGM seleccionarPartidaGM = new SeleccionarPartidaGM();
                 
                 login.hacerVisible();
 
                 MoverseListener loginSeleccionRol = new MoverseListener(login, seleccionRol);
                 login.setListenerBotonContinuar(loginSeleccionRol);
 
+                LoginListener loginCuenta = new LoginListener();
+                login.setListenerBotonContinuar(loginCuenta);
+                
+                
+                
                 MoverseListener seleccionRolLogin = new MoverseListener(seleccionRol, login);
                 seleccionRol.setListenerBotonVolver(seleccionRolLogin);
 
@@ -94,7 +100,7 @@ public class App {
                 MoverseListener cuentaCreadaSeleccionRol = new MoverseListener(cuentaCreada, seleccionRol);
                 cuentaCreada.setListenerBotonContinuar(cuentaCreadaSeleccionRol);
 
-                MoverseListener rolJugador = new MoverseListener(seleccionRol, paginaPrincipalGM);
+                MoverseListener rolJugador = new MoverseListener(seleccionRol, paginaPrincipal);
                 seleccionRol.setListenerBotonContinuar(rolJugador);
 
                 MoverseListener jugadorCrearPersonaje = new MoverseListener(paginaPrincipal, crearPersonaje);
@@ -123,6 +129,12 @@ public class App {
                 
                 MoverseListener detallesPersonajesPartidaUnirsePartida = new MoverseListener(detallesPersonajesPartida, unirsePartida);
                 detallesPersonajesPartida.setListenerBotonVolver(detallesPersonajesPartidaUnirsePartida);
+                
+                MoverseListener crearCuentaLogin = new MoverseListener(crearCuenta, login);
+                crearCuenta.setListenerBotonVolver(crearCuentaLogin);
+                
+                MoverseListener crearCuentaDosCrearCuenta = new MoverseListener(crearCuentaDos, crearCuenta);
+                crearCuentaDos.setListenerBotonVolver(crearCuentaDosCrearCuenta);
 
                 // MoverseListener cuentaCreadaDos = new MoverseListener(crearCuentaDos, cuentaCreada);
                 // crearCuentaDos.setListenerBotonContinuar(cuentaCreadaDos);

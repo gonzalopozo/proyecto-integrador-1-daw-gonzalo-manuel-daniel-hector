@@ -28,6 +28,7 @@ public class PaginaPrincipal extends VistaDefault {
 	}
 
 	public void inicializarComponentes() {
+		getContentPane().setLayout(null);
 
 		btnJugar = new JButton("JUGAR");
 		btnJugar.setBounds(439, 524, 89, 23);
@@ -63,14 +64,16 @@ public class PaginaPrincipal extends VistaDefault {
 		pnlContenedor.add(btnVerPartidas);
 		
 		lblPersonaje = new JLabel();
-		orco = new ImageIcon("src/main/resources/dance.gif");
+		lblPersonaje.setHorizontalAlignment(SwingConstants.CENTER);
+		orco = new ImageIcon("src/main/resources/enanoBailongo.gif");
 		lblPersonaje.setIcon(orco);
-		lblPersonaje.setBounds(350, 150, 300, 300);
+		lblPersonaje.setBounds(342, 150, 300, 300);
 		getContentPane().add(lblPersonaje);
 		
 		lblNombrePersonaje = new JLabel("PepeElDelMadrid");
+		lblNombrePersonaje.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNombrePersonaje.setFont(new Font("Arial", Font.BOLD, 15));
-		lblNombrePersonaje.setBounds(427, 479, 167, 14);
+		lblNombrePersonaje.setBounds(410, 400, 164, 81);
 		getContentPane().add(lblNombrePersonaje);
 	}
 
@@ -85,4 +88,10 @@ public class PaginaPrincipal extends VistaDefault {
 	public void setListenerBotonVerPartidas(MoverseListener listener) {
 		btnVerPartidas.addActionListener(listener);
 	}
+
+	//TODO: ACTUALIZAR TABLA VER PARTIDAS (MIEMBRO) AL CLICAR EN EL LISTENER 
+
+	// public void setListenerBotonActualizarTablaPartidas(){
+	// 	btnActualizarTablaPartidas(listener);
+	// }
 }

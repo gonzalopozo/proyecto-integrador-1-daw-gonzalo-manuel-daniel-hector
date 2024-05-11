@@ -13,7 +13,6 @@ public class SeleccionRol extends VistaDefault {
 		super();
 		setSize(400,230);
 		inicializarComponentes();
-		asignarLogo(imagenLogo);
 		setLocationRelativeTo(null);
 	}
 
@@ -21,6 +20,11 @@ public class SeleccionRol extends VistaDefault {
 		continuar = new JButton("CONTINUAR");
 		continuar.setBounds(104, 118, 175, 30);
 		getContentPane().add(continuar);
+		getContentPane().setLayout(null);
+		// Creo una instancia del listener para asignarlo al boton 
+		SeleccionRolListener rolListener = new SeleccionRolListener(this);
+        continuar.addActionListener(rolListener);
+		
 		
 		lblRol = new JLabel("ELIGE TU ROL");
 		lblRol.setFont(new Font("Arial", Font.BOLD, 18));
@@ -39,7 +43,7 @@ public class SeleccionRol extends VistaDefault {
         */
         
         toggleBtnGameMaster = new JToggleButton("GAME MASTER");
-		toggleBtnGameMaster.setBounds(122, 55, 140, 23);
+		toggleBtnGameMaster.setBounds(122, 49, 140, 23);
 		getContentPane().add(toggleBtnGameMaster);
         /*toggleBtnGameMaster.setFocusPainted(false); // Quitar el contorno al tener el foco
         toggleBtnGameMaster.setContentAreaFilled(false); // Quitar el área pintada

@@ -37,6 +37,7 @@ public class Login extends VistaDefault {
         continuar.setForeground(new Color(42, 42, 42));
         continuar.setBackground(new Color(247, 178, 44));
         continuar.setBounds(214, 329, 156, 31);
+        
         getContentPane().add(continuar);
 
         lblusuario = new JLabel("USUARIO");

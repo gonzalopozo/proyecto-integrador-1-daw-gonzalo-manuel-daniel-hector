@@ -1,3 +1,4 @@
+-- SQLBook: Code
 INSERT INTO miembros (nombre, apellidos, password, num_expediente, estudios)
 VALUES
 ('Gonzalo', 'Pozo Sánchez', 'lebron', '10001', 'SMIR'),
@@ -7,20 +8,20 @@ VALUES
 ('Rubén', 'Peña González','fernandoalonso', '10005', 'SMIR'),
 ('Cristiano', 'Ronaldo dos Santos Aveiro','siuuu', '10006', 'Escola');
 
-INSERT INTO personajes (nombre, raza, clase, miembro_id) 
+INSERT INTO personajes (nombre, sexo, raza, clase, miembro_id) 
 VALUES 
-('Gimli', 'Enano', 'Guerrero', 1),
-('Atreides', 'Elfa de la noche', 'Bruja', 2),
-('El Emisario', 'Elfo de la noche', 'Cazador de demonios', 3),
-('Legolas', 'Tauren', 'Cazador', 4),
-('Padme', 'Humana', 'Sacerdotisa', 5),
-('Anakin', 'Enano', 'Paladin', 6),
-('Ashoka', 'No muerta', 'Pícara', 7),
-('Darth Maul', 'Huargen ', 'Mago', 8),
-('Joselito', 'Pandaren', 'Chamán', 9),
-('LeBron James', 'Tauren', 'Caballero de la muerte', 10),
-('Pepe el del Madrid', 'Troll', 'Druida', 11),
-('D`Angelo Russell', 'Dracthyr', 'Evocador', 12);
+('Gimli', 'Hombre', 'Enano', 'Guerrero', 1),
+('Atreides','Mujer', 'Elfa de la noche', 'Bruja', 2),
+('El Emisario','Hombre', 'Elfo de la noche', 'Cazador de demonios', 3),
+('Legolas','Hombre', 'Tauren', 'Cazador', 4),
+('Padme', 'Mujer', 'Humana', 'Sacerdotisa', 5),
+('Anakin','Hombre', 'Enano', 'Paladin', 6),
+('Ashoka', 'Mujer', 'No muerta', 'Pícara', 7),
+('Darth Maul', 'Hombre', 'Huargen ', 'Mago', 8),
+('Joselito', 'Hombre', 'Pandaren', 'Chamán', 9),
+('LeBron James', 'Hombre', 'Tauren', 'Caballero de la muerte', 10),
+('Pepe el del Madrid', 'Hombre', 'Troll', 'Druida', 11),
+('D`Angelo Russell', 'Hombre', 'Dracthyr', 'Evocador', 12);
 
 INSERT INTO partidas (nombre, game_master_id, ambientacion, esta_en_curso, num_sesion, duración, fecha)
 VALUES

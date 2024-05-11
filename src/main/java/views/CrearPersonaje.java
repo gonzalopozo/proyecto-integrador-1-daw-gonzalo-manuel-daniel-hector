@@ -1,43 +1,301 @@
 package views;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import components.*;
+import java.awt.FlowLayout;
+import java.awt.BorderLayout;
 
 public class CrearPersonaje extends VistaDefault {
 
 	private JLabel logoAlianza;
 	private JLabel logoHorda;
-	private JRadioButton rdbtnHombre;
-	private JRadioButton rdbtnMujer;
-	private JLabel iconoHombre;
-	private JLabel iconoMujer;
-	private JRadioButton rdbtnHumano;
-	private JRadioButton rdbtnEnano;
-	private JRadioButton rdbtnElfoNoche;
-	private JRadioButton rdbtnHuargen;
-	private JRadioButton rdbtnPandaAlianza;
-	private JRadioButton rdbtnOrco;
-	private JRadioButton rdbtnNoMuerto;
-	private JRadioButton rdbtnTauren;
-	private JRadioButton rdbtnTroll;
-	private JRadioButton rdbtnDracthyr;
-	private JRadioButton rdbtnGuerrero;
-	private JRadioButton rdbtnCazador;
-	private JRadioButton rdbtnMago;
-	private JRadioButton rdbtnPicaro;
-	private JRadioButton rdbtnSacerdote;
-	private JRadioButton rdbtnBrujo;
-	private JRadioButton rdbtnPaladin;
-	private JRadioButton rdbtnDruida;
-	private JRadioButton rdbtnChaman;
-	private JRadioButton rdbtnCazadorDemonios;
-	private JLabel lblNombrePersonaje;
+	private CircularToggleButton rdbtnHumano;
+	private CircularToggleButton rdbtnEnano;
+	private CircularToggleButton rdbtnElfoNoche;
+	private CircularToggleButton rdbtnHuargen;
+	private CircularToggleButton rdbtnPandaAlianza;
+	private CircularToggleButton rdbtnOrco;
+	private CircularToggleButton rdbtnNoMuerto;
+	private CircularToggleButton rdbtnTauren;
+	private CircularToggleButton rdbtnTroll;
+	private CircularToggleButton rdbtnDracthyr;
+	private CircularToggleButton btnGuerrero;
+	private CircularToggleButton btnCazador;
+	private CircularToggleButton rdbtnMago;
+	private CircularToggleButton rdbtnPicaro;
+	private CircularToggleButton rdbtnSacerdote;
+	private CircularToggleButton rdbtnBrujo;
+	private CircularToggleButton rdbtnPaladin;
+	private CircularToggleButton rdbtnDruida;
+	private CircularToggleButton rdbtnChaman;
+	private CircularToggleButton rdbtnCazadorDemonios;
+	private CircularToggleButton rdbtnCaballeroMuerte;
+	private CircularToggleButton rdbtnEvocador;
+	private CircularToggleButton rdbtnHombre;
+	private CircularToggleButton rdbtnMujer;
 	private JLabel personaje;
+	private JTextField txtNombrePersonaje;
+	private ButtonGroup sexo;
+	private ButtonGroup raza;
+	private ButtonGroup clase;
+	
+	public JLabel getLogoAlianza() {
+		return logoAlianza;
+	}
+
+	public void setLogoAlianza(JLabel logoAlianza) {
+		this.logoAlianza = logoAlianza;
+	}
+
+	public JLabel getLogoHorda() {
+		return logoHorda;
+	}
+
+	public void setLogoHorda(JLabel logoHorda) {
+		this.logoHorda = logoHorda;
+	}
+
+	public CircularToggleButton getRdbtnHumano() {
+		return rdbtnHumano;
+	}
+
+	public void setRdbtnHumano(CircularToggleButton rdbtnHumano) {
+		this.rdbtnHumano = rdbtnHumano;
+	}
+
+	public CircularToggleButton getRdbtnEnano() {
+		return rdbtnEnano;
+	}
+
+	public void setRdbtnEnano(CircularToggleButton rdbtnEnano) {
+		this.rdbtnEnano = rdbtnEnano;
+	}
+
+	public CircularToggleButton getRdbtnElfoNoche() {
+		return rdbtnElfoNoche;
+	}
+
+	public void setRdbtnElfoNoche(CircularToggleButton rdbtnElfoNoche) {
+		this.rdbtnElfoNoche = rdbtnElfoNoche;
+	}
+
+	public CircularToggleButton getRdbtnHuargen() {
+		return rdbtnHuargen;
+	}
+
+	public void setRdbtnHuargen(CircularToggleButton rdbtnHuargen) {
+		this.rdbtnHuargen = rdbtnHuargen;
+	}
+
+	public CircularToggleButton getRdbtnPandaAlianza() {
+		return rdbtnPandaAlianza;
+	}
+
+	public void setRdbtnPandaAlianza(CircularToggleButton rdbtnPandaAlianza) {
+		this.rdbtnPandaAlianza = rdbtnPandaAlianza;
+	}
+
+	public CircularToggleButton getRdbtnOrco() {
+		return rdbtnOrco;
+	}
+
+	public void setRdbtnOrco(CircularToggleButton rdbtnOrco) {
+		this.rdbtnOrco = rdbtnOrco;
+	}
+
+	public CircularToggleButton getRdbtnNoMuerto() {
+		return rdbtnNoMuerto;
+	}
+
+	public void setRdbtnNoMuerto(CircularToggleButton rdbtnNoMuerto) {
+		this.rdbtnNoMuerto = rdbtnNoMuerto;
+	}
+
+	public CircularToggleButton getRdbtnTauren() {
+		return rdbtnTauren;
+	}
+
+	public void setRdbtnTauren(CircularToggleButton rdbtnTauren) {
+		this.rdbtnTauren = rdbtnTauren;
+	}
+
+	public CircularToggleButton getRdbtnTroll() {
+		return rdbtnTroll;
+	}
+
+	public void setRdbtnTroll(CircularToggleButton rdbtnTroll) {
+		this.rdbtnTroll = rdbtnTroll;
+	}
+
+	public CircularToggleButton getRdbtnDracthyr() {
+		return rdbtnDracthyr;
+	}
+
+	public void setRdbtnDracthyr(CircularToggleButton rdbtnDracthyr) {
+		this.rdbtnDracthyr = rdbtnDracthyr;
+	}
+
+	public CircularToggleButton getBtnGuerrero() {
+		return btnGuerrero;
+	}
+
+	public void setBtnGuerrero(CircularToggleButton btnGuerrero) {
+		this.btnGuerrero = btnGuerrero;
+	}
+
+	public CircularToggleButton getBtnCazador() {
+		return btnCazador;
+	}
+
+	public void setBtnCazador(CircularToggleButton btnCazador) {
+		this.btnCazador = btnCazador;
+	}
+
+	public CircularToggleButton getRdbtnMago() {
+		return rdbtnMago;
+	}
+
+	public void setRdbtnMago(CircularToggleButton rdbtnMago) {
+		this.rdbtnMago = rdbtnMago;
+	}
+
+	public CircularToggleButton getRdbtnPicaro() {
+		return rdbtnPicaro;
+	}
+
+	public void setRdbtnPicaro(CircularToggleButton rdbtnPicaro) {
+		this.rdbtnPicaro = rdbtnPicaro;
+	}
+
+	public CircularToggleButton getRdbtnSacerdote() {
+		return rdbtnSacerdote;
+	}
+
+	public void setRdbtnSacerdote(CircularToggleButton rdbtnSacerdote) {
+		this.rdbtnSacerdote = rdbtnSacerdote;
+	}
+
+	public CircularToggleButton getRdbtnBrujo() {
+		return rdbtnBrujo;
+	}
+
+	public void setRdbtnBrujo(CircularToggleButton rdbtnBrujo) {
+		this.rdbtnBrujo = rdbtnBrujo;
+	}
+
+	public CircularToggleButton getRdbtnPaladin() {
+		return rdbtnPaladin;
+	}
+
+	public void setRdbtnPaladin(CircularToggleButton rdbtnPaladin) {
+		this.rdbtnPaladin = rdbtnPaladin;
+	}
+
+	public CircularToggleButton getRdbtnDruida() {
+		return rdbtnDruida;
+	}
+
+	public void setRdbtnDruida(CircularToggleButton rdbtnDruida) {
+		this.rdbtnDruida = rdbtnDruida;
+	}
+
+	public CircularToggleButton getRdbtnChaman() {
+		return rdbtnChaman;
+	}
+
+	public void setRdbtnChaman(CircularToggleButton rdbtnChaman) {
+		this.rdbtnChaman = rdbtnChaman;
+	}
+
+	public CircularToggleButton getRdbtnCazadorDemonios() {
+		return rdbtnCazadorDemonios;
+	}
+
+	public void setRdbtnCazadorDemonios(CircularToggleButton rdbtnCazadorDemonios) {
+		this.rdbtnCazadorDemonios = rdbtnCazadorDemonios;
+	}
+
+	public CircularToggleButton getRdbtnCaballeroMuerte() {
+		return rdbtnCaballeroMuerte;
+	}
+
+	public void setRdbtnCaballeroMuerte(CircularToggleButton rdbtnCaballeroMuerte) {
+		this.rdbtnCaballeroMuerte = rdbtnCaballeroMuerte;
+	}
+
+	public CircularToggleButton getRdbtnEvocador() {
+		return rdbtnEvocador;
+	}
+
+	public void setRdbtnEvocador(CircularToggleButton rdbtnEvocador) {
+		this.rdbtnEvocador = rdbtnEvocador;
+	}
+
+	public CircularToggleButton getRdbtnHombre() {
+		return rdbtnHombre;
+	}
+
+	public void setRdbtnHombre(CircularToggleButton rdbtnHombre) {
+		this.rdbtnHombre = rdbtnHombre;
+	}
+
+	public CircularToggleButton getRdbtnMujer() {
+		return rdbtnMujer;
+	}
+
+	public void setRdbtnMujer(CircularToggleButton rdbtnMujer) {
+		this.rdbtnMujer = rdbtnMujer;
+	}
+
+	public JLabel getPersonaje() {
+		return personaje;
+	}
+
+	public void setPersonaje(JLabel personaje) {
+		this.personaje = personaje;
+	}
+
+	public JTextField getTxtNombrePersonaje() {
+		return txtNombrePersonaje;
+	}
+
+	public void setTxtNombrePersonaje(JTextField txtNombrePersonaje) {
+		this.txtNombrePersonaje = txtNombrePersonaje;
+	}
+
+	public ButtonGroup getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(ButtonGroup sexo) {
+		this.sexo = sexo;
+	}
+
+	public ButtonGroup getRaza() {
+		return raza;
+	}
+
+	public void setRaza(ButtonGroup raza) {
+		this.raza = raza;
+	}
+
+	public ButtonGroup getClase() {
+		return clase;
+	}
+
+	public void setClase(ButtonGroup clase) {
+		this.clase = clase;
+	}
 
 	public CrearPersonaje() {
 		super();
 		setSize(1000,600);
 		inicializarComponentes();
-		asignarLogo(imagenLogo);
 		setLocationRelativeTo(null);
 }
 
@@ -53,125 +311,382 @@ public void inicializarComponentes(){
 		getContentPane().add(volver);
 		
 		logoAlianza = new JLabel();
-		ImageIcon imgAlianza = new ImageIcon("src/main/resources/alianzaIcono.png");
+		ImageIcon imgAlianza = new ImageIcon("src/main/resources/AllianceLogo.png");
 		logoAlianza.setIcon(imgAlianza);
-		logoAlianza.setBounds(9, 10, 98, 98);
+		logoAlianza.setBounds(28, 10, 98, 98);
 		getContentPane().add(logoAlianza);
 		
 		logoHorda = new JLabel();
-		ImageIcon imgHorda = new ImageIcon("src/main/resources/hordaIcono.png");
+		ImageIcon imgHorda = new ImageIcon("src/main/resources/logohorda.png");
 		logoHorda.setIcon(imgHorda);
-		logoHorda.setBounds(880, 10, 98, 98);
+		logoHorda.setBounds(876, 22, 98, 98);
 		getContentPane().add(logoHorda);
-		
-		rdbtnHombre = new JRadioButton("");
-		rdbtnHombre.setBounds(488, 11, 20, 23);
-		getContentPane().add(rdbtnHombre);
-		
-		rdbtnMujer = new JRadioButton("");
-		rdbtnMujer.setBounds(555, 11, 20, 23);
-		getContentPane().add(rdbtnMujer);
-		
-		iconoHombre = new JLabel();
 		ImageIcon imgHombre = new ImageIcon("src/main/resources/iconoHombre.png");
-		iconoHombre.setIcon(imgHombre);
-		iconoHombre.setBounds(468, 10, 98, 98);
-		getContentPane().add(iconoHombre);
-		
-		iconoMujer = new JLabel();
 		ImageIcon imgMujer = new ImageIcon("src/main/resources/iconoMujer.png");
-		iconoMujer.setIcon(imgMujer);
-		iconoMujer.setBounds(532, 10, 98, 98);
-		getContentPane().add(iconoMujer);
 		
-		rdbtnHumano = new JRadioButton("Humano");
-		rdbtnHumano.setBounds(17, 156, 109, 23);
+		
+		File iconoHuman = new File("src/main/resources/humano.png"); // Ruta de tu imagen
+        Image imageHuman = null;
+		try {
+			imageHuman = ImageIO.read(iconoHuman);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		rdbtnHumano = new CircularToggleButton(imageHuman, "Humano");
+		rdbtnHumano.setBounds(45, 135, 45, 45);
 		getContentPane().add(rdbtnHumano);
 		
-		rdbtnEnano = new JRadioButton("Enano");
-		rdbtnEnano.setBounds(17, 182, 109, 23);
+		File iconoDwarf = new File("src/main/resources/enano.png"); // Ruta de tu imagen
+        Image imageDwarf = null;
+		try {
+			imageDwarf = ImageIO.read(iconoDwarf);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		rdbtnEnano = new CircularToggleButton(imageDwarf, "Enano");
+		rdbtnEnano.setBounds(45, 185, 44, 44);
 		getContentPane().add(rdbtnEnano);
 		
-		rdbtnElfoNoche = new JRadioButton("Elfo de la Noche");
-		rdbtnElfoNoche.setBounds(17, 208, 109, 23);
+		File iconoNe = new File("src/main/resources/elfoNoche.png"); // Ruta de tu imagen
+        Image imageNE = null;
+		try {
+			imageNE = ImageIO.read(iconoNe);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		rdbtnElfoNoche = new CircularToggleButton(imageNE, "Elfo de la noche");
+		rdbtnElfoNoche.setBounds(45, 235, 44, 44);
 		getContentPane().add(rdbtnElfoNoche);
 		
-		rdbtnHuargen = new JRadioButton("Huargen");
-		rdbtnHuargen.setBounds(17, 234, 109, 23);
+		File iconoHuargen = new File("src/main/resources/huargen.png"); // Ruta de tu imagen
+        Image imageHuargen = null;
+		try {
+			imageHuargen = ImageIO.read(iconoHuargen);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		rdbtnHuargen = new CircularToggleButton(imageHuargen, "Huargen");
+		rdbtnHuargen.setBounds(45, 285, 44, 44);
 		getContentPane().add(rdbtnHuargen);
 		
-		rdbtnPandaAlianza = new JRadioButton("PandaAlianza");
-		rdbtnPandaAlianza.setBounds(17, 260, 109, 23);
+		File iconoPandaA = new File("src/main/resources/enano.png"); // Ruta de tu imagen
+        Image imagePandaA = null;
+		try {
+			imagePandaA = ImageIO.read(iconoPandaA);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		rdbtnPandaAlianza = new CircularToggleButton(imagePandaA, "Panda");
+		rdbtnPandaAlianza.setBounds(45, 335, 44, 44);
 		getContentPane().add(rdbtnPandaAlianza);
 		
-		rdbtnOrco = new JRadioButton("Orco");
-		rdbtnOrco.setBounds(884, 156, 109, 23);
+		File iconoOrco = new File("src/main/resources/orcoH.png"); // Ruta de tu imagen
+        Image imageOrco = null;
+		try {
+			imageOrco = ImageIO.read(iconoOrco);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		rdbtnOrco = new CircularToggleButton(imageOrco, "Orco");
+		rdbtnOrco.setBounds(884, 135, 44, 44);
 		getContentPane().add(rdbtnOrco);
 		
-		rdbtnNoMuerto = new JRadioButton("No muerto");
-		rdbtnNoMuerto.setBounds(884, 182, 109, 23);
+		File iconoNoMuerto = new File("src/main/resources/nomuertoH.png"); // Ruta de tu imagen
+        Image imageNoMuerto = null;
+		try {
+			imageNoMuerto = ImageIO.read(iconoNoMuerto);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		rdbtnNoMuerto = new CircularToggleButton(imageNoMuerto, "No Muerto");
+		rdbtnNoMuerto.setBounds(884, 185, 44, 44);
 		getContentPane().add(rdbtnNoMuerto);
 		
-		rdbtnTauren = new JRadioButton("Tauren");
-		rdbtnTauren.setBounds(884, 208, 109, 23);
+		File iconoTauren = new File("src/main/resources/taurenH.png"); // Ruta de tu imagen
+        Image imageTauren = null;
+		try {
+			imageTauren = ImageIO.read(iconoTauren);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		rdbtnTauren = new CircularToggleButton(imageTauren, "Tauren");
+		rdbtnTauren.setBounds(884, 235, 44, 44);
 		getContentPane().add(rdbtnTauren);
 		
-		rdbtnTroll = new JRadioButton("Troll");
-		rdbtnTroll.setBounds(884, 234, 109, 23);
+		File iconoTroll = new File("src/main/resources/trollH.png"); // Ruta de tu imagen
+        Image imageTroll = null;
+		try {
+			imageTroll = ImageIO.read(iconoTroll);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		rdbtnTroll = new CircularToggleButton(imageTroll, "Troll");
+		rdbtnTroll.setBounds(884, 285, 44, 44);
 		getContentPane().add(rdbtnTroll);
 		
-		rdbtnDracthyr = new JRadioButton("Dracthyr");
-		rdbtnDracthyr.setBounds(884, 260, 109, 23);
+		File iconoDracthyr = new File("src/main/resources/dracthyrr.png"); // Ruta de tu imagen
+        Image imageDracthyr = null;
+		try {
+			imageDracthyr = ImageIO.read(iconoDracthyr);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		rdbtnDracthyr = new CircularToggleButton(imageDracthyr, "Dracthyr");
+		rdbtnDracthyr.setBounds(884, 335, 44, 44);
 		getContentPane().add(rdbtnDracthyr);
 		
-		rdbtnGuerrero = new JRadioButton("Guerrero");
-		rdbtnGuerrero.setBounds(426, 515, 21, 23);
-		getContentPane().add(rdbtnGuerrero);
 		
-		rdbtnCazador = new JRadioButton("Cazador");
-		rdbtnCazador.setBounds(449, 515, 21, 23);
-		getContentPane().add(rdbtnCazador);
+		File iconoMujer = new File("src/main/resources/logoMujer.png"); // Ruta de tu imagen
+        Image imageMujer = null;
+		try {
+			imageMujer = ImageIO.read(iconoMujer);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		rdbtnMujer = new CircularToggleButton(imageMujer,"Mujer");
+		rdbtnMujer.setBounds(494, 10, 44, 44);
+		getContentPane().add(rdbtnMujer);
 		
-		rdbtnMago = new JRadioButton("Mago");
-		rdbtnMago.setBounds(472, 515, 21, 23);
+		
+		File iconoHombre = new File("src/main/resources/logoHombre.png"); // Ruta de tu imagen
+        Image imageHombre = null;
+		try {
+			imageHombre = ImageIO.read(iconoHombre);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		rdbtnHombre = new CircularToggleButton(imageHombre, "Hombre");
+		rdbtnHombre.setBounds(440, 10, 44, 44);
+		getContentPane().add(rdbtnHombre);
+		
+		
+		
+		File iconoGuerrero = new File("src/main/resources/guerrero.png"); // Ruta de tu imagen
+        Image imageGuerrero = null;
+		try {
+			imageGuerrero = ImageIO.read(iconoGuerrero);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		btnGuerrero = new CircularToggleButton(imageGuerrero, "Guerrero");
+		btnGuerrero.setBounds(159, 506, 44, 44);
+		getContentPane().add(btnGuerrero);
+		
+		
+		File iconoCazador = new File("src/main/resources/cazador.png"); // Ruta de tu imagen
+        Image imageCazador = null;
+		try {
+			imageCazador = ImageIO.read(iconoCazador);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		btnCazador = new CircularToggleButton(imageCazador, "Cazador");
+		btnCazador.setBounds(211, 506, 44, 44);
+		getContentPane().add(btnCazador);
+		
+		File iconoMago = new File("src/main/resources/mago.png"); // Ruta de tu imagen
+        Image imageMago = null;
+		try {
+			imageMago = ImageIO.read(iconoMago);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		rdbtnMago = new CircularToggleButton(imageMago, "Mago");
+		rdbtnMago.setBounds(263, 506, 44, 44);
 		getContentPane().add(rdbtnMago);
 		
-		rdbtnPicaro = new JRadioButton("Pícaro");
-		rdbtnPicaro.setBounds(495, 515, 21, 23);
+		
+		File iconoPicaro = new File("src/main/resources/picaro.png"); // Ruta de tu imagen
+        Image imagePicaro = null;
+		try {
+			imagePicaro = ImageIO.read(iconoPicaro);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		rdbtnPicaro = new CircularToggleButton(imagePicaro, "Picaro");
+		rdbtnPicaro.setBounds(315, 506, 44, 44);
 		getContentPane().add(rdbtnPicaro);
 		
-		rdbtnSacerdote = new JRadioButton("Sacerdote");
-		rdbtnSacerdote.setBounds(518, 515, 21, 23);
+		File iconoSacerdote = new File("src/main/resources/sacerdote.png"); // Ruta de tu imagen
+        Image imageSacerdote = null;
+		try {
+			imageSacerdote = ImageIO.read(iconoSacerdote);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		rdbtnSacerdote = new CircularToggleButton(imageSacerdote, "Sacerdote");
+		rdbtnSacerdote.setBounds(367, 506, 44, 44);
 		getContentPane().add(rdbtnSacerdote);
 		
-		rdbtnBrujo = new JRadioButton("Brujo");
-		rdbtnBrujo.setBounds(535, 515, 21, 23);
+		File iconoBrujo = new File("src/main/resources/brujo.png"); // Ruta de tu imagen
+        Image imageBrujo = null;
+		try {
+			imageBrujo = ImageIO.read(iconoBrujo);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		rdbtnBrujo = new CircularToggleButton(imageBrujo, "Brujo");
+		rdbtnBrujo.setBounds(419, 506, 44, 44);
 		getContentPane().add(rdbtnBrujo);
 		
-		rdbtnPaladin = new JRadioButton("Paladín");
-		rdbtnPaladin.setBounds(558, 515, 21, 23);
+		File iconoPaladin = new File("src/main/resources/paladin.png"); // Ruta de tu imagen
+        Image imagePaladin = null;
+		try {
+			imagePaladin = ImageIO.read(iconoPaladin);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		rdbtnPaladin = new CircularToggleButton(imagePaladin, "Paladin");
+		rdbtnPaladin.setBounds(471, 506, 44, 44);
 		getContentPane().add(rdbtnPaladin);
 		
-		rdbtnDruida = new JRadioButton("Druida");
-		rdbtnDruida.setBounds(581, 515, 21, 23);
+		File iconoDruida = new File("src/main/resources/druida.png"); // Ruta de tu imagen
+        Image imageDruida = null;
+		try {
+			imageDruida = ImageIO.read(iconoDruida);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		rdbtnDruida = new CircularToggleButton(imageDruida, "Druida");
+		rdbtnDruida.setBounds(523, 506, 44, 44);
 		getContentPane().add(rdbtnDruida);
 		
-		rdbtnChaman = new JRadioButton("Chamán");
-		rdbtnChaman.setBounds(604, 515, 21, 23);
+		File iconoChaman = new File("src/main/resources/chaman.png"); // Ruta de tu imagen
+        Image imageChaman = null;
+		try {
+			imageChaman = ImageIO.read(iconoChaman);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		rdbtnChaman = new CircularToggleButton(imageChaman,"Chaman");
+		rdbtnChaman.setBounds(575, 506, 44, 44);
 		getContentPane().add(rdbtnChaman);
 		
-		rdbtnCazadorDemonios = new JRadioButton("Cazador de demonios");
-		rdbtnCazadorDemonios.setBounds(629, 515, 21, 23);
+		File iconoDK = new File("src/main/resources/caballeroMuerte.png"); // Ruta de tu imagen
+        Image imageDK = null;
+		try {
+			imageDK = ImageIO.read(iconoDK);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		rdbtnCaballeroMuerte = new CircularToggleButton(imageDK, "Cabellero de la Muerte");
+		rdbtnCaballeroMuerte.setBounds(627, 506, 44, 44);
+		getContentPane().add(rdbtnCaballeroMuerte);
+		
+		File iconoDH = new File("src/main/resources/cazadorDemonios.png"); // Ruta de tu imagen
+        Image imageDH = null;
+		try {
+			imageDH = ImageIO.read(iconoDH);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		rdbtnCazadorDemonios = new CircularToggleButton(imageDH, "Cazador de Demonios");
+		rdbtnCazadorDemonios.setBounds(679, 506, 44, 44);
 		getContentPane().add(rdbtnCazadorDemonios);
 		
-		lblNombrePersonaje = new JLabel("NOMBRE PERSONAJE");
-		lblNombrePersonaje.setBounds(426, 120, 200, 20);
-		getContentPane().add(lblNombrePersonaje);
+		
+		File iconoEvocador = new File("src/main/resources/dracthyr.png"); // Ruta de tu imagen
+        Image imageEvocador = null;
+		try {
+			imageEvocador = ImageIO.read(iconoEvocador);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		rdbtnEvocador = new CircularToggleButton(imageEvocador, "Evocador");
+		rdbtnEvocador.setBounds(731, 506, 44, 44);
+		getContentPane().add(rdbtnEvocador);
 		
 		personaje = new JLabel();
-		ImageIcon orco = new ImageIcon("src/main/resources/imagenOrco.png");
+		personaje.setHorizontalAlignment(SwingConstants.CENTER);
+		ImageIcon orco = new ImageIcon("src/main/resources/enanoBailongo.gif");
+		
+		txtNombrePersonaje = new JTextField();
+		txtNombrePersonaje.setBounds(426, 107, 132, 20);
+		getContentPane().add(txtNombrePersonaje);
+		txtNombrePersonaje.setColumns(10);
 		personaje.setIcon(orco);
-		personaje.setBounds(350, 150, 300, 300);
+		personaje.setBounds(342, 151, 300, 300);
 		getContentPane().add(personaje);
+		
+		JLabel lblNewLabel = new JLabel("Nombre Personaje");
+		lblNewLabel.setBounds(427, 80, 140, 14);
+		getContentPane().add(lblNewLabel);
+		
+		sexo = new ButtonGroup();
+		sexo.add(rdbtnHombre);
+		sexo.add(rdbtnMujer);
+		
+		raza = new ButtonGroup();
+		raza.add(rdbtnHumano);
+		raza.add(rdbtnEnano);
+		raza.add(rdbtnElfoNoche);
+		raza.add(rdbtnHuargen);
+		raza.add(rdbtnEnano);
+		raza.add(rdbtnOrco);
+		raza.add(rdbtnNoMuerto);
+		raza.add(rdbtnTauren);
+		raza.add(rdbtnTroll);
+		raza.add(rdbtnDracthyr);
+		
+		clase = new ButtonGroup();
+		clase.add(btnGuerrero);
+		clase.add(btnCazador);
+		clase.add(rdbtnMago);
+		clase.add(rdbtnPicaro);
+		clase.add(rdbtnSacerdote);
+		clase.add(rdbtnBrujo);
+		clase.add(rdbtnPaladin);
+		clase.add(rdbtnDruida);
+		clase.add(rdbtnChaman);
+		clase.add(rdbtnCaballeroMuerte);
+		clase.add(rdbtnCazadorDemonios);
+		clase.add(rdbtnEvocador);
+		
+		
+		
 	}
 }

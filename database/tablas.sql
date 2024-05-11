@@ -16,6 +16,7 @@ CREATE TABLE miembros (
 CREATE TABLE personajes (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre TEXT NOT NULL,
+    sexo TEXT NOT NULL,
     raza TEXT NOT NULL,
     clase TEXT NOT NULL,
     miembro_id INTEGER,

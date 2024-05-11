@@ -1,6 +1,7 @@
 package views;
 
 import javax.swing.*;
+import java.awt.Font;
 
 public class CrearPartida extends VistaDefault {
     private JTextField txtNombrePartida;
@@ -18,31 +19,33 @@ public class CrearPartida extends VistaDefault {
     }
 
     private void inicializarComponentes() {
+        getContentPane().setLayout(null);
         txtNombrePartida = new JTextField();
-        txtNombrePartida.setBounds(400, 310, 200, 20);
+        txtNombrePartida.setBounds(242, 310, 200, 20);
         getContentPane().add(txtNombrePartida);
         txtNombrePartida.setColumns(10);
 
         continuar = new JButton("CREAR PARTIDA");
-        continuar.setBounds(419, 390, 162, 31);
+        continuar.setBounds(259, 400, 162, 31);
         getContentPane().add(continuar);
 
         lblNombrePartida = new JLabel("NOMBRE PARTIDA");
-        lblNombrePartida.setBounds(400, 292, 186, 14);
+        lblNombrePartida.setBounds(242, 288, 186, 14);
         getContentPane().add(lblNombrePartida);
 
         lblAmbientacion = new JLabel("AMBIENTACIÓN");
-        lblAmbientacion.setBounds(440, 341, 186, 14);
+        lblAmbientacion.setBounds(242, 341, 186, 14);
         getContentPane().add(lblAmbientacion);
 
         lblCrearPartida = new JLabel("CREAR PARTIDA");
+        lblCrearPartida.setFont(new Font("Arial", Font.BOLD, 18));
         lblCrearPartida.setHorizontalAlignment(SwingConstants.CENTER);
-        lblCrearPartida.setBounds(400, 263, 200, 14);
+        lblCrearPartida.setBounds(242, 242, 200, 14);
         getContentPane().add(lblCrearPartida);
 
         String [] nombres = {"Estepas de Tong Long", "Suramar", "Cementerio de Dragones", "Zul`Drak", "Sueño Esmeralda", "Argus"};
         cmbAmbientacion = new JComboBox<>(nombres);
-        cmbAmbientacion.setBounds(400, 358, 200, 22);
+        cmbAmbientacion.setBounds(242, 360, 200, 20);
         getContentPane().add(cmbAmbientacion);
     }
 }
