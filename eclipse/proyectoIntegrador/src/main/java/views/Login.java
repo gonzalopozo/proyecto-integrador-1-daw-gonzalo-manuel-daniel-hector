@@ -2,6 +2,8 @@ package views;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+
 import control.*;
 
 public class Login extends VistaDefault {
@@ -10,6 +12,7 @@ public class Login extends VistaDefault {
     private JLabel lblusuario;
     private JLabel lblcontraseña;
     private JLabel lblpregunta;
+    private JLabel lblMensaje;
     private JButton btnCrearCuenta;
 
     public Login() {
@@ -64,6 +67,13 @@ public class Login extends VistaDefault {
         btnCrearCuenta.setBackground(new Color(247, 178, 44));
         btnCrearCuenta.setBounds(318, 378, 158, 32);
         getContentPane().add(btnCrearCuenta);
+        
+        lblMensaje = new JLabel("");
+        lblMensaje.setHorizontalAlignment(SwingConstants.CENTER);
+        lblMensaje.setForeground(new Color(247, 178, 44));
+        lblMensaje.setFont(new Font("Arial", Font.BOLD, 13));
+        lblMensaje.setBounds(168, 339, 250, 19);
+        getContentPane().add(lblMensaje);
         
     }
 
@@ -133,13 +143,27 @@ public class Login extends VistaDefault {
 
 
 
-    public void setBtnCrearCuenta(JButton btnCrearCuenta) {
+    /**
+	 * @return the lblMensaje
+	 */
+	public JLabel getLblMensaje() {
+		return lblMensaje;
+	}
+
+	/**
+	 * @param lblMensaje the lblMensaje to set
+	 */
+	public void setLblMensaje(JLabel lblMensaje) {
+		this.lblMensaje = lblMensaje;
+	}
+
+	public void setBtnCrearCuenta(JButton btnCrearCuenta) {
         this.btnCrearCuenta = btnCrearCuenta;
     }
 
 
 
-    public void setListenerBotonCrearCuenta(MoverseListener listener) {
+    public void setListenerBotonCrearCuenta(ActionListener listener) {
         btnCrearCuenta.addActionListener(listener);
     }
 }

@@ -21,9 +21,6 @@ public class SeleccionRol extends VistaDefault {
 		continuar.setBounds(104, 118, 175, 30);
 		getContentPane().add(continuar);
 		getContentPane().setLayout(null);
-		// Creo una instancia del listener para asignarlo al boton 
-		SeleccionRolListener rolListener = new SeleccionRolListener(this);
-        continuar.addActionListener(rolListener);
 		
 		
 		lblRol = new JLabel("ELIGE TU ROL");
@@ -63,5 +60,63 @@ public class SeleccionRol extends VistaDefault {
 		volver.setBounds(10, 163, 111, 23);
 		getContentPane().add(volver);
 	}
+
+	/**
+	 * @return the lblRol
+	 */
+	public JLabel getLblRol() {
+		return lblRol;
+	}
+
+	/**
+	 * @param lblRol the lblRol to set
+	 */
+	public void setLblRol(JLabel lblRol) {
+		this.lblRol = lblRol;
+	}
+
+	/**
+	 * @return the toggleBtnJugador
+	 */
+	public JToggleButton getToggleBtnJugador() {
+		return toggleBtnJugador;
+	}
+
+	/**
+	 * @param toggleBtnJugador the toggleBtnJugador to set
+	 */
+	public void setToggleBtnJugador(JToggleButton toggleBtnJugador) {
+		this.toggleBtnJugador = toggleBtnJugador;
+	}
+
+	/**
+	 * @return the toggleBtnGameMaster
+	 */
+	public JToggleButton getToggleBtnGameMaster() {
+		return toggleBtnGameMaster;
+	}
+
+	/**
+	 * @param toggleBtnGameMaster the toggleBtnGameMaster to set
+	 */
+	public void setToggleBtnGameMaster(JToggleButton toggleBtnGameMaster) {
+		this.toggleBtnGameMaster = toggleBtnGameMaster;
+	}
+
+	/**
+	 * @return the btnGroupRoles
+	 */
+	public ButtonGroup getBtnGroupRoles() {
+		return btnGroupRoles;
+	}
+
+	/**
+	 * @param btnGroupRoles the btnGroupRoles to set
+	 */
+	public void setBtnGroupRoles(ButtonGroup btnGroupRoles) {
+		this.btnGroupRoles = btnGroupRoles;
+	}
+	
+	
 	
 }

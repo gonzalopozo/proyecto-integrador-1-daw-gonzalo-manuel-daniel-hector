@@ -15,6 +15,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 
+import control.LoginListener;
 import control.MoverseListener;
 import views.*;
 
@@ -80,7 +81,7 @@ public class App {
                 MoverseListener loginSeleccionRol = new MoverseListener(login, seleccionRol);
                 login.setListenerBotonContinuar(loginSeleccionRol);
 
-                LoginListener loginCuenta = new LoginListener();
+                LoginListener loginCuenta = new LoginListener(login);
                 login.setListenerBotonContinuar(loginCuenta);
                 
                 

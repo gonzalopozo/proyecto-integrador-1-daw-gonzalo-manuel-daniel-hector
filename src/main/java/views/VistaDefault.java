@@ -3,6 +3,7 @@ package views;
 import javax.swing.*;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 import control.MoverseListener;
 
@@ -34,11 +35,11 @@ public abstract class VistaDefault extends JFrame {
 		getContentPane().add(logo);
 	}
 
-    public void setListenerBotonVolver (MoverseListener listener) {
+    public void setListenerBotonVolver (ActionListener listener) {
         volver.addActionListener(listener);
     }
 
-    public void setListenerBotonContinuar (MoverseListener listener) {
+    public void setListenerBotonContinuar (ActionListener listener) {
         continuar.addActionListener(listener);
     }
 }

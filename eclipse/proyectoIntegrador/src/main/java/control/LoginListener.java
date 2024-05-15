@@ -1,11 +1,19 @@
 package control;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import model.AccesoBD;
+import views.*;
+
 public class LoginListener implements ActionListener{
     
-    private Views v1;
+    private Login v1;
     private int cont = 3;
 
-    public LoginListener(Views v1) {
+    public LoginListener(Login v1) {
         this.v1 = v1;
     }
 
@@ -13,7 +21,7 @@ public class LoginListener implements ActionListener{
     public void actionPerformed(ActionEvent e){
 
         String password = v1.getTxtPassword().getText();
-        String usuario = v1.getTxtNombre().getText();
+        String usuario = v1.getTxtUsuario().getText();
 
         String contraBD = "";
 
@@ -26,13 +34,13 @@ public class LoginListener implements ActionListener{
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        acceso.cerrarConexion();
+        acceso.cerrarConexion(c);
 
 
         if (contraBD == "") {
-            v1.getMensaje().setText("ERROR Introduza usuario y contraseña.");
+            v1.getLblMensaje().setText("ERROR Introduza usuario y contraseña.");
         } else if (contraBD == "" && password == "") {
-            v1.getMensaje().setText("Este Usuario no existe");
+            v1.getLblMensaje().setText("Este Usuario no existe");
         } else if (contraBD.equals(password)){
             SeleccionRol vRol = new SeleccionRol();
 
@@ -41,7 +49,7 @@ public class LoginListener implements ActionListener{
 
         } else {
 
-            v1.getMensaje().setText("Esta contraseña es incorrecta");
+            v1.getLblMensaje().setText("Esta contraseña es incorrecta");
             cont--;
             if (cont == 0) {
                 v1.dispose();

@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.sql.*;
 
 import components.CircularToggleButton;
-import modelo.AccesoBD;
+import model.AccesoBD;
 import views.CrearPersonaje;
 
 public class CrearPersonajeListener implements ActionListener {

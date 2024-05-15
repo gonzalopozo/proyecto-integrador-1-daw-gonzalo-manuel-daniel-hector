@@ -1,18 +1,27 @@
 package control;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import model.AccesoBD;
+import views.*;
+
 public class DetallesPersonajesListener implements ActionListener{
     
-    private Views vDetalles;
+    private DetallesPersonajesCuenta vDetalles;
     private int cont = 3;
 
-    public DetallesPersonajesListener(Views vDetalles) {
+    public DetallesPersonajesListener(DetallesPersonajesCuenta vDetalles) {
         this.vDetalles = vDetalles;
     }
 
     @Override
     public void actionPerformed(ActionEvent e){
 
-        ArrayList datos = new ArrayList<String>();
+        ArrayList<String> datos = new ArrayList<String>();
 
 
         AccesoBD acceso = new AccesoBD();

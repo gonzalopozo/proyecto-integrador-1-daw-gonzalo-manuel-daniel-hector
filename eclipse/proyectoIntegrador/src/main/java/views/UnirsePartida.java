@@ -48,4 +48,48 @@ public class UnirsePartida extends VistaDefault {
         btnDetalles.addActionListener(listener);
     }
 
+	/**
+	 * @return the table
+	 */
+	public JTable getTable() {
+		return table;
+	}
+
+	/**
+	 * @param table the table to set
+	 */
+	public void setTable(JTable table) {
+		this.table = table;
+	}
+
+	/**
+	 * @return the scrbarraHorizontal
+	 */
+	public JScrollPane getScrbarraHorizontal() {
+		return scrbarraHorizontal;
+	}
+
+	/**
+	 * @param scrbarraHorizontal the scrbarraHorizontal to set
+	 */
+	public void setScrbarraHorizontal(JScrollPane scrbarraHorizontal) {
+		this.scrbarraHorizontal = scrbarraHorizontal;
+	}
+
+	/**
+	 * @return the btnDetalles
+	 */
+	public JButton getBtnDetalles() {
+		return btnDetalles;
+	}
+
+	/**
+	 * @param btnDetalles the btnDetalles to set
+	 */
+	public void setBtnDetalles(JButton btnDetalles) {
+		this.btnDetalles = btnDetalles;
+	}
+    
+     
+
 }

@@ -3,11 +3,14 @@ package model;
 import java.net.ConnectException;
 import java.sql.*;  
 import org.sqlite.*;
+
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.random.*;
 
 public class AccesoBD {
 
-    private String url = "jdbc:sqlite:C:\\Users\\gonza\\OneDrive\\Escritorio\\pro-int\\proyecto-integrador-1-daw-gonzalo-manuel-daniel-hector\\database\\database.db";
+    private String url = "jdbc:sqlite:C:\\Users\\gonza\\OneDrive\\Escritorio\\AAAABBBB\\proyecto-integrador-1-daw-gonzalo-manuel-daniel-hector\\database\\database.db";
 
 
     public Connection getConexion() {
@@ -39,7 +42,7 @@ public class AccesoBD {
     public String comprobarLogin(Connection c, String login) throws SQLException{
 
         String resultado = "";
-        String query = "SELECT password FROM miembros WHERE miembros = '" + login + "'";
+        String query = "SELECT password FROM miembros WHERE nombre = '" + login + "'";
         Statement stmt = c.createStatement();
 
         ResultSet resultSet = stmt.executeQuery(query);
@@ -71,10 +74,11 @@ public class AccesoBD {
         stmt.close();
     }
 
+    /*
     public void hacerConsulta(Connection c) throws SQLException{
         String query = "SELECT * FROM MIEMBROS";
 
-        ArrayList datos = new ArrayList<String>();
+        ArrayList<String> datos = new ArrayList<String>();
 
         Statement stmt = c.createStatement();
 
@@ -91,22 +95,22 @@ public class AccesoBD {
             String clase = result.getString("clase");
             datos.add(clase);
             System.out.println(result.getInt("nivel"));
-            Int nivel = result.getInt("nivel");
+            int nivel = result.getInt("nivel");
             datos.add(nivel);                
             System.out.println(result.getInt("destreza"));
-            Int destreza = result.getInt("destreza");
+            int destreza = result.getInt("destreza");
             datos.add(destreza);
             System.out.println(result.getInt("sabiduria"));
-            Int sabiduria = result.getInt("sabiduria");
+            int sabiduria = result.getInt("sabiduria");
             datos.add(sabiduria);
             System.out.println(result.getInt("carisma"));
-            Int carisma = result.getInt("carisma");
+            int carisma = result.getInt("carisma");
             datos.add(carisma);
             System.out.println(result.getInt("inteligencia"));
-            Int inteligencia = result.getInt("inteligencia");
+            int inteligencia = result.getInt("inteligencia");
             datos.add(inteligencia);
             System.out.println(result.getInt("constitucion"));
-            Int constitución = result.getInt("constitucion");
+            int constitución = result.getInt("constitucion");
             datos.add(constitucion);
             System.out.println();
 
@@ -118,13 +122,14 @@ public class AccesoBD {
 
         return datos;
     }
+    */
 
     public void crearPersonaje(Connection c, String nombre, String raza, String clase, int miembro_id)  {
         // insert tipo crear personaje --> INSERT INTO personajes (nombre, raza, clase, miembro_id) VALUES ('Gimli', 'Enano', 'Guerrero', 1);
 
 		String query = "INSERT INTO personajes (nombre, raza, clase, miembro_id) VALUES (?, ?, ?, ?)";
 
-        try (Connection con = getConexion(); PreparedStatement pstmt = conn.prepareStatement(query)) {
+        try (Connection con = getConexion(); PreparedStatement pstmt = con.prepareStatement(query)) {
 
             pstmt.setString(1, nombre);
             pstmt.setString(2, raza);
@@ -133,7 +138,7 @@ public class AccesoBD {
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
+            System.err.println(e.getMessage()); 
         }
     }
 
@@ -141,7 +146,7 @@ public class AccesoBD {
 
         String query = "INSERT INTO juega VALUES (1, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
-        try (Connection con = getConexion(); PreparedStatement pstmt = conn.prepareStatement(query)){
+        try (Connection con = getConexion(); PreparedStatement pstmt = con.prepareStatement(query)){
 
             pstmt.setInt(1, idPersonaje);
             pstmt.setInt(2, idPartida);
