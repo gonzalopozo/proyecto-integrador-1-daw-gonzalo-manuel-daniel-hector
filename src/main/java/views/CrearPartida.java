@@ -47,5 +47,49 @@ public class CrearPartida extends VistaDefault {
         cmbAmbientacion = new JComboBox<>(nombres);
         cmbAmbientacion.setBounds(242, 360, 200, 20);
         getContentPane().add(cmbAmbientacion);
+
+        volver = new JButton("VOLVER");
+        volver.setBounds(10, 527, 89, 23);
+        getContentPane().add(volver);
+    }
+
+    public JTextField getTxtNombrePartida() {
+        return txtNombrePartida;
+    }
+
+    public void setTxtNombrePartida(JTextField txtNombrePartida) {
+        this.txtNombrePartida = txtNombrePartida;
+    }
+
+    public JLabel getLblNombrePartida() {
+        return lblNombrePartida;
+    }
+
+    public void setLblNombrePartida(JLabel lblNombrePartida) {
+        this.lblNombrePartida = lblNombrePartida;
+    }
+
+    public JLabel getLblAmbientacion() {
+        return lblAmbientacion;
+    }
+
+    public void setLblAmbientacion(JLabel lblAmbientacion) {
+        this.lblAmbientacion = lblAmbientacion;
+    }
+
+    public JLabel getLblCrearPartida() {
+        return lblCrearPartida;
+    }
+
+    public void setLblCrearPartida(JLabel lblCrearPartida) {
+        this.lblCrearPartida = lblCrearPartida;
+    }
+
+    public JComboBox<String> getCmbAmbientacion() {
+        return cmbAmbientacion;
+    }
+
+    public void setCmbAmbientacion(JComboBox<String> cmbAmbientacion) {
+        this.cmbAmbientacion = cmbAmbientacion;
     }
 }

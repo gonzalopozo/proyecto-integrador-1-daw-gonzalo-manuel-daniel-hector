@@ -12,6 +12,7 @@ public abstract class VistaDefault extends JFrame {
     JLabel logo = new JLabel();
     JButton volver;
     JButton continuar;
+    JButton continuarDos;
 
     final static ImageIcon imagenLogo = new ImageIcon("src/main/resources/logoTitulo.png");
 
@@ -41,5 +42,9 @@ public abstract class VistaDefault extends JFrame {
 
     public void setListenerBotonContinuar (ActionListener listener) {
         continuar.addActionListener(listener);
+    }
+
+    public void setListenerBotonContinuarDos (ActionListener listener) {
+        continuarDos.addActionListener(listener);
     }
 }

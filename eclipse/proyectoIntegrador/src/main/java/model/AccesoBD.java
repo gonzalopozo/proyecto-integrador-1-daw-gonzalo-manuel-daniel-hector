@@ -10,9 +10,9 @@ import java.util.random.*;
 
 public class AccesoBD {
 
-    private String url = "jdbc:sqlite:C:\\Users\\gonza\\OneDrive\\Escritorio\\AAAABBBB\\proyecto-integrador-1-daw-gonzalo-manuel-daniel-hector\\database\\database.db";
+    private String url = "jdbc:sqlite:C:\\Users\\Manu\\Desktop\\proyecto\\proyecto-integrador-1-daw-gonzalo-manuel-daniel-hector";
 
-
+    
     public Connection getConexion() {
         Connection con = null;
     

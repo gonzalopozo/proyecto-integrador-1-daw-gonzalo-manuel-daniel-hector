@@ -47,5 +47,9 @@ public class CrearPartida extends VistaDefault {
         cmbAmbientacion = new JComboBox<>(nombres);
         cmbAmbientacion.setBounds(242, 360, 200, 20);
         getContentPane().add(cmbAmbientacion);
+        
+        JButton btnNewButton = new JButton("VOLVER");
+        btnNewButton.setBounds(10, 527, 89, 23);
+        getContentPane().add(btnNewButton);
     }
 }

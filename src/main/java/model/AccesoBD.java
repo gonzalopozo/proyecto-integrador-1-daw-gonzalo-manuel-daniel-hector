@@ -12,7 +12,7 @@ import main.*;
 
 public class AccesoBD {
 
-    private String url = "jdbc:sqlite:C:\\Users\\danis\\Desktop\\DAW\\ProyectoIntegrador\\proyecto-integrador-1-daw\\database\\database.db";
+    private String url = "jdbc:sqlite:C:\\Users\\Manu\\Desktop\\proyecto\\proyecto-integrador-1-daw-gonzalo-manuel-daniel-hector\\database\\database.db";
 
 
     public Connection getConexion() {
@@ -122,10 +122,11 @@ public class AccesoBD {
     }
     
 
-    public void crearPersonaje(Connection c, String nombre, String raza, String clase, int miembro_id)  {
+    public void crearPersonaje(Connection c, String sexo, String nombre, String raza, String clase, int miembro_id)  {
         // insert tipo crear personaje --> INSERT INTO personajes (nombre, raza, clase, miembro_id) VALUES ('Gimli', 'Enano', 'Guerrero', 1);
+        // INSERT INTO personajes (nombre, sexo, raza, clase, miembro_id) VALUES 
 
-		String query = "INSERT INTO personajes (nombre, raza, clase, miembro_id) VALUES (?, ?, ?, ?)";
+		String query = "INSERT INTO personajes (nombre, sexo, raza, clase, miembro_id) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection con = getConexion(); PreparedStatement pstmt = con.prepareStatement(query)) {
 
@@ -133,6 +134,23 @@ public class AccesoBD {
             pstmt.setString(2, raza);
             pstmt.setString(3, clase);
             pstmt.setInt(4, miembro_id);
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage()); 
+        }
+    }
+
+    public void crearPartida(Connection c, String nombre, int gameMasterId, String ambientacion) {
+        // INSERT INTO partidas (nombre, game_master_id, ambientacion, esta_en_curso, num_sesion, duración, fecha) VALUES ('La batalla por el templo del Tigre Blanco', 1, 'Estepas de Tong Long', false, 7, 315, '2023-08-02');
+        
+        String query = "INSERT INTO partidas (nombre, game_master_id, ambientacion, esta_en_curso, num_sesion, duración, fecha) VALUES (?, ?, ?, false, 0, 0,  datetime('now','localtime'));";
+
+        try (Connection con = getConexion(); PreparedStatement pstmt = con.prepareStatement(query)) {
+
+            pstmt.setString(1, nombre);
+            pstmt.setInt(2, gameMasterId);
+            pstmt.setString(3, ambientacion);
             pstmt.executeUpdate();
 
         } catch (SQLException e) {

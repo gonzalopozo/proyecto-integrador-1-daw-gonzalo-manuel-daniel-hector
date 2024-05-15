@@ -28,9 +28,9 @@ public class PaginaPrincipalGM extends VistaDefault {
 		continuar.setBounds(408, 314, 184, 23);
 		getContentPane().add(continuar);
 		
-		continuar = new JButton("NUEVA PARTIDA");
-		continuar.setBounds(408, 364, 184, 23);
-		getContentPane().add(continuar);
+		continuarDos = new JButton("NUEVA PARTIDA");
+		continuarDos.setBounds(408, 364, 184, 23);
+		getContentPane().add(continuarDos);
 		
 		volver = new JButton("VOLVER");
 		volver.setBounds(10, 530, 105, 23);

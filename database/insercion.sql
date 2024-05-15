@@ -25,11 +25,11 @@ VALUES
 
 INSERT INTO partidas (nombre, game_master_id, ambientacion, esta_en_curso, num_sesion, duración, fecha)
 VALUES
-('La batalla por el templo del Tigre Blanco', 1, 'Estepas de Tong Long', false, 7, 315, '2023-08-02'),
-('Liberación de los elfos', 2, 'Suramar', true, 2, 90, '2024-03-25'),
-('Lucha contra el Rey Exánime', 3, 'Cementerio de Dragones', true, 3, 90, '2024-04-01'),
-('Nuevas Alianzas', 4, 'Zul`Drak', false, 4, 90, '2024-09-23'),
-('El despertar', 5, 'Sueño Esmeralda', false, 10, 120, '2024-06-01'),
+('La batalla por el templo del Tigre Blanco', 1, 'Estepas de Tong Long', false, 7, 315, '2023-08-02');
+('Liberación de los elfos', 2, 'Suramar', true, 2, 90, '2024-03-25' );
+('Lucha contra el Rey Exánime', 3, 'Cementerio de Dragones', true, 3, 90, '2024-04-01');
+('Nuevas Alianzas', 4, 'Zul`Drak', false, 4, 90, '2024-09-23');
+('El despertar', 5, 'Sueño Esmeralda', false, 10, 120, '2024-06-01');
 ('La conquista demoníaca', 6, 'Argus', true, 8, 180, '2024-02-22');
 
 INSERT INTO juega
