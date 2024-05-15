@@ -12,7 +12,7 @@ import main.*;
 
 public class AccesoBD {
 
-    private String url = "jdbc:sqlite:C:\\Users\\Manu\\Desktop\\proyecto\\proyecto-integrador-1-daw-gonzalo-manuel-daniel-hector\\database\\database.db";
+    private String url = "jdbc:sqlite:C:\\Users\\gonza\\OneDrive\\Escritorio\\examen-entornos-junit\\pro-intega\\proyecto-integrador-1-daw-gonzalo-manuel-daniel-hector\\database\\database.db";
 
 
     public Connection getConexion() {
@@ -41,16 +41,17 @@ public class AccesoBD {
         }
     }
 
-    public String comprobarLogin(Connection c, String login) throws SQLException{
+    public Object[] comprobarLogin(Connection c, String login) throws SQLException{
 
-        String resultado = "";
-        String query = "SELECT password FROM miembros WHERE nombre = '" + login + "'";
+        Object resultado[] =  new Object[2];
+        String query = "SELECT id, password FROM miembros WHERE nombre = '" + login + "'";
         Statement stmt = c.createStatement();
 
         ResultSet resultSet = stmt.executeQuery(query);
 
         while (resultSet.next()) {
-            resultado = resultSet.getString("PASSWORD");
+            resultado[0] = resultSet.getInt("id");
+            resultado[1] = resultSet.getString("password");
         }
 
         resultSet.close();

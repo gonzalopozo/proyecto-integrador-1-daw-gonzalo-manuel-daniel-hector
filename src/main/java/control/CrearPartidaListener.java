@@ -21,6 +21,7 @@ public class CrearPartidaListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
         if ((crearPartida.getTxtNombrePartida().getText().length() > 0)) {
+            System.out.println(App.getMiembroActualId());
             String nombrePartida = crearPartida.getTxtNombrePartida().getText();
             String ambientacionPartida = crearPartida.getCmbAmbientacion().getSelectedItem().toString();
 

@@ -26,18 +26,23 @@ public class LoginListener implements ActionListener{
         String password = login.getTxtPassword().getText();
         String usuario = login.getTxtUsuario().getText();
 
+        Object[] usuarioDatos = null;
         String contraBD = "";
+        int usuarioId;
 
 
         AccesoBD acceso = new AccesoBD();
         Connection c = acceso.getConexion();
 
         try{
-            contraBD = acceso.comprobarLogin(c, usuario);
+            usuarioDatos = acceso.comprobarLogin(c, usuario);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         acceso.cerrarConexion(c);
+
+        usuarioId = (Integer) usuarioDatos[0];
+        contraBD = String.valueOf(usuarioDatos[1]);
 
 
         if (contraBD == "") {
@@ -46,6 +51,7 @@ public class LoginListener implements ActionListener{
             login.getLblMensaje().setText("Este Usuario no existe");
         } else if (contraBD.equals(password)){
             App.setMiembroActual(usuario);
+            App.setMiembroActualId(usuarioId);
             login.dispose();
 
             seleccionRol.hacerVisible();
