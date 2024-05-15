@@ -15,13 +15,14 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 
-import control.LoginListener;
-import control.MoverseListener;
+import control.*;
 import views.*;
 
 public class App {
 	
-	private final static Color COLOR_BIANCA = new Color(249,247,238);
+	
+
+    private final static Color COLOR_BIANCA = new Color(249,247,238);
 	private final static Color COLOR_LIGHTING_YELLOW = new Color(247,178,44);
 	private final static Color COLOR_ALLPORTS = new Color(25,69,122);
 	private final static Color COLOR_REGAL_BLUE = new Color(19, 27, 66);
@@ -29,6 +30,94 @@ public class App {
 	private final static Color COLOR_BLUE_LABEL = new Color(38, 102, 165);
 	private final static Font LABEL_FONT_BOLD = new Font("Arial", Font.BOLD, 14);
 	private final static Font LABEL_FONT = new Font("Arial", Font.PLAIN, 12);
+
+    final static Login login = new Login();
+	final static CrearCuenta crearCuenta = new CrearCuenta();
+    final static CrearCuentaDos crearCuentaDos = new CrearCuentaDos();
+    final static CuentaCreada cuentaCreada = new CuentaCreada();
+    final static CrearPartida crearPartida = new CrearPartida();
+    final static CrearPersonaje crearPersonaje = new CrearPersonaje();
+    final static DetallesPersonajesCuenta detallesPersonajesCuenta = new DetallesPersonajesCuenta();
+    final static DetallesPersonajesPartida detallesPersonajesPartida = new DetallesPersonajesPartida();
+    final static PaginaPrincipal paginaPrincipal = new PaginaPrincipal();
+    final static PaginaPrincipalGM paginaPrincipalGM = new PaginaPrincipalGM();
+    final static SeleccionarPartida seleccionarPartida = new SeleccionarPartida();
+    final static PartidasDisponibles partidasDisponibles = new PartidasDisponibles();
+    final static SeleccionRol seleccionRol = new SeleccionRol();
+    final static UnirsePartida unirsePartida = new UnirsePartida();
+    final static SeleccionarPartidaGM seleccionarPartidaGM = new SeleccionarPartidaGM();
+
+    static String miembroActual;
+
+    
+
+    public static String getMiembroActual() {
+        return miembroActual;
+    }
+
+    public static void setMiembroActual(String miembroActual) {
+        App.miembroActual = miembroActual;
+    }
+
+    public static Login getLogin() {
+        return login;
+    }
+
+    public static CrearCuenta getCrearcuenta() {
+        return crearCuenta;
+    }
+
+    public static CrearCuentaDos getCrearcuentados() {
+        return crearCuentaDos;
+    }
+
+    public static CuentaCreada getCuentacreada() {
+        return cuentaCreada;
+    }
+
+    public static CrearPartida getCrearpartida() {
+        return crearPartida;
+    }
+
+    public static CrearPersonaje getCrearpersonaje() {
+        return crearPersonaje;
+    }
+
+    public static DetallesPersonajesCuenta getDetallespersonajescuenta() {
+        return detallesPersonajesCuenta;
+    }
+
+    public static DetallesPersonajesPartida getDetallespersonajespartida() {
+        return detallesPersonajesPartida;
+    }
+
+    public static PaginaPrincipal getPaginaprincipal() {
+        return paginaPrincipal;
+    }
+
+    public static PaginaPrincipalGM getPaginaprincipalgm() {
+        return paginaPrincipalGM;
+    }
+
+    public static SeleccionarPartida getSeleccionarpartida() {
+        return seleccionarPartida;
+    }
+
+    public static PartidasDisponibles getPartidasdisponibles() {
+        return partidasDisponibles;
+    }
+
+    public static SeleccionRol getSeleccionrol() {
+        return seleccionRol;
+    }
+
+    public static UnirsePartida getUnirsepartida() {
+        return unirsePartida;
+    }
+
+    public static SeleccionarPartidaGM getSeleccionarpartidagm() {
+        return seleccionarPartidaGM;
+    }
 
 	public static void main(String[] args) {
 		
@@ -60,31 +149,23 @@ public class App {
                 }
 
 	            
-                Login login = new Login();
-		        CrearCuenta crearCuenta = new CrearCuenta();
-                CrearCuentaDos crearCuentaDos = new CrearCuentaDos();
-                CuentaCreada cuentaCreada = new CuentaCreada();
-                CrearPartida crearPartida = new CrearPartida();
-                CrearPersonaje crearPersonaje = new CrearPersonaje();
-                DetallesPersonajesCuenta detallesPersonajesCuenta = new DetallesPersonajesCuenta();
-                DetallesPersonajesPartida detallesPersonajesPartida = new DetallesPersonajesPartida();
-                PaginaPrincipal paginaPrincipal = new PaginaPrincipal();
-                PaginaPrincipalGM paginaPrincipalGM = new PaginaPrincipalGM();
-                SeleccionarPartida seleccionarPartida = new SeleccionarPartida();
-                PartidasDisponibles partidasDisponibles = new PartidasDisponibles();
-                SeleccionRol seleccionRol = new SeleccionRol();
-                UnirsePartida unirsePartida = new UnirsePartida();
-                SeleccionarPartidaGM seleccionarPartidaGM = new SeleccionarPartidaGM();
+                
                 
                 login.hacerVisible();
 
-                MoverseListener loginSeleccionRol = new MoverseListener(login, seleccionRol);
-                login.setListenerBotonContinuar(loginSeleccionRol);
+                //MoverseListener loginSeleccionRol = new MoverseListener(login, seleccionRol);
+                //login.setListenerBotonContinuar(loginSeleccionRol);
 
-                LoginListener loginCuenta = new LoginListener(login);
+                LoginListener loginCuenta = new LoginListener(login, seleccionRol);
                 login.setListenerBotonContinuar(loginCuenta);
+
+                SeleccionRolListener seleccionRolListener = new SeleccionRolListener(seleccionRol, paginaPrincipal, paginaPrincipalGM);
+                seleccionRol.setListenerBotonContinuar(seleccionRolListener);
                 
+                DetallesPersonajesListener detallesPersonajesListener = new DetallesPersonajesListener(paginaPrincipal, detallesPersonajesCuenta);
+                paginaPrincipal.setListenerBotonVerPartidas(detallesPersonajesListener);
                 
+
                 
                 MoverseListener seleccionRolLogin = new MoverseListener(seleccionRol, login);
                 seleccionRol.setListenerBotonVolver(seleccionRolLogin);
@@ -101,8 +182,21 @@ public class App {
                 MoverseListener cuentaCreadaSeleccionRol = new MoverseListener(cuentaCreada, seleccionRol);
                 cuentaCreada.setListenerBotonContinuar(cuentaCreadaSeleccionRol);
 
-                MoverseListener rolJugador = new MoverseListener(seleccionRol, paginaPrincipal);
-                seleccionRol.setListenerBotonContinuar(rolJugador);
+
+
+
+                MoverseListener paginaPrincipalGMpartidasDisponibles = new MoverseListener(paginaPrincipalGM, partidasDisponibles);
+                paginaPrincipalGM.setListenerBotonContinuar(paginaPrincipalGMpartidasDisponibles);
+
+                MoverseListener PaginaPrincipalGMCrearPartida = new MoverseListener(paginaPrincipalGM, crearPartida);
+                paginaPrincipalGM.setListenerBotonContinuar(PaginaPrincipalGMCrearPartida);
+
+                MoverseListener PaginaPrincipalGMSeleccionRol = new MoverseListener(paginaPrincipalGM, seleccionRol);
+                paginaPrincipalGM.setListenerBotonVolver(PaginaPrincipalGMSeleccionRol);
+
+
+                
+
 
                 MoverseListener jugadorCrearPersonaje = new MoverseListener(paginaPrincipal, crearPersonaje);
                 paginaPrincipal.setListenerBotonCrearPersonaje(jugadorCrearPersonaje);
@@ -113,8 +207,8 @@ public class App {
                 MoverseListener crearPersonajePaginaPrincipal = new MoverseListener(crearPersonaje, paginaPrincipal);
                 crearPersonaje.setListenerBotonVolver(crearPersonajePaginaPrincipal);
 
-                MoverseListener paginaPrincipalDetallesPersonajeCuenta = new MoverseListener (paginaPrincipal, detallesPersonajesCuenta);
-                paginaPrincipal.setListenerBotonVerPartidas(paginaPrincipalDetallesPersonajeCuenta);
+                // MoverseListener paginaPrincipalDetallesPersonajeCuenta = new MoverseListener (paginaPrincipal, detallesPersonajesCuenta);
+                // paginaPrincipal.setListenerBotonVerPartidas(paginaPrincipalDetallesPersonajeCuenta);
 
                 MoverseListener detallesPersonajesCuentaPaginaPrincipal = new MoverseListener (detallesPersonajesCuenta, paginaPrincipal);
                 detallesPersonajesCuenta.setListenerBotonVolver(detallesPersonajesCuentaPaginaPrincipal);

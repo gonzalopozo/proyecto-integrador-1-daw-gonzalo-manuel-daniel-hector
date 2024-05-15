@@ -4,7 +4,7 @@ package views;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import control.MoverseListener;
+import control.*;
 
 import java.awt.*;
 
@@ -75,6 +75,7 @@ public class PaginaPrincipal extends VistaDefault {
 		lblNombrePersonaje.setFont(new Font("Arial", Font.BOLD, 15));
 		lblNombrePersonaje.setBounds(410, 400, 164, 81);
 		getContentPane().add(lblNombrePersonaje);
+		
 	}
 
 	public void setListenerBotonJugar(MoverseListener listener) {
@@ -85,7 +86,7 @@ public class PaginaPrincipal extends VistaDefault {
 		btnCrearPersonaje.addActionListener(listener);
 	}
 
-	public void setListenerBotonVerPartidas(MoverseListener listener) {
+	public void setListenerBotonVerPartidas(DetallesPersonajesListener listener) {
 		btnVerPartidas.addActionListener(listener);
 	}
 

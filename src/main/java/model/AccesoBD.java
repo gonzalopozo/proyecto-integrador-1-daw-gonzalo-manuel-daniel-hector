@@ -8,9 +8,11 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.random.*;
 
+import main.*;
+
 public class AccesoBD {
 
-    private String url = "jdbc:sqlite:C:\\Users\\gonza\\OneDrive\\Escritorio\\AAAABBBB\\proyecto-integrador-1-daw-gonzalo-manuel-daniel-hector\\database\\database.db";
+    private String url = "jdbc:sqlite:C:\\Users\\danis\\Desktop\\DAW\\ProyectoIntegrador\\proyecto-integrador-1-daw\\database\\database.db";
 
 
     public Connection getConexion() {
@@ -74,55 +76,51 @@ public class AccesoBD {
         stmt.close();
     }
 
-    /*
-    public void hacerConsulta(Connection c) throws SQLException{
-        String query = "SELECT * FROM MIEMBROS";
+    
+    public ArrayList<String[]> hacerConsultaTablaCuenta(Connection c) throws SQLException{
+        ArrayList<String[]> arrayListBidimensional = new ArrayList<>();
 
-        ArrayList<String> datos = new ArrayList<String>();
+        String query = "SELECT p.nombre AS Nombre, p.raza AS Raza, p.clase AS Clase, j.partida_id AS Partida, j.nivel AS Nivel, j.salud AS Salud, j.fuerza AS Fuerza, j.destreza AS Destreza, j.sabiduria AS Sabiduría, j.carisma AS Carisma, j.inteligencia AS Inteligencia, j.constitucion AS Constitución FROM personajes p JOIN juega j ON p.id = j.personaje_id JOIN partidas pa ON j.partida_id = pa.id JOIN miembros m ON p.miembro_id = m.id WHERE m.id = ? AND pa.esta_en_curso = 1;";
 
-        Statement stmt = c.createStatement();
+        System.out.println(App.getMiembroActual());
 
-        ResultSet result = stmt.executeQuery(query);
+        ResultSet resultados = null;
+        try (Connection con = getConexion(); PreparedStatement pstmt = con.prepareStatement(query)) {
 
-        while(result.next()) {
-            System.out.print(result.getString("nombre"));
-            String nombre = result.getString("nombre");
-            datos.add(nombre);
-            System.out.println(result.getString("raza"));
-            String raza = result.getString("raza");
-            datos.add(raza);
-            System.out.println(result.getString("clase"));
-            String clase = result.getString("clase");
-            datos.add(clase);
-            System.out.println(result.getInt("nivel"));
-            int nivel = result.getInt("nivel");
-            datos.add(nivel);                
-            System.out.println(result.getInt("destreza"));
-            int destreza = result.getInt("destreza");
-            datos.add(destreza);
-            System.out.println(result.getInt("sabiduria"));
-            int sabiduria = result.getInt("sabiduria");
-            datos.add(sabiduria);
-            System.out.println(result.getInt("carisma"));
-            int carisma = result.getInt("carisma");
-            datos.add(carisma);
-            System.out.println(result.getInt("inteligencia"));
-            int inteligencia = result.getInt("inteligencia");
-            datos.add(inteligencia);
-            System.out.println(result.getInt("constitucion"));
-            int constitución = result.getInt("constitucion");
-            datos.add(constitucion);
-            System.out.println();
+            pstmt.setString(1, App.getMiembroActual());
 
-
+            resultados = pstmt.executeQuery();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage()); 
         }
 
-        result.close();
-        stmt.close();
 
-        return datos;
+        while(resultados.next()) {
+            String[] fila = new String[12];
+            fila[1] = resultados.getString(1);
+            fila[2] = resultados.getString(2);
+            fila[3] = resultados.getString(3);
+            fila[3] = resultados.getString(4);
+            fila[4] = String.valueOf(resultados.getString(5));
+            fila[5] = String.valueOf(resultados.getString(6));
+            fila[6] = String.valueOf(resultados.getString(7));
+            fila[7] = String.valueOf(resultados.getString(8));
+            fila[8] = String.valueOf(resultados.getString(9));
+            fila[9] = String.valueOf(resultados.getString(10));
+            fila[10] = String.valueOf(resultados.getString(11));
+            fila[11] = String.valueOf(resultados.getString(12));
+            arrayListBidimensional.add(fila);
+            for (String a : fila) {
+                System.out.println(a);
+            }
+        }
+
+        // result.close();
+        // stmt.close();
+
+        return arrayListBidimensional;
     }
-    */
+    
 
     public void crearPersonaje(Connection c, String nombre, String raza, String clase, int miembro_id)  {
         // insert tipo crear personaje --> INSERT INTO personajes (nombre, raza, clase, miembro_id) VALUES ('Gimli', 'Enano', 'Guerrero', 1);

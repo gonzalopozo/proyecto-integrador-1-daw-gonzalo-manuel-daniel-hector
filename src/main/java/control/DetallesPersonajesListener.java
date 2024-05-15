@@ -9,31 +9,70 @@ import java.util.ArrayList;
 import model.AccesoBD;
 import views.*;
 
+import java.util.Arrays;
+
+import javax.swing.*;
+import javax.swing.table.*;
+
 public class DetallesPersonajesListener implements ActionListener{
     
-    private DetallesPersonajesCuenta vDetalles;
-    private int cont = 3;
+    private PaginaPrincipal paginaPrincipal;
+    private DetallesPersonajesCuenta detallesPersonajesCuenta;
 
-    public DetallesPersonajesListener(DetallesPersonajesCuenta vDetalles) {
-        this.vDetalles = vDetalles;
+    public DetallesPersonajesListener(PaginaPrincipal paginaPrincipal, DetallesPersonajesCuenta detallesPersonajesCuenta) {
+        this.paginaPrincipal = paginaPrincipal;
+        this.detallesPersonajesCuenta = detallesPersonajesCuenta;
     }
 
     @Override
     public void actionPerformed(ActionEvent e){
 
-        ArrayList<String> datos = new ArrayList<String>();
-
 
         AccesoBD acceso = new AccesoBD();
+        
         Connection c = acceso.getConexion();
-
-        try{
-            datos = acceso.obtenerDatos(c);
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        ArrayList<String[]> datos = null;
+        try {
+            datos = acceso.hacerConsultaTablaCuenta(c);
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            // TODO: handle exception
         }
-        acceso.cerrarConexion();
 
+        JTable tabla = detallesPersonajesCuenta.getTablaDatos();
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+
+        for (String[] fila : datos) {
+            model.addRow(fila);
+            System.out.println("Fila agregada: " + Arrays.toString(fila));
+            for (String a : fila) {
+                System.out.println(a);
+            }
+        }
+        model.fireTableDataChanged();
+
+
+        detallesPersonajesCuenta.setTablaDatos(tabla);
+
+
+        //String[][] datos = {
+        //     {"Pepe el del Madrid", "Troll", "Druida", "La batalla por el templo del Tigre Blanco", "70", "50000", "10000", "1000", "1000", "3000", "1000", "450"},
+        //     {"LeBron James", "Tauren", "Caballero de la muerte", "Liberación de los elfos", "50", "15000", "300", "10000", "1800", "800", "1750", "100"},
+        //     {"D'Angelo Russell", "Dracthyr", "Evocador", "Lucha contra el Rey Exánime", "40", "20000", "7000", "5000", "10000", "5000", "3000", "500"}
+        // };
+
+
+        // for (String[] fila : datos) {
+        //     model.addRow(fila);
+        // }
+
+
+        
+        acceso.cerrarConexion(c);
+
+        paginaPrincipal.dispose();
+
+        detallesPersonajesCuenta.hacerVisible();
 
         
 

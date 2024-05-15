@@ -10,34 +10,31 @@ import views.PaginaPrincipal;
 import views.PaginaPrincipalGM;
 
 public class SeleccionRolListener implements ActionListener {
-    private SeleccionRol vista;
+    private SeleccionRol seleccionRol;
     private PaginaPrincipal paginaPrincipal;
     private PaginaPrincipalGM paginaPrincipalGM;
 
     
 
     /**
-	 * @param vista
+	 * @param seleccionRol
 	 * @param paginaPrincipal
 	 * @param paginaPrincipalGM
 	 */
-	public SeleccionRolListener(SeleccionRol vista, PaginaPrincipal paginaPrincipal,
-			PaginaPrincipalGM paginaPrincipalGM) {
-		this.vista = vista;
+	public SeleccionRolListener(SeleccionRol seleccionRol, PaginaPrincipal paginaPrincipal, PaginaPrincipalGM paginaPrincipalGM) {
+		this.seleccionRol = seleccionRol;
 		this.paginaPrincipal = paginaPrincipal;
 		this.paginaPrincipalGM = paginaPrincipalGM;
 	}
 
-
-
 	@Override
     public void actionPerformed(ActionEvent e){ 
-        
-        
-        if (vista.getBtnGroupRoles().isSelected((ButtonModel) vista.getToggleBtnGameMaster())){
-        	paginaPrincipalGM.setVisible(true);
-        } else if (vista.getBtnGroupRoles().isSelected((ButtonModel) vista.getToggleBtnJugador())) {
-        	paginaPrincipal.setVisible(true);
+        if (seleccionRol.getBtnGroupRoles().getSelection().equals(seleccionRol.getToggleBtnGameMaster().getModel())) {
+			seleccionRol.dispose();
+			paginaPrincipalGM.hacerVisible();
+        } else if (seleccionRol.getBtnGroupRoles().isSelected((ButtonModel) seleccionRol.getToggleBtnJugador().getModel())) {
+			seleccionRol.dispose();
+			paginaPrincipal.hacerVisible();
         }    
     }
 }
