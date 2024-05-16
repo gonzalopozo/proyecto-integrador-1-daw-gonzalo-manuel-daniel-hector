@@ -78,7 +78,7 @@ public class CrearPersonajeListener implements ActionListener {
             // // try {
             // //     claseSeleccionada = (CircularToggleButton) crearPersonaje.getClase().getSelection();
             // // } catch (Exception eee) {
-            // //     // TODO: handle exception
+            // //     // TODO: handle exception 
             // // }
             // // String clasePersonaje = claseSeleccionada.getAtributo();
             // // try {
@@ -91,7 +91,7 @@ public class CrearPersonajeListener implements ActionListener {
             AccesoBD accesoBD = new AccesoBD();
             Connection c = accesoBD.getConexion();
 
-            accesoBD.crearPersonaje(c, sexoPersonaje, nombrePersonaje, razaPersonaje, clasePersonaje, App.getMiembroActualId());
+            accesoBD.crearPersonaje(c, nombrePersonaje, sexoPersonaje, razaPersonaje, clasePersonaje, App.getMiembroActualId());
 
             crearPersonaje.dispose();
 

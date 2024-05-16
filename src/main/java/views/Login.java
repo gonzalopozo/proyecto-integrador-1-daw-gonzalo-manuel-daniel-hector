@@ -2,7 +2,7 @@ package views;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 import control.*;
 
@@ -74,6 +74,14 @@ public class Login extends VistaDefault {
         lblMensaje.setFont(new Font("Arial", Font.BOLD, 13));
         lblMensaje.setBounds(168, 339, 250, 19);
         getContentPane().add(lblMensaje);
+
+        txtPassword.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    continuar.doClick();
+                }
+            }
+        });
         
     }
 

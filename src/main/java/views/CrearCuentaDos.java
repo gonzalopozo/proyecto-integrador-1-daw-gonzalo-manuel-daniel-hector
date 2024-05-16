@@ -12,6 +12,67 @@ public class CrearCuentaDos extends VistaDefault {
 	private JLabel lblUsuario;
 	private JLabel lblRepetirContrasena;
 
+	private static String nombre;
+	private static String apellido;
+	private static int numExpediente;
+	private static String estudios;
+	
+	public JTextField getTextField() {
+		return textField;
+	}
+
+	public void setTextField(JTextField textField) {
+		this.textField = textField;
+	}
+
+	public JPasswordField getTxtContrasena() {
+		return txtContrasena;
+	}
+
+	public void setTxtContrasena(JPasswordField txtContrasena) {
+		this.txtContrasena = txtContrasena;
+	}
+
+	public JPasswordField getTxtRepetirContrasena() {
+		return txtRepetirContrasena;
+	}
+
+	public void setTxtRepetirContrasena(JPasswordField txtRepetirContrasena) {
+		this.txtRepetirContrasena = txtRepetirContrasena;
+	}
+
+	public static String getNombre() {
+		return nombre;
+	}
+
+	public static void setNombre(String nombre) {
+		CrearCuentaDos.nombre = nombre;
+	}
+
+	public static String getApellido() {
+		return apellido;
+	}
+
+	public static void setApellido(String apellido) {
+		CrearCuentaDos.apellido = apellido;
+	}
+
+	public static int getNumExpediente() {
+		return numExpediente;
+	}
+
+	public static void setNumExpediente(int numExpediente) {
+		CrearCuentaDos.numExpediente = numExpediente;
+	}
+
+	public static String getEstudios() {
+		return estudios;
+	}
+
+	public static void setEstudios(String estudios) {
+		CrearCuentaDos.estudios = estudios;
+	}
+
 	public CrearCuentaDos() {
 		super();
 		setSize(700,600);

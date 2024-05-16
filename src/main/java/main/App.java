@@ -182,10 +182,10 @@ public class App {
                 MoverseListener loginCrearCuenta = new MoverseListener(login, crearCuenta);
                 login.setListenerBotonCrearCuenta(loginCrearCuenta);
 
-                MoverseListener crearCuentaCrearCuentaDos = new MoverseListener(crearCuenta, crearCuentaDos);
+                CrearCuentaUnoListener crearCuentaCrearCuentaDos = new CrearCuentaUnoListener(crearCuenta, crearCuentaDos);
                 crearCuenta.setListenerBotonContinuar(crearCuentaCrearCuentaDos);
 
-                MoverseListener cuentaCreadaDos = new MoverseListener(crearCuentaDos, cuentaCreada);
+                CrearCuentaDosListener cuentaCreadaDos = new CrearCuentaDosListener(crearCuentaDos, cuentaCreada);
                 crearCuentaDos.setListenerBotonContinuar(cuentaCreadaDos);
 
                 MoverseListener cuentaCreadaSeleccionRol = new MoverseListener(cuentaCreada, seleccionRol);
@@ -219,8 +219,12 @@ public class App {
                 paginaPrincipal.setListenerBotonVolver(paginaPrincipalSeleccionRol);
 
                 //MoverseListener crearPersonajePaginaPrincipal = new MoverseListener(crearPersonaje, paginaPrincipal);
-                CrearPersonajeListener crearPersonajePaginaPrincipal = new CrearPersonajeListener(crearPersonaje, paginaPrincipal);
-                crearPersonaje.setListenerBotonContinuar(crearPersonajePaginaPrincipal);
+                CrearPersonajeListener crearPersonajeListener = new CrearPersonajeListener(crearPersonaje, paginaPrincipal);
+                crearPersonaje.setListenerBotonContinuar(crearPersonajeListener);
+
+                MoverseListener crearPersonajePaginaPrincipal = new MoverseListener(crearPersonaje, paginaPrincipal);
+                crearPersonaje.setListenerBotonVolver(crearPersonajePaginaPrincipal);
+
 
                 CrearPartidaListener crearPartidaPaginaPrincipalGM = new CrearPartidaListener(crearPartida, paginaPrincipalGM);
                 crearPartida.setListenerBotonContinuar(crearPartidaPaginaPrincipalGM);

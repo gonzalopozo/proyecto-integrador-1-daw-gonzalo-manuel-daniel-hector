@@ -12,7 +12,7 @@ import main.*;
 
 public class AccesoBD {
 
-    private String url = "jdbc:sqlite:C:\\Users\\Manu\\OneDrive\\Escritorio\\ProyectoIntegrador\\proyecto-integrador-1-daw-gonzalo-manuel-daniel-hector\\database\\database.db";
+    private String url = "jdbc:sqlite:C:\\Users\\gonza\\OneDrive\\Escritorio\\pro-intega\\proyecto-integrador-1-daw-gonzalo-manuel-daniel-hector\\database\\database.db";
 
 
     public Connection getConexion() {
@@ -141,6 +141,25 @@ public class AccesoBD {
             pstmt.setString(3, raza);
             pstmt.setString(4, clase);
             pstmt.setInt(5, miembro_id);
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage()); 
+        }
+    }
+
+    public void crearMiembro(Connection c, String nombre, String apellidos, String password, int num_expediente, String estudios)  {
+        // insert tipo crear cuenta --> INSERT INTO miembros (nombre, apellidos, password, num_expediente, estudios) VALUES ('Gonzalo', 'Pozo Sánchez', 'lebron', '10001', 'SMIR');
+
+		String query = "INSERT INTO miembros (nombre, apellidos, password, num_expediente, estudios) VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection con = getConexion(); PreparedStatement pstmt = con.prepareStatement(query)) {
+
+            pstmt.setString(1, nombre);
+            pstmt.setString(2, apellidos);
+            pstmt.setString(3, password);
+            pstmt.setInt(4, num_expediente);
+            pstmt.setString(5, estudios);
             pstmt.executeUpdate();
 
         } catch (SQLException e) {

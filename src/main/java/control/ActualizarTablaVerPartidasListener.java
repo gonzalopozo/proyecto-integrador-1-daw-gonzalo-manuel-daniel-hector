@@ -29,8 +29,8 @@ public class ActualizarTablaVerPartidasListener implements ActionListener{
         //Se verifica si se ha seleccionado alguna fila
         if (filaSeleccionada != 1){
             // Se obtiene el id de la partida que ha seleccionado el usuario, siendo 0 el índice de la primera columna
-        	String nombrePartida = (String) vista.getTable().getValueAt(filaSeleccionada, 0);
-        	
+            String nombrePartida = (String) vista.getTable().getValueAt(filaSeleccionada, 0);
+            
             //Se obtiene el nombre del personaje que se inserta en la partida
             String nombrePersonaje = vista.getName();
 
