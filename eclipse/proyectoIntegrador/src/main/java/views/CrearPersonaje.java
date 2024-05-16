@@ -335,6 +335,7 @@ public void inicializarComponentes(){
 		}
 		
 		rdbtnHumano = new CircularToggleButton(imageHuman, "Humano");
+		rdbtnHumano.setText("Humano");
 		rdbtnHumano.setBounds(45, 135, 45, 45);
 		getContentPane().add(rdbtnHumano);
 		
@@ -348,6 +349,7 @@ public void inicializarComponentes(){
 		}
 		
 		rdbtnEnano = new CircularToggleButton(imageDwarf, "Enano");
+		rdbtnEnano.setText("Enano");
 		rdbtnEnano.setBounds(45, 185, 44, 44);
 		getContentPane().add(rdbtnEnano);
 		
@@ -361,6 +363,7 @@ public void inicializarComponentes(){
 		}
 		
 		rdbtnElfoNoche = new CircularToggleButton(imageNE, "Elfo de la noche");
+		rdbtnElfoNoche.setText("Elfo de la noche");
 		rdbtnElfoNoche.setBounds(45, 235, 44, 44);
 		getContentPane().add(rdbtnElfoNoche);
 		
@@ -374,6 +377,7 @@ public void inicializarComponentes(){
 		}
 		
 		rdbtnHuargen = new CircularToggleButton(imageHuargen, "Huargen");
+		rdbtnHuargen.setText("Huargen");
 		rdbtnHuargen.setBounds(45, 285, 44, 44);
 		getContentPane().add(rdbtnHuargen);
 		
@@ -387,6 +391,7 @@ public void inicializarComponentes(){
 		}
 		
 		rdbtnPandaAlianza = new CircularToggleButton(imagePandaA, "Panda");
+		rdbtnPandaAlianza.setText("Panda");
 		rdbtnPandaAlianza.setBounds(45, 335, 44, 44);
 		getContentPane().add(rdbtnPandaAlianza);
 		
@@ -400,6 +405,7 @@ public void inicializarComponentes(){
 		}
 		
 		rdbtnOrco = new CircularToggleButton(imageOrco, "Orco");
+		rdbtnOrco.setText("Orco");
 		rdbtnOrco.setBounds(884, 135, 44, 44);
 		getContentPane().add(rdbtnOrco);
 		
@@ -413,6 +419,7 @@ public void inicializarComponentes(){
 		}
 		
 		rdbtnNoMuerto = new CircularToggleButton(imageNoMuerto, "No Muerto");
+		rdbtnNoMuerto.setText("No muerto");
 		rdbtnNoMuerto.setBounds(884, 185, 44, 44);
 		getContentPane().add(rdbtnNoMuerto);
 		
@@ -426,6 +433,7 @@ public void inicializarComponentes(){
 		}
 		
 		rdbtnTauren = new CircularToggleButton(imageTauren, "Tauren");
+		rdbtnTauren.setText("Tauren");
 		rdbtnTauren.setBounds(884, 235, 44, 44);
 		getContentPane().add(rdbtnTauren);
 		
@@ -439,6 +447,7 @@ public void inicializarComponentes(){
 		}
 		
 		rdbtnTroll = new CircularToggleButton(imageTroll, "Troll");
+		rdbtnTroll.setText("Troll");
 		rdbtnTroll.setBounds(884, 285, 44, 44);
 		getContentPane().add(rdbtnTroll);
 		
@@ -452,6 +461,7 @@ public void inicializarComponentes(){
 		}
 		
 		rdbtnDracthyr = new CircularToggleButton(imageDracthyr, "Dracthyr");
+		rdbtnDracthyr.setText("Dracthyr");
 		rdbtnDracthyr.setBounds(884, 335, 44, 44);
 		getContentPane().add(rdbtnDracthyr);
 		
@@ -465,6 +475,7 @@ public void inicializarComponentes(){
 			e.printStackTrace();
 		}
 		rdbtnMujer = new CircularToggleButton(imageMujer,"Mujer");
+		rdbtnMujer.setText("Mujer");
 		rdbtnMujer.setBounds(494, 10, 44, 44);
 		getContentPane().add(rdbtnMujer);
 		
@@ -478,6 +489,7 @@ public void inicializarComponentes(){
 			e.printStackTrace();
 		}
 		rdbtnHombre = new CircularToggleButton(imageHombre, "Hombre");
+		rdbtnHombre.setText("Hombre");
 		rdbtnHombre.setBounds(440, 10, 44, 44);
 		getContentPane().add(rdbtnHombre);
 		
@@ -492,6 +504,7 @@ public void inicializarComponentes(){
 			e.printStackTrace();
 		}
 		btnGuerrero = new CircularToggleButton(imageGuerrero, "Guerrero");
+		btnGuerrero.setText("Guerrero");
 		btnGuerrero.setBounds(159, 506, 44, 44);
 		getContentPane().add(btnGuerrero);
 		
@@ -505,6 +518,7 @@ public void inicializarComponentes(){
 			e.printStackTrace();
 		}
 		btnCazador = new CircularToggleButton(imageCazador, "Cazador");
+		btnCazador.setText("Cazador");
 		btnCazador.setBounds(211, 506, 44, 44);
 		getContentPane().add(btnCazador);
 		
@@ -518,6 +532,7 @@ public void inicializarComponentes(){
 		}
 		
 		rdbtnMago = new CircularToggleButton(imageMago, "Mago");
+		rdbtnMago.setText("Mago");
 		rdbtnMago.setBounds(263, 506, 44, 44);
 		getContentPane().add(rdbtnMago);
 		
@@ -532,6 +547,7 @@ public void inicializarComponentes(){
 		}
 		
 		rdbtnPicaro = new CircularToggleButton(imagePicaro, "Picaro");
+		rdbtnPicaro.setText("Picaro");
 		rdbtnPicaro.setBounds(315, 506, 44, 44);
 		getContentPane().add(rdbtnPicaro);
 		
@@ -545,6 +561,7 @@ public void inicializarComponentes(){
 		}
 		
 		rdbtnSacerdote = new CircularToggleButton(imageSacerdote, "Sacerdote");
+		rdbtnSacerdote.setText("Sacerdote");
 		rdbtnSacerdote.setBounds(367, 506, 44, 44);
 		getContentPane().add(rdbtnSacerdote);
 		
@@ -558,6 +575,7 @@ public void inicializarComponentes(){
 		}
 		
 		rdbtnBrujo = new CircularToggleButton(imageBrujo, "Brujo");
+		rdbtnBrujo.setText("Brujo");
 		rdbtnBrujo.setBounds(419, 506, 44, 44);
 		getContentPane().add(rdbtnBrujo);
 		
@@ -571,6 +589,7 @@ public void inicializarComponentes(){
 		}
 		
 		rdbtnPaladin = new CircularToggleButton(imagePaladin, "Paladin");
+		rdbtnPaladin.setText("Paladin");
 		rdbtnPaladin.setBounds(471, 506, 44, 44);
 		getContentPane().add(rdbtnPaladin);
 		
@@ -584,6 +603,7 @@ public void inicializarComponentes(){
 		}
 		
 		rdbtnDruida = new CircularToggleButton(imageDruida, "Druida");
+		rdbtnDruida.setText("Druida");
 		rdbtnDruida.setBounds(523, 506, 44, 44);
 		getContentPane().add(rdbtnDruida);
 		
@@ -597,6 +617,7 @@ public void inicializarComponentes(){
 		}
 		
 		rdbtnChaman = new CircularToggleButton(imageChaman,"Chaman");
+		rdbtnChaman.setText("Chaman");
 		rdbtnChaman.setBounds(575, 506, 44, 44);
 		getContentPane().add(rdbtnChaman);
 		
@@ -610,6 +631,7 @@ public void inicializarComponentes(){
 		}
 		
 		rdbtnCaballeroMuerte = new CircularToggleButton(imageDK, "Cabellero de la Muerte");
+		rdbtnCaballeroMuerte.setText("Caballero de la muerte");
 		rdbtnCaballeroMuerte.setBounds(627, 506, 44, 44);
 		getContentPane().add(rdbtnCaballeroMuerte);
 		
@@ -623,6 +645,7 @@ public void inicializarComponentes(){
 		}
 		
 		rdbtnCazadorDemonios = new CircularToggleButton(imageDH, "Cazador de Demonios");
+		rdbtnCazadorDemonios.setText("Cazador de demonios");
 		rdbtnCazadorDemonios.setBounds(679, 506, 44, 44);
 		getContentPane().add(rdbtnCazadorDemonios);
 		
@@ -637,6 +660,7 @@ public void inicializarComponentes(){
 		}
 		
 		rdbtnEvocador = new CircularToggleButton(imageEvocador, "Evocador");
+		rdbtnEvocador.setText("Evocador");
 		rdbtnEvocador.setBounds(731, 506, 44, 44);
 		getContentPane().add(rdbtnEvocador);
 		
