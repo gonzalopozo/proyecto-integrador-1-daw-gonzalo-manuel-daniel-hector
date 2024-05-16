@@ -57,6 +57,7 @@ public class DetallesPersonajesCuenta extends VistaDefault {
         // for (String[] fila : datos) {
         //     model.addRow(fila);
         // }
+        
 
 
         scrBarraHorizontal = new JScrollPane(tablaDatos);

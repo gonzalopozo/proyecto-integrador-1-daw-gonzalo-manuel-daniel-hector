@@ -12,7 +12,7 @@ import main.*;
 
 public class AccesoBD {
 
-    private String url = "jdbc:sqlite:C:\\Users\\gonza\\OneDrive\\Escritorio\\examen-entornos-junit\\pro-intega\\proyecto-integrador-1-daw-gonzalo-manuel-daniel-hector\\database\\database.db";
+    private String url = "jdbc:sqlite:C:\\Users\\Manu\\OneDrive\\Escritorio\\ProyectoIntegrador\\proyecto-integrador-1-daw-gonzalo-manuel-daniel-hector\\database\\database.db";
 
 
     public Connection getConexion() {
@@ -61,15 +61,16 @@ public class AccesoBD {
     }
 
     public void obtenerDatos (Connection c) throws SQLException{
-        String query = "SELECT * FROM PERSONAJES";
+        String query = "SELECT * FROM PERSONAJES where miembro_id="+App.getMiembroActualId();
 
         Statement stmt = c.createStatement();
 
         ResultSet result = stmt.executeQuery(query);
 
         while(result.next()) {
-            System.out.print(result.getString("nombre") + " - ");
-            System.out.print(result.getInt("num_expediente"));
+            System.out.println("-------------------------------");
+            System.out.print(result.getInt(1) + " - ");
+            System.out.print(result.getString(2));
             System.out.println();
         }
 
@@ -81,16 +82,19 @@ public class AccesoBD {
     public ArrayList<String[]> hacerConsultaTablaCuenta(Connection c) throws SQLException{
         ArrayList<String[]> arrayListBidimensional = new ArrayList<>();
 
-        String query = "SELECT p.nombre AS Nombre, p.raza AS Raza, p.clase AS Clase, j.partida_id AS Partida, j.nivel AS Nivel, j.salud AS Salud, j.fuerza AS Fuerza, j.destreza AS Destreza, j.sabiduria AS Sabiduría, j.carisma AS Carisma, j.inteligencia AS Inteligencia, j.constitucion AS Constitución FROM personajes p JOIN juega j ON p.id = j.personaje_id JOIN partidas pa ON j.partida_id = pa.id JOIN miembros m ON p.miembro_id = m.id WHERE m.id = ? AND pa.esta_en_curso = 1;";
+        //String query = "SELECT p.nombre AS Nombre, p.raza AS Raza, p.clase AS Clase, j.partida_id AS Partida, j.nivel AS Nivel, j.salud AS Salud, j.fuerza AS Fuerza, j.destreza AS Destreza, j.sabiduria AS Sabiduría, j.carisma AS Carisma, j.inteligencia AS Inteligencia, j.constitucion AS Constitución FROM personajes p JOIN juega j ON p.id = j.personaje_id JOIN partidas pa ON j.partida_id = pa.id JOIN miembros m ON p.miembro_id = m.id WHERE m.id = ? AND pa.esta_en_curso = 1;";
+        String query = "SELECT p.nombre AS Nombre, p.raza AS Raza, p.clase AS Clase from personajes as p where p.id = ?";
 
-        System.out.println(App.getMiembroActual());
+        System.out.println(App.getMiembroActualId());
 
         ResultSet resultados = null;
-        try (Connection con = getConexion(); PreparedStatement pstmt = con.prepareStatement(query)) {
-
-            pstmt.setString(1, App.getMiembroActual());
+        try {
+            Connection con = getConexion(); 
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setInt(1, App.getMiembroActualId());
 
             resultados = pstmt.executeQuery();
+
         } catch (SQLException e) {
             System.err.println(e.getMessage()); 
         }
@@ -98,10 +102,10 @@ public class AccesoBD {
 
         while(resultados.next()) {
             String[] fila = new String[12];
-            fila[1] = resultados.getString(1);
-            fila[2] = resultados.getString(2);
-            fila[3] = resultados.getString(3);
-            fila[3] = resultados.getString(4);
+            fila[0] = resultados.getString(1);
+            fila[1] = resultados.getString(2);
+            fila[2] = resultados.getString(3);
+/*            fila[3] = resultados.getString(4);
             fila[4] = String.valueOf(resultados.getString(5));
             fila[5] = String.valueOf(resultados.getString(6));
             fila[6] = String.valueOf(resultados.getString(7));
@@ -109,7 +113,8 @@ public class AccesoBD {
             fila[8] = String.valueOf(resultados.getString(9));
             fila[9] = String.valueOf(resultados.getString(10));
             fila[10] = String.valueOf(resultados.getString(11));
-            fila[11] = String.valueOf(resultados.getString(12));
+            fila[11] = String.valueOf(resultados.getString(12));*/
+            System.out.println("-->"+fila);
             arrayListBidimensional.add(fila);
             for (String a : fila) {
                 System.out.println(a);

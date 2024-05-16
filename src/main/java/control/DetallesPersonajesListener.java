@@ -33,6 +33,7 @@ public class DetallesPersonajesListener implements ActionListener{
         Connection c = acceso.getConexion();
         ArrayList<String[]> datos = null;
         try {
+            acceso.obtenerDatos(c);
             datos = acceso.hacerConsultaTablaCuenta(c);
         } catch (SQLException sqle) {
             sqle.printStackTrace();
@@ -50,6 +51,7 @@ public class DetallesPersonajesListener implements ActionListener{
             }
         }
         model.fireTableDataChanged();
+        tabla.setModel(model);
 
 
         detallesPersonajesCuenta.setTablaDatos(tabla);
