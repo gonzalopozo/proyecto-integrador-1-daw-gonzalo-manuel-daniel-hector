@@ -128,7 +128,7 @@ public class AccesoBD {
     }
     
 
-    public void crearPersonaje(Connection c, String sexo, String nombre, String raza, String clase, int miembro_id)  {
+    public void crearPersonaje(Connection c, String nombre, String sexo, String raza, String clase, int miembro_id)  {
         // insert tipo crear personaje --> INSERT INTO personajes (nombre, raza, clase, miembro_id) VALUES ('Gimli', 'Enano', 'Guerrero', 1);
         // INSERT INTO personajes (nombre, sexo, raza, clase, miembro_id) VALUES 
 
@@ -137,9 +137,10 @@ public class AccesoBD {
         try (Connection con = getConexion(); PreparedStatement pstmt = con.prepareStatement(query)) {
 
             pstmt.setString(1, nombre);
-            pstmt.setString(2, raza);
-            pstmt.setString(3, clase);
-            pstmt.setInt(4, miembro_id);
+            pstmt.setString(2, sexo);
+            pstmt.setString(3, raza);
+            pstmt.setString(4, clase);
+            pstmt.setInt(5, miembro_id);
             pstmt.executeUpdate();
 
         } catch (SQLException e) {

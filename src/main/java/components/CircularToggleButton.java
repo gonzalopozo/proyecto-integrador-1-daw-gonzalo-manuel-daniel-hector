@@ -9,7 +9,7 @@ public class CircularToggleButton extends JToggleButton {
     private Color hoverColor = new Color(247,178,44);
     private Color borderColor = new Color(25,69,122);
     private int borderThickness = 2; // Grosor del borde
-    private String atributo;
+    public String atributo;
 
     public CircularToggleButton(Image image, String atributo) {
         this.image = image;
@@ -77,7 +77,4 @@ public class CircularToggleButton extends JToggleButton {
         return getPreferredSize(); // Mismo tamaño máximo que preferido
     }
 
-    public String getAtributo() {
-        return atributo;
-    }
 }
