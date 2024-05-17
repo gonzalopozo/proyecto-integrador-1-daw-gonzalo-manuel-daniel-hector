@@ -3,40 +3,109 @@ package control;
 import java.awt.event.*;
 import java.sql.*;
 
+import javax.swing.*;
+
 import components.CircularToggleButton;
 import model.AccesoBD;
-import views.CrearPersonaje;
+import views.*;
+import main.*;
 
 public class CrearPersonajeListener implements ActionListener {
 
-    private CrearPersonaje vista;
+    private CrearPersonaje crearPersonaje;
+    private PaginaPrincipal paginaPrincipal;
     
-    public CrearPersonajeListener(CrearPersonaje vista) {
-        this.vista = vista;
+    public CrearPersonajeListener(CrearPersonaje crearPersonaje, PaginaPrincipal paginaPrincipal) {
+        this.crearPersonaje = crearPersonaje;
+        this.paginaPrincipal = paginaPrincipal;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        if ((vista.getSexo().getSelection() != null) && (vista.getRaza().getSelection() != null) && (vista.getClase().getSelection() != null) && (vista.getTxtNombrePersonaje().getText().length() > 0)) {
-            String nombrePersonaje = vista.getTxtNombrePersonaje().getText();
-            CircularToggleButton razaSeleccionada = (CircularToggleButton) vista.getRaza().getSelection();
-            String razaPersonaje = razaSeleccionada.getAtributo();
-            CircularToggleButton claseSeleccionada = (CircularToggleButton) vista.getClase().getSelection();
-            String clasePersonaje = claseSeleccionada.getAtributo();
-            CircularToggleButton sexoSeleccionado = (CircularToggleButton) vista.getSexo().getSelection();
-            String sexoPersonaje = sexoSeleccionado.getAtributo();
-		// String query = "INSERT INTO personajes (nombre, raza, clase, miembro_id) VALUES (?, ?, ?, ?)";
+        ButtonGroup razaGroup = crearPersonaje.getRaza();
+        ButtonGroup claseGroup = crearPersonaje.getClase();
+        ButtonGroup sexoGroup = crearPersonaje.getSexo();
+
+        if ((crearPersonaje.getSexo().getSelection() != null) && (crearPersonaje.getRaza().getSelection() != null) && (crearPersonaje.getClase().getSelection() != null) && (crearPersonaje.getTxtNombrePersonaje().getText().length() > 0)) {
+            String nombrePersonaje = crearPersonaje.getTxtNombrePersonaje().getText();
+            String razaPersonaje = crearPersonaje.getSelectedButtonText(razaGroup);
+            String clasePersonaje = crearPersonaje.getSelectedButtonText(claseGroup);
+            String sexoPersonaje = crearPersonaje.getSelectedButtonText(sexoGroup);
 
 
-        }
+
+            // String nombrePersonaje = crearPersonaje.getTxtNombrePersonaje().getText();
+            // AbstractButton razaSeleccionada = (AbstractButton) crearPersonaje.getRaza().getSelection();
+            // String razaPersonaje = razaSeleccionada.getText();
+            // AbstractButton claseSeleccionada = (AbstractButton) crearPersonaje.getClase().getSelection();
+            // String clasePersonaje = claseSeleccionada.getText();
+            // AbstractButton sexoSeleccionado = (AbstractButton) crearPersonaje.getSexo().getSelection();
+            // String sexoPersonaje = sexoSeleccionado.getText();
+
+
+            // Object razaSeleccionadaObj = crearPersonaje.getRaza().getSelection();
+            // if (razaSeleccionadaObj instanceof CircularToggleButton) {
+            //     CircularToggleButton razaSeleccionada = (CircularToggleButton) razaSeleccionadaObj;
+            //     razaPersonaje = razaSeleccionada.atributo;
+            //     // Resto del código...
+            // }
+    
+            // Object claseSeleccionadaObj = crearPersonaje.getClase().getSelection();
+            // if (claseSeleccionadaObj instanceof CircularToggleButton) {
+            //     CircularToggleButton claseSeleccionada = (CircularToggleButton) claseSeleccionadaObj;
+            //     clasePersonaje = claseSeleccionada.atributo;
+            //     // Resto del código...
+            // }
+
+            // Object sexoSeleccionadoObj = crearPersonaje.getSexo().getSelection();
+            // if (sexoSeleccionadoObj instanceof CircularToggleButton) {
+            //     CircularToggleButton sexoSeleccionado = (CircularToggleButton) sexoSeleccionadoObj;
+            //     sexoPersonaje = sexoSeleccionado.atributo;
+            //     // Resto del código...
+            // }
+
+
+            // // String nombrePersonaje = crearPersonaje.getTxtNombrePersonaje().getText();
+            // // CircularToggleButton razaSeleccionada = null;
+            // // CircularToggleButton claseSeleccionada = null;
+            // // CircularToggleButton sexoSeleccionado = null;
+            // // try {
+            // //     razaSeleccionada = (CircularToggleButton) crearPersonaje.getRaza().getSelection();
+            // // } catch (Exception ee) {
+            // //     // TODO: handle exception
+            // // }
+            // // String razaPersonaje = razaSeleccionada.getAtributo();
+            // // try {
+            // //     claseSeleccionada = (CircularToggleButton) crearPersonaje.getClase().getSelection();
+            // // } catch (Exception eee) {
+            // //     // TODO: handle exception 
+            // // }
+            // // String clasePersonaje = claseSeleccionada.getAtributo();
+            // // try {
+            // //     sexoSeleccionado = (CircularToggleButton) crearPersonaje.getSexo().getSelection();
+            // // } catch (Exception eeee) {
+            // //     // TODO: handle exception
+            // // }
+            // // String sexoPersonaje = sexoSeleccionado.getAtributo();
+
+            AccesoBD accesoBD = new AccesoBD();
+            Connection c = accesoBD.getConexion();
+
+            accesoBD.crearPersonaje(c, nombrePersonaje, sexoPersonaje, razaPersonaje, clasePersonaje, App.getMiembroActualId());
+
+            crearPersonaje.dispose();
+
+            paginaPrincipal.hacerVisible();
+
+        } 
 
         
     }
 
+
     
 
     // public void actionPerformed(ActionEvent e) {
-    //     if (vista.getSexo().isSelected() && vista.getRaza().isSelected() && vista.getClase().isSelected() && (vista.getTxtNombrePersonaje().getText.length() > 0))
+    //     if (crearPersonaje.getSexo().isSelected() && crearPersonaje.getRaza().isSelected() && crearPersonaje.getClase().isSelected() && (crearPersonaje.getTxtNombrePersonaje().getText.length() > 0))
     // }
 }

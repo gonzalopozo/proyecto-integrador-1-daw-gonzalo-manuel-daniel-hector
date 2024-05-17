@@ -86,4 +86,44 @@ public class CrearCuenta extends VistaDefault {
 		volver.setBounds(10, 527, 104, 23);
 		getContentPane().add(volver);
 	}
+
+	public JTextField getTxtNombre() {
+		return txtNombre;
+	}
+
+	public void setTxtNombre(JTextField txtNombre) {
+		this.txtNombre = txtNombre;
+	}
+
+	public JTextField getTxtApellido() {
+		return txtApellido;
+	}
+
+	public void setTxtApellido(JTextField txtApellido) {
+		this.txtApellido = txtApellido;
+	}
+
+	public JTextField getTxtNumExpediente() {
+		return txtNumExpediente;
+	}
+
+	public void setTxtNumExpediente(JTextField txtNumExpediente) {
+		this.txtNumExpediente = txtNumExpediente;
+	}
+
+	public JTextField getTxtEstudios() {
+		return txtEstudios;
+	}
+
+	public void setTxtEstudios(JTextField txtEstudios) {
+		this.txtEstudios = txtEstudios;
+	}
+
+	public JCheckBox getCheckBoxTerminos() {
+		return checkBoxTerminos;
+	}
+
+	public void setCheckBoxTerminos(JCheckBox checkBoxTerminos) {
+		this.checkBoxTerminos = checkBoxTerminos;
+	}
 }

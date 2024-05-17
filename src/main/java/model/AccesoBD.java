@@ -12,7 +12,7 @@ import main.*;
 
 public class AccesoBD {
 
-    private String url = "jdbc:sqlite:C:\\Users\\gonza\\OneDrive\\Escritorio\\pro-intega\\proyecto-integrador-1-daw-gonzalo-manuel-daniel-hector\\database\\database.db";
+    private String url = "jdbc:sqlite:C:\\Users\\gonza\\Desktop\\AAAABBBB\\proyecto-integrador-1-daw-gonzalo-manuel-daniel-hector\\database\\database.db";
 
 
     public Connection getConexion() {
@@ -83,14 +83,42 @@ public class AccesoBD {
         ArrayList<String[]> arrayListBidimensional = new ArrayList<>();
 
         //String query = "SELECT p.nombre AS Nombre, p.raza AS Raza, p.clase AS Clase, j.partida_id AS Partida, j.nivel AS Nivel, j.salud AS Salud, j.fuerza AS Fuerza, j.destreza AS Destreza, j.sabiduria AS Sabiduría, j.carisma AS Carisma, j.inteligencia AS Inteligencia, j.constitucion AS Constitución FROM personajes p JOIN juega j ON p.id = j.personaje_id JOIN partidas pa ON j.partida_id = pa.id JOIN miembros m ON p.miembro_id = m.id WHERE m.id = ? AND pa.esta_en_curso = 1;";
-        String query = "SELECT p.nombre AS Nombre, p.raza AS Raza, p.clase AS Clase from personajes as p where p.id = ?";
+        String query = "SELECT id, nombre, raza, clase FROM personajes WHERE miembro_id = ?";
 
-        System.out.println(App.getMiembroActualId());
+        String query2 = "SELECT nivel, partida_id, salud, fuerza, destreza, sabiduria, carisma, inteligencia, constitucion FROM juega WHERE personaje_id = ?";
+
+        String query3 = "SELECT nombre FROM partidas WHERE id = ?";
+
+        /*
+         * 
+         * model.addColumn("Nombre");
+        model.addColumn("Raza");
+        model.addColumn("Clase");
+        model.addColumn("Partida");
+        model.addColumn("Nivel");
+        model.addColumn("Salud");
+        model.addColumn("Fuerza");
+        model.addColumn("Destreza");
+        model.addColumn("Sabiduría");
+        model.addColumn("Carisma");
+        model.addColumn("Inteligencia");
+        model.addColumn("Constitución");
+         * 
+         */
+
+        // System.out.println(App.getMiembroActualId());
 
         ResultSet resultados = null;
+        ResultSet resultados2 = null;
+        ResultSet resultados3 = null;
+
+
+
         try {
-            Connection con = getConexion(); 
+            
+            Connection con = getConexion();
             PreparedStatement pstmt = con.prepareStatement(query);
+
             pstmt.setInt(1, App.getMiembroActualId());
 
             resultados = pstmt.executeQuery();
@@ -100,29 +128,121 @@ public class AccesoBD {
         }
 
 
+
+        // while (resultados.next()) {
+
+        //     int personaje_id;
+
+        //     try (Connection con = getConexion(); PreparedStatement pstmt = con.prepareStatement(query2);) {
+        //         pstmt.setInt(1, App.getMiembroActualId());
+    
+        //         resultados2 = pstmt.executeQuery();
+    
+        //     } catch (SQLException e) {
+        //         System.err.println(e.getMessage()); 
+        //     }
+        // }
+
+        // try {
+        //     Connection con = getConexion(); 
+        //     PreparedStatement pstmt = con.prepareStatement(query3);
+        //     pstmt.setInt(1, App.getMiembroActualId());
+
+        //     resultados3 = pstmt.executeQuery();
+
+        // } catch (SQLException e) {
+        //     System.err.println(e.getMessage()); 
+        // }
+
         while(resultados.next()) {
+            System.out.println("RESULTADOS1 - WHILE");
+
+
+            int personajeId = resultados.getInt("id");
+
             String[] fila = new String[12];
-            fila[0] = resultados.getString(1);
-            fila[1] = resultados.getString(2);
-            fila[2] = resultados.getString(3);
-/*            fila[3] = resultados.getString(4);
-            fila[4] = String.valueOf(resultados.getString(5));
-            fila[5] = String.valueOf(resultados.getString(6));
-            fila[6] = String.valueOf(resultados.getString(7));
-            fila[7] = String.valueOf(resultados.getString(8));
-            fila[8] = String.valueOf(resultados.getString(9));
-            fila[9] = String.valueOf(resultados.getString(10));
-            fila[10] = String.valueOf(resultados.getString(11));
-            fila[11] = String.valueOf(resultados.getString(12));*/
-            System.out.println("-->"+fila);
-            arrayListBidimensional.add(fila);
-            for (String a : fila) {
-                System.out.println(a);
+            
+            fila[0] = resultados.getString("nombre");
+            fila[1] = resultados.getString("raza");
+            fila[2] = resultados.getString("clase");
+            
+            try {
+                Connection con = getConexion(); 
+                PreparedStatement pstmt = con.prepareStatement(query2);
+                
+                pstmt.setInt(1, personajeId);
+    
+                resultados2 = pstmt.executeQuery();
+    
+            } catch (SQLException e) {
+                System.err.println(e.getMessage()); 
             }
+
+            // String query2 = "SELECT nivel, partida_id, salud, fuerza, destreza, sabiduria, carisma, inteligencia, constitucion FROM juega WHERE personaje_id = ?";
+
+
+
+            while (resultados2.next()) {
+                System.out.println("RESULTADOS2 - WHILE");
+
+                int partidaId = resultados2.getInt(2);
+                System.out.println("\n - " + partidaId +  "- \n");
+                
+                fila[4] = String.valueOf(resultados2.getString(1));
+                fila[5] = String.valueOf(resultados2.getString(3));
+                fila[6] = String.valueOf(resultados2.getString(4));
+                fila[7] = String.valueOf(resultados2.getString(5));
+                fila[8] = String.valueOf(resultados2.getString(6));
+                fila[9] = String.valueOf(resultados2.getString(7));
+                fila[10] = String.valueOf(resultados2.getString(8));
+                fila[11] = String.valueOf(resultados2.getString(9));
+
+                try {
+                    Connection con = getConexion(); 
+                    PreparedStatement pstmt = con.prepareStatement(query3);
+                    
+                    pstmt.setInt(1, partidaId);
+        
+                    resultados3 = pstmt.executeQuery();
+
+                    fila[3] = resultados3.getString("nombre");
+
+        
+                } catch (SQLException e) {
+                    System.err.println(e.getMessage()); 
+                }
+
+
+                for (String valor : fila) {
+                    System.out.println(valor);
+                }
+
+                arrayListBidimensional.add(fila);
+
+            }
+
+
+            
+            // System.out.println("-->"+fila);
+            // for (String a : fila) {
+            //     System.out.println(a);
+            // }
         }
+
+        
+
+
 
         // result.close();
         // stmt.close();
+
+        for (String [] fila : arrayListBidimensional) {
+            System.out.println("----------------");
+            for (String a : fila) {
+                System.err.println(a);
+            }
+            System.out.println("----------------");
+        }
 
         return arrayListBidimensional;
     }

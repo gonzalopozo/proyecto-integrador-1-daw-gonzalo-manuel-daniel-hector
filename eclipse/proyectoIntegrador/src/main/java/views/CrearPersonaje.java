@@ -3,6 +3,7 @@ package views;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.util.Enumeration;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -297,7 +298,19 @@ public class CrearPersonaje extends VistaDefault {
 		setSize(1000,600);
 		inicializarComponentes();
 		setLocationRelativeTo(null);
-}
+	}
+
+	public String getSelectedButtonText(ButtonGroup buttonGroup) {
+        for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
+            AbstractButton button = buttons.nextElement();
+
+            if (button.isSelected()) {
+                return button.getText();
+            }
+        }
+
+        return null;
+    }
 
 public void inicializarComponentes(){
 		getContentPane().setLayout(null);

@@ -43,6 +43,8 @@ public class DetallesPersonajesListener implements ActionListener{
         JTable tabla = detallesPersonajesCuenta.getTablaDatos();
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
 
+        System.out.println(Arrays.toString(datos.get(0)));
+
         for (String[] fila : datos) {
             model.addRow(fila);
             System.out.println("Fila agregada: " + Arrays.toString(fila));

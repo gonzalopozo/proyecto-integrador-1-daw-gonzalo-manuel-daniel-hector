@@ -1,17 +1,8 @@
 package main;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.Toolkit;
+import java.awt.*;
 
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.UIDefaults;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.*;
 
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 
@@ -20,8 +11,6 @@ import views.*;
 
 public class App {
 	
-	
-
     private final static Color COLOR_BIANCA = new Color(249,247,238);
 	private final static Color COLOR_LIGHTING_YELLOW = new Color(247,178,44);
 	private final static Color COLOR_ALLPORTS = new Color(25,69,122);
@@ -31,21 +20,21 @@ public class App {
 	private final static Font LABEL_FONT_BOLD = new Font("Arial", Font.BOLD, 14);
 	private final static Font LABEL_FONT = new Font("Arial", Font.PLAIN, 12);
 
-    final static Login login = new Login();
-	final static CrearCuenta crearCuenta = new CrearCuenta();
-    final static CrearCuentaDos crearCuentaDos = new CrearCuentaDos();
-    final static CuentaCreada cuentaCreada = new CuentaCreada();
-    final static CrearPartida crearPartida = new CrearPartida();
-    final static CrearPersonaje crearPersonaje = new CrearPersonaje();
-    final static DetallesPersonajesCuenta detallesPersonajesCuenta = new DetallesPersonajesCuenta();
-    final static DetallesPersonajesPartida detallesPersonajesPartida = new DetallesPersonajesPartida();
-    final static PaginaPrincipal paginaPrincipal = new PaginaPrincipal();
-    final static PaginaPrincipalGM paginaPrincipalGM = new PaginaPrincipalGM();
-    final static SeleccionarPartida seleccionarPartida = new SeleccionarPartida();
-    final static PartidasDisponibles partidasDisponibles = new PartidasDisponibles();
-    final static SeleccionRol seleccionRol = new SeleccionRol();
-    final static UnirsePartida unirsePartida = new UnirsePartida();
-    final static SeleccionarPartidaGM seleccionarPartidaGM = new SeleccionarPartidaGM();
+    private static Login login;
+	private static CrearCuenta crearCuenta;
+    private static CrearCuentaDos crearCuentaDos;
+    private static CuentaCreada cuentaCreada;
+    private static CrearPartida crearPartida;
+    private static CrearPersonaje crearPersonaje;
+    private static DetallesPersonajesCuenta detallesPersonajesCuenta;
+    private static DetallesPersonajesPartida detallesPersonajesPartida;
+    private static PaginaPrincipal paginaPrincipal;
+    private static PaginaPrincipalGM paginaPrincipalGM;
+    private static SeleccionarPartida seleccionarPartida;
+    private static PartidasDisponibles partidasDisponibles;
+    private static SeleccionRol seleccionRol;
+    private static UnirsePartida unirsePartida;
+    private static SeleccionarPartidaGM seleccionarPartidaGM;
 
     static String miembroActual;
     static int miembroActualId;
@@ -137,6 +126,8 @@ public class App {
                 // TODO Auto-generated method stub
 
                 try {
+
+                    System.out.println("a");
                     UIManager.setLookAndFeel(new FlatMacLightLaf());
                     UIManager.put("Component.focusColor", COLOR_LIGHTING_YELLOW);
                     UIManager.put("Button.arc", 20);
@@ -153,11 +144,27 @@ public class App {
                     UIManager.put("CheckBox.foreground", COLOR_LIGHTING_YELLOW);
                     UIManager.put("CheckBox.font", LABEL_FONT);
                     
+                    System.out.println("b");
+
                 } catch (UnsupportedLookAndFeelException ex) {
                     ex.printStackTrace();
                 }
 
-	            
+	            login = new Login();
+                crearCuenta = new CrearCuenta();
+                crearCuentaDos = new CrearCuentaDos();
+                cuentaCreada = new CuentaCreada();
+                crearPartida = new CrearPartida();
+                crearPersonaje = new CrearPersonaje();
+                detallesPersonajesCuenta = new DetallesPersonajesCuenta();
+                detallesPersonajesPartida = new DetallesPersonajesPartida();
+                paginaPrincipal = new PaginaPrincipal();
+                paginaPrincipalGM = new PaginaPrincipalGM();
+                seleccionarPartida = new SeleccionarPartida();
+                partidasDisponibles = new PartidasDisponibles();
+                seleccionRol = new SeleccionRol();
+                unirsePartida = new UnirsePartida();
+                seleccionarPartidaGM = new SeleccionarPartidaGM();
                 
                 
                 login.hacerVisible();

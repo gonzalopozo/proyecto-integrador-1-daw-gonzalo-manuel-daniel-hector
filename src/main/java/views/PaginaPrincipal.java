@@ -51,13 +51,23 @@ public class PaginaPrincipal extends VistaDefault {
 		pnlContenedor.add(btnCrearPersonaje);
 		
 		//TODO: JToggleButton
-		JButton btnNewButton_2 = new JButton("PERSONAJE 1");
-		btnNewButton_2.setBounds(10, 58, 191, 23);
-		pnlContenedor.add(btnNewButton_2);
+
+		// if (accesoBD.getCrearpersonaje){
+		// toggleBtnJugador = new JToggleButton();
+		// toggleBtnJugador.setBounds(122, 83, 140, 23);
+		// getContentPane().add(toggleBtnJugador);
+		// }
+
 		
-		JButton btnNewButton_3 = new JButton("PERSONAJE 2");
-		btnNewButton_3.setBounds(10, 92, 191, 23);
-		pnlContenedor.add(btnNewButton_3);
+
+
+		JToggleButton toogleBtnPersonajeNuevo1 = new JToggleButton("PERSONAJE 1");
+		toogleBtnPersonajeNuevo1.setBounds(10, 58, 191, 23);
+		pnlContenedor.add(toogleBtnPersonajeNuevo1);
+		
+		JToggleButton toogleBtnPersonajeNuevo2 = new JToggleButton("PERSONAJE 2");
+		toogleBtnPersonajeNuevo2.setBounds(10, 92, 191, 23);
+		pnlContenedor.add(toogleBtnPersonajeNuevo2);
 		
 		btnVerPartidas = new JButton("VER PARTIDAS");
 		btnVerPartidas.setBounds(29, 11, 151, 23);
