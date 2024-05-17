@@ -12,7 +12,7 @@ import main.*;
 
 public class AccesoBD {
 
-    private String url = "jdbc:sqlite:C:\\Users\\gonza\\Desktop\\AAAABBBB\\proyecto-integrador-1-daw-gonzalo-manuel-daniel-hector\\database\\database.db";
+    private String url = "jdbc:sqlite:database/database.db";
 
 
     public Connection getConexion() {
@@ -155,7 +155,7 @@ public class AccesoBD {
         // }
 
         while(resultados.next()) {
-            System.out.print("RESULTADOS1 - WHILE: ");
+            System.out.println("RESULTADOS1 - WHILE");
 
 
             int personajeId = resultados.getInt("id");
@@ -166,9 +166,6 @@ public class AccesoBD {
             fila[1] = resultados.getString("raza");
             fila[2] = resultados.getString("clase");
             
-            System.out.println("primera query: "+fila[0]+" - "+ fila[1] + " - " + fila[2]);
-
-
             try {
                 Connection con = getConexion(); 
                 PreparedStatement pstmt = con.prepareStatement(query2);
@@ -186,7 +183,7 @@ public class AccesoBD {
 
 
             while (resultados2.next()) {
-                System.out.print("RESULTADOS2 - WHILE");
+                System.out.println("RESULTADOS2 - WHILE");
 
                 int partidaId = resultados2.getInt(2);
                 System.out.println("\n - " + partidaId +  "- \n");
@@ -220,7 +217,7 @@ public class AccesoBD {
                     System.out.println(valor);
                 }
 
-                //arrayListBidimensional.add(fila);
+                arrayListBidimensional.add(fila);
 
             }
 
@@ -230,7 +227,6 @@ public class AccesoBD {
             // for (String a : fila) {
             //     System.out.println(a);
             // }
-            arrayListBidimensional.add(fila);
         }
 
         
@@ -329,6 +325,46 @@ public class AccesoBD {
             System.err.println(e.getMessage());
         }
     }
+    
+
+    public ArrayList<String> devolverPersonajesMiembro(Connection c) throws SQLException{
+        ArrayList<String> arrayPersonajesMiembro = new ArrayList<>();
+
+        
+        String query = "SELECT nombre FROM personajes WHERE miembro_id = ?";
+        
+        System.out.println(query);
+
+
+        ResultSet resultados = null;
+
+        try {
+            
+            Connection con = getConexion();
+            PreparedStatement pstmt = con.prepareStatement(query);
+
+            pstmt.setInt(1, App.getMiembroActualId());
+
+            resultados = pstmt.executeQuery();
+            
+            
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage()); 
+        }
+        
+        if (resultados == null) {
+        	System.out.println("ES NULLL");
+        }
+        
+        while(resultados.next()) {
+        	arrayPersonajesMiembro.add(resultados.getString(1));
+        	System.out.println(resultados.getString(1));
+        }
+
+        return arrayPersonajesMiembro;
+    }
+    
 
     // public static void main(String[] args) {
     //     Connection abc = getConexion();
@@ -342,3 +378,4 @@ public class AccesoBD {
     // }
 
 }
+

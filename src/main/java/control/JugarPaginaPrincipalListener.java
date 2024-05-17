@@ -14,14 +14,14 @@ import java.util.Arrays;
 import javax.swing.*;
 import javax.swing.table.*;
 
-public class DetallesPersonajesListener implements ActionListener{
+public class JugarPaginaPrincipalListener implements ActionListener{
     
     private PaginaPrincipal paginaPrincipal;
-    private DetallesPersonajesCuenta detallesPersonajesCuenta;
+    private UnirsePartida unirsePartida;
 
-    public DetallesPersonajesListener(PaginaPrincipal paginaPrincipal, DetallesPersonajesCuenta detallesPersonajesCuenta) {
+    public JugarPaginaPrincipalListener(PaginaPrincipal paginaPrincipal, UnirsePartida unirsePartida) {
         this.paginaPrincipal = paginaPrincipal;
-        this.detallesPersonajesCuenta = detallesPersonajesCuenta;
+        this.unirsePartida = unirsePartida;
     }
 
     @Override

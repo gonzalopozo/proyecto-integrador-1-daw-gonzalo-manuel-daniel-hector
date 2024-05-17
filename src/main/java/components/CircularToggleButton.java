@@ -45,7 +45,7 @@ public class CircularToggleButton extends JToggleButton {
             g.setColor(hoverColor);
             g.fillOval(0, 0, getWidth(), getHeight());
         } else {
-            g.setColor(getBackground());
+            g.setColor(new Color(25,69,122));
             g.fillOval(borderThickness, borderThickness, getWidth() - 2 * borderThickness, getHeight() - 2 * borderThickness);
         }
 
@@ -64,7 +64,7 @@ public class CircularToggleButton extends JToggleButton {
 
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(50, 50); // Tamaño predeterminado
+        return new Dimension(80, 80); // Tamaño predeterminado
     }
 
     @Override

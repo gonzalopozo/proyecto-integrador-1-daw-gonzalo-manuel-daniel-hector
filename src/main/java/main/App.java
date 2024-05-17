@@ -143,14 +143,14 @@ public class App {
                     UIManager.put("Button.background", COLOR_LIGHTING_YELLOW);
                     UIManager.put("CheckBox.foreground", COLOR_LIGHTING_YELLOW);
                     UIManager.put("CheckBox.font", LABEL_FONT);
-                    
+
                     System.out.println("b");
 
                 } catch (UnsupportedLookAndFeelException ex) {
                     ex.printStackTrace();
                 }
 
-	            login = new Login();
+                login = new Login();
                 crearCuenta = new CrearCuenta();
                 crearCuentaDos = new CrearCuentaDos();
                 cuentaCreada = new CuentaCreada();
@@ -180,8 +180,6 @@ public class App {
                 
                 DetallesPersonajesListener detallesPersonajesListener = new DetallesPersonajesListener(paginaPrincipal, detallesPersonajesCuenta);
                 paginaPrincipal.setListenerBotonVerPartidas(detallesPersonajesListener);
-                
-
                 
                 MoverseListener seleccionRolLogin = new MoverseListener(seleccionRol, login);
                 seleccionRol.setListenerBotonVolver(seleccionRolLogin);
