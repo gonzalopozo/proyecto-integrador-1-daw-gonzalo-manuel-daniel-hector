@@ -5,8 +5,14 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import control.*;
+import model.AccesoBD;
+import model.Personaje;
 
 import java.awt.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PaginaPrincipal extends VistaDefault {
 
@@ -17,6 +23,9 @@ public class PaginaPrincipal extends VistaDefault {
 	private JLabel lblNombrePersonaje;
 	private ImageIcon orco;
 	private JPanel pnlContenedor;
+	private JPanel panelPersonajes;
+	private ArrayList<JToggleButton> botonesPersonajes;
+	private ArrayList<String> nombresPersonajes;
 
 	public PaginaPrincipal() {
 		super();
@@ -61,24 +70,30 @@ public class PaginaPrincipal extends VistaDefault {
 		
 
 
-		JToggleButton toogleBtnPersonajeNuevo1 = new JToggleButton("PERSONAJE 1");
-		toogleBtnPersonajeNuevo1.setBounds(10, 58, 191, 23);
-		pnlContenedor.add(toogleBtnPersonajeNuevo1);
-		
-		JToggleButton toogleBtnPersonajeNuevo2 = new JToggleButton("PERSONAJE 2");
-		toogleBtnPersonajeNuevo2.setBounds(10, 92, 191, 23);
-		pnlContenedor.add(toogleBtnPersonajeNuevo2);
+//		JToggleButton toogleBtnPersonajeNuevo1 = new JToggleButton("PERSONAJE 1");
+//		toogleBtnPersonajeNuevo1.setBounds(10, 58, 191, 23);
+//		pnlContenedor.add(toogleBtnPersonajeNuevo1);
+//		
+//		JToggleButton toogleBtnPersonajeNuevo2 = new JToggleButton("PERSONAJE 2");
+//		toogleBtnPersonajeNuevo2.setBounds(10, 92, 191, 23);
+//		pnlContenedor.add(toogleBtnPersonajeNuevo2);
 		
 		btnVerPartidas = new JButton("VER PARTIDAS");
 		btnVerPartidas.setBounds(29, 11, 151, 23);
 		pnlContenedor.add(btnVerPartidas);
 		
+		botonesPersonajes = new ArrayList<JToggleButton>();
+		
+		
+		panelPersonajes = new JPanel();
+		panelPersonajes.setBounds(20, 44, 167, 442);
+		pnlContenedor.add(panelPersonajes);
+		
 		lblPersonaje = new JLabel();
-		lblPersonaje.setHorizontalAlignment(SwingConstants.CENTER);
-		orco = new ImageIcon("src/main/resources/enanoBailongo.gif");
-		lblPersonaje.setIcon(orco);
-		lblPersonaje.setBounds(342, 150, 300, 300);
 		getContentPane().add(lblPersonaje);
+		lblPersonaje.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPersonaje.setIcon(orco);
+		orco = new ImageIcon("src/main/resources/enanoBailongo.gif");
 		
 		lblNombrePersonaje = new JLabel("PepeElDelMadrid");
 		lblNombrePersonaje.setHorizontalAlignment(SwingConstants.CENTER);
@@ -86,6 +101,39 @@ public class PaginaPrincipal extends VistaDefault {
 		lblNombrePersonaje.setBounds(410, 400, 164, 81);
 		getContentPane().add(lblNombrePersonaje);
 		
+		AccesoBD acceso = new AccesoBD();
+		Connection c = acceso.getConexion();
+		ArrayList <String> nombresPersonajesArray = null;
+		try {
+			nombresPersonajesArray = acceso.devolverPersonajesMiembro(c);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//System.out.println(Arrays.toString(nombresPersonajesArray));
+		
+		for (String nombrePersonaje : nombresPersonajesArray) {
+			System.out.println(nombrePersonaje);
+			agregarBotonPersonaje(nombrePersonaje);
+		}
+		
+	}
+
+	public JPanel getPanelPersonajes() {
+		return panelPersonajes;
+	}
+
+	public void setPanelPersonajes(JPanel panelPersonajes) {
+		this.panelPersonajes = panelPersonajes;
+	}
+
+	public ArrayList<JToggleButton> getBotonesPersonajes() {
+		return botonesPersonajes;
+	}
+
+	public void setBotonesPersonajes(ArrayList<JToggleButton> botonesPersonajes) {
+		this.botonesPersonajes = botonesPersonajes;
 	}
 
 	public void setListenerBotonJugar(MoverseListener listener) {
@@ -99,10 +147,27 @@ public class PaginaPrincipal extends VistaDefault {
 	public void setListenerBotonVerPartidas(DetallesPersonajesListener listener) {
 		btnVerPartidas.addActionListener(listener);
 	}
+	
+	public void agregarBotonPersonaje(String p) {
+		JToggleButton nuevoBotonPersonaje = new JToggleButton(p);
+        botonesPersonajes.add(nuevoBotonPersonaje);
+        panelPersonajes.add(nuevoBotonPersonaje);
 
-	//TODO: ACTUALIZAR TABLA VER PARTIDAS (MIEMBRO) AL CLICAR EN EL LISTENER 
+        panelPersonajes.revalidate();
+        panelPersonajes.repaint();
+        
+	}
 
-	// public void setListenerBotonActualizarTablaPartidas(){
-	// 	btnActualizarTablaPartidas(listener);
-	// }
+	public ArrayList<String> getNombresPersonajes() {
+		return nombresPersonajes;
+	}
+
+	public void setNombresPersonajes(ArrayList<String> nombresPersonajes) {
+		this.nombresPersonajes = nombresPersonajes;
+	}
+	
+	public void limpiarPersonajes() {
+		
+	}
+	
 }

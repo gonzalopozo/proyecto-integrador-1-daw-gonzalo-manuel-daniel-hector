@@ -12,7 +12,7 @@ import main.*;
 
 public class AccesoBD {
 
-    private String url = "jdbc:sqlite:C:\\Users\\gonza\\Desktop\\AAAABBBB\\proyecto-integrador-1-daw-gonzalo-manuel-daniel-hector\\database\\database.db";
+    private String url = "jdbc:sqlite:C:\\Users\\Manu\\OneDrive\\Escritorio\\Nueva carpeta\\proyecto-integrador-1-daw-gonzalo-manuel-daniel-hector\\database\\database.db";
 
 
     public Connection getConexion() {
@@ -325,6 +325,46 @@ public class AccesoBD {
             System.err.println(e.getMessage());
         }
     }
+    
+
+    public ArrayList<String> devolverPersonajesMiembro(Connection c) throws SQLException{
+        ArrayList<String> arrayPersonajesMiembro = new ArrayList<>();
+
+        
+        String query = "SELECT nombre FROM personajes WHERE miembro_id = ?";
+        
+        System.out.println(query);
+
+
+        ResultSet resultados = null;
+
+        try {
+            
+            Connection con = getConexion();
+            PreparedStatement pstmt = con.prepareStatement(query);
+
+            pstmt.setInt(1, App.getMiembroActualId());
+
+            resultados = pstmt.executeQuery();
+            
+            
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage()); 
+        }
+        
+        if (resultados == null) {
+        	System.out.println("ES NULLL");
+        }
+        
+        while(resultados.next()) {
+        	arrayPersonajesMiembro.add(resultados.getString(1));
+        	System.out.println(resultados.getString(1));
+        }
+
+        return arrayPersonajesMiembro;
+    }
+    
 
     // public static void main(String[] args) {
     //     Connection abc = getConexion();
@@ -338,3 +378,4 @@ public class AccesoBD {
     // }
 
 }
+

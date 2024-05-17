@@ -94,6 +94,13 @@ public class CrearPersonajeListener implements ActionListener {
             accesoBD.crearPersonaje(c, nombrePersonaje, sexoPersonaje, razaPersonaje, clasePersonaje, App.getMiembroActualId());
 
             crearPersonaje.dispose();
+            
+//            JToggleButton nuevoBotonPersonaje = new JToggleButton(nombrePersonaje);
+//            paginaPrincipal.getBotonesPersonajes().add(nuevoBotonPersonaje);
+//            paginaPrincipal.getPanelPersonajes().add(nuevoBotonPersonaje);
+//            paginaPrincipal.getPanelPersonajes().revalidate();
+//            paginaPrincipal.getPanelPersonajes().repaint();
+            paginaPrincipal.agregarBotonPersonaje(nombrePersonaje);
 
             paginaPrincipal.hacerVisible();
 
