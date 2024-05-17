@@ -155,7 +155,7 @@ public class AccesoBD {
         // }
 
         while(resultados.next()) {
-            System.out.println("RESULTADOS1 - WHILE");
+            System.out.print("RESULTADOS1 - WHILE: ");
 
 
             int personajeId = resultados.getInt("id");
@@ -166,6 +166,9 @@ public class AccesoBD {
             fila[1] = resultados.getString("raza");
             fila[2] = resultados.getString("clase");
             
+            System.out.println("primera query: "+fila[0]+" - "+ fila[1] + " - " + fila[2]);
+
+
             try {
                 Connection con = getConexion(); 
                 PreparedStatement pstmt = con.prepareStatement(query2);
@@ -183,7 +186,7 @@ public class AccesoBD {
 
 
             while (resultados2.next()) {
-                System.out.println("RESULTADOS2 - WHILE");
+                System.out.print("RESULTADOS2 - WHILE");
 
                 int partidaId = resultados2.getInt(2);
                 System.out.println("\n - " + partidaId +  "- \n");
@@ -217,7 +220,7 @@ public class AccesoBD {
                     System.out.println(valor);
                 }
 
-                arrayListBidimensional.add(fila);
+                //arrayListBidimensional.add(fila);
 
             }
 
@@ -227,6 +230,7 @@ public class AccesoBD {
             // for (String a : fila) {
             //     System.out.println(a);
             // }
+            arrayListBidimensional.add(fila);
         }
 
         
