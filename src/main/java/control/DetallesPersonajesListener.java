@@ -36,6 +36,8 @@ public class DetallesPersonajesListener implements ActionListener {
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             // TODO: handle exception
+        } finally {
+            acceso.cerrarConexion(c);
         }
 
         JTable tabla = detallesPersonajesCuenta.getTablaDatos();

@@ -30,6 +30,8 @@ public class CrearPartidaListener implements ActionListener {
 
             accesoBD.crearPartida(c, nombrePartida, App.getMiembroActualId(), ambientacionPartida);
 
+            accesoBD.cerrarConexion(c);
+            
             crearPartida.dispose();
 
             paginaPrincipalGM.hacerVisible();

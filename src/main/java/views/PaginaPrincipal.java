@@ -25,7 +25,7 @@ public class PaginaPrincipal extends VistaDefault {
 	private JButton btnVerPartidas;
 	private JLabel lblPersonaje;
 	private JLabel lblNombrePersonaje;
-	private ImageIcon orco;
+	private ImageIcon imagenPersonaje;
 	private JPanel pnlContenedor;
 	private JPanel panelPersonajes;
 	private ButtonGroup botonesPersonajes;	
@@ -105,15 +105,19 @@ public class PaginaPrincipal extends VistaDefault {
 		pnlContenedor.add(panelPersonajes);
 		
 		lblPersonaje = new JLabel();
-		getContentPane().add(lblPersonaje);
 		lblPersonaje.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPersonaje.setIcon(orco);
-		orco = new ImageIcon("src/main/resources/enanoBailongo.gif");
+		lblPersonaje.setBounds(342, 150, 300, 300);
+		getContentPane().add(lblPersonaje);
+
+		// imagenPersonaje = new ImageIcon("src/main/resources/enanoBailongo.gif");
+		// lblPersonaje.setIcon(imagenPersonaje);
+
+		
 		
 		lblNombrePersonaje = new JLabel();
 		lblNombrePersonaje.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNombrePersonaje.setFont(new Font("Arial", Font.BOLD, 15));
-		lblNombrePersonaje.setBounds(410, 400, 164, 81);
+		lblNombrePersonaje.setBounds(410, 450, 164, 81);
 		getContentPane().add(lblNombrePersonaje);
 		
 		AccesoBD acceso = new AccesoBD();
@@ -124,6 +128,8 @@ public class PaginaPrincipal extends VistaDefault {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			acceso.cerrarConexion(c);
 		}
 		
 		//System.out.println(Arrays.toString(nombresPersonajesArray));
@@ -188,6 +194,22 @@ public class PaginaPrincipal extends VistaDefault {
 
 	}
 
+	public void cambiarImagenPersonaje(String rutaImagen) {
+		imagenPersonaje = new ImageIcon(rutaImagen);
+		lblPersonaje.setIcon(imagenPersonaje);
+		
+		lblPersonaje.revalidate();
+		lblPersonaje.repaint();
+	}
+
+	public JLabel getLblPersonaje() {
+		return lblPersonaje;
+	}
+
+	public void setLblPersonaje(JLabel lblPersonaje) {
+		this.lblPersonaje = lblPersonaje;
+	}
+
 	public ArrayList<String> getNombresPersonajes() {
 		return nombresPersonajes;
 	}
@@ -196,7 +218,7 @@ public class PaginaPrincipal extends VistaDefault {
 		this.nombresPersonajes = nombresPersonajes;
 	}
 
-	public void limpiarPersonajes() {
+	public void limpiarPantalla() {
 		for (Component c : panelPersonajes.getComponents()) {
 			if (c instanceof JToggleButton) {
 				botonesPersonajes.remove((AbstractButton) c);
@@ -204,6 +226,9 @@ public class PaginaPrincipal extends VistaDefault {
 
 			}
 		}
+
+		lblNombrePersonaje.setText("");
+		lblPersonaje.setIcon(null);
 
 		panelPersonajes.revalidate();
 		panelPersonajes.repaint();

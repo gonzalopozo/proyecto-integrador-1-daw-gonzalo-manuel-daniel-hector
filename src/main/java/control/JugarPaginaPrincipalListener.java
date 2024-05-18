@@ -27,7 +27,10 @@ public class JugarPaginaPrincipalListener implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e){
         
-        AccesoBD acceso = new AccesoBD();
+        if (PaginaPrincipal.getPersonajeSeleccionadoId() == 0) {
+            JOptionPane.showMessageDialog(null, "¡SELECCIONA UN PERSONAJE!");
+        } else {
+            AccesoBD acceso = new AccesoBD();
         
         Connection c = acceso.getConexion();
         ArrayList<String[]> datos = null;
@@ -36,6 +39,8 @@ public class JugarPaginaPrincipalListener implements ActionListener{
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             // TODO: handle exception
+        } finally {
+            acceso.cerrarConexion(c);
         }
 
         JTable tabla = unirsePartida.getTable();
@@ -43,7 +48,7 @@ public class JugarPaginaPrincipalListener implements ActionListener{
         
         model.setRowCount(0);
 
-        System.out.println(Arrays.toString(datos.get(0)));
+        // System.out.println(Arrays.toString(datos.get(1)));
 
         for (String[] fila : datos) {
             model.addRow(fila);
@@ -78,6 +83,7 @@ public class JugarPaginaPrincipalListener implements ActionListener{
 
         unirsePartida.hacerVisible();
 
+        }
         
 
     }

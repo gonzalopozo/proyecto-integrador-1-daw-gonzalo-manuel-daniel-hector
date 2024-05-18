@@ -93,6 +93,8 @@ public class CrearPersonajeListener implements ActionListener {
 
             boolean exitoso = accesoBD.crearPersonaje(c, nombrePersonaje, sexoPersonaje, razaPersonaje, clasePersonaje, App.getMiembroActualId());
 
+            accesoBD.cerrarConexion(c);
+
             if (exitoso) {
                 crearPersonaje.dispose();
                 paginaPrincipal.agregarBotonPersonaje(nombrePersonaje);

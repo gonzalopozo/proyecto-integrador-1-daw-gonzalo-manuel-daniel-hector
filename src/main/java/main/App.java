@@ -202,7 +202,7 @@ public class App {
                 MoverseListener paginaPrincipalGMseleccionarPartidaGM = new MoverseListener(paginaPrincipalGM, seleccionarPartidaGM);
                 paginaPrincipalGM.setListenerBotonContinuar(paginaPrincipalGMseleccionarPartidaGM);
 
-                MoverseListener seleccionarPartidaGMListener = new MoverseListener(paginaPrincipalGM, paginaPrincipalGM);
+                MoverseListener seleccionarPartidaGMListener = new MoverseListener(seleccionarPartidaGM, paginaPrincipalGM);
                 seleccionarPartidaGM.setListenerBotonVolver(seleccionarPartidaGMListener);
 
 

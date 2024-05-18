@@ -15,9 +15,9 @@ import java.awt.event.ActionEvent;
 
 public class SeleccionarPartidaGM extends VistaDefault {
 	private JLabel lblSeleccionarPartida;
-	private JButton btnPartida1;
-	private JButton btnPartida2;
-	private JButton btnPartida3;
+	// private JButton btnPartida1;
+	// private JButton btnPartida2;
+	// private JButton btnPartida3;
 	private JButton btnEditarPartida;
 	private ButtonGroup botonesPartidas;	
 	private JPanel panelPartidas;
@@ -82,6 +82,8 @@ public class SeleccionarPartidaGM extends VistaDefault {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			acceso.cerrarConexion(c);
 		}
 		
 		//System.out.println(Arrays.toString(nombresPersonajesArray));
