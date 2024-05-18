@@ -22,6 +22,7 @@ public class PaginaPrincipal extends VistaDefault {
 
 	private JButton btnJugar;
 	private JButton btnCrearPersonaje;
+	private JButton btnBorrarPersonaje;
 	private JButton btnVerPartidas;
 	private JLabel lblPersonaje;
 	private JLabel lblNombrePersonaje;
@@ -73,6 +74,14 @@ public class PaginaPrincipal extends VistaDefault {
 		btnCrearPersonaje = new JButton("CREAR PERSONAJE");
 		btnCrearPersonaje.setBounds(10, 510, 191, 23);
 		pnlContenedor.add(btnCrearPersonaje);
+
+		btnBorrarPersonaje = new JButton("BORRAR PERSONAJE");
+		btnBorrarPersonaje.setBounds(10, 460, 191, 23);
+		pnlContenedor.add(btnBorrarPersonaje);
+		
+
+		
+		
 		
 		//TODO: JToggleButton
 
@@ -132,6 +141,17 @@ public class PaginaPrincipal extends VistaDefault {
 			acceso.cerrarConexion(c);
 		}
 		
+
+		// try {
+		// 	acceso.borrarPersonaje(c);
+		// } catch (Exception e) { // TODO: AQUÍ HEMOS BORRADO SQLEXCEPTION PORQUE DABA ERROR
+		// 	// TODO Auto-generated catch block
+		// 	e.printStackTrace();
+		// } finally {
+		// 	acceso.cerrarConexion(c);
+		// }
+
+
 		//System.out.println(Arrays.toString(nombresPersonajesArray));
 		
 		for (String nombrePersonaje : nombresPersonajesArray) {
@@ -175,6 +195,10 @@ public class PaginaPrincipal extends VistaDefault {
 
 	public void setListenerBotonVerPartidas(DetallesPersonajesListener listener) {
 		btnVerPartidas.addActionListener(listener);
+	}
+
+	public void setListenerBotonBorrarPersonaje(BorrarPersonajeListener listener) {
+		btnBorrarPersonaje.addActionListener(listener);
 	}
 
 	public void agregarBotonPersonaje(String p) {
@@ -227,6 +251,10 @@ public class PaginaPrincipal extends VistaDefault {
 			}
 		}
 
+		
+	}
+
+	public void limpiarTextoImagen() {
 		lblNombrePersonaje.setText("");
 		lblPersonaje.setIcon(null);
 
@@ -247,6 +275,29 @@ public class PaginaPrincipal extends VistaDefault {
 		return null;
 	}
 
+	// //TODO: Cambiar a getSelectedPersonajeNombre
+
+	// public String getSelectedPersonajeNombre() {
+	// 	return getSelectedButtonText(botonesPersonajes);
+	// }
+
+	//TODO: BotonBorrarPersonaje
+	public void removeBotonPersonaje(String nombrePersonaje) {
+		for (Enumeration<AbstractButton> buttons = botonesPersonajes.getElements(); buttons.hasMoreElements();) {
+			AbstractButton button = buttons.nextElement();
+
+			if (button.getText().equals(nombrePersonaje)) {
+				System.out.println("Elimina del buttongroup");
+				botonesPersonajes.remove(button);
+				panelPersonajes.remove(button);
+				break;
+			}
+		}
+
+		panelPersonajes.revalidate();
+		panelPersonajes.repaint();
+	}
 	
+
 
 }

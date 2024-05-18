@@ -21,6 +21,8 @@ public class SeleccionarPartidaGM extends VistaDefault {
 	private JButton btnEditarPartida;
 	private ButtonGroup botonesPartidas;	
 	private JPanel panelPartidas;
+	private ArrayList<String> nombresPartidas;
+
 
 	public SeleccionarPartidaGM() {
 		super();
@@ -30,6 +32,7 @@ public class SeleccionarPartidaGM extends VistaDefault {
 		setLocationRelativeTo(null);
 	}
 
+	
 	public void inicializarComponentes() {
 		
 		
@@ -63,6 +66,7 @@ public class SeleccionarPartidaGM extends VistaDefault {
 		btnEditarPartida.setBounds(351, 323, 223, 31);
 		getContentPane().add(btnEditarPartida);
 
+
 		botonesPartidas = new ButtonGroup();
 		
 		// JScrollBar scrollBar = new JScrollBar();
@@ -77,6 +81,7 @@ public class SeleccionarPartidaGM extends VistaDefault {
 		AccesoBD acceso = new AccesoBD();
 		Connection c = acceso.getConexion();
 		ArrayList <String> nombresPartidasArray = null;
+		
 		try {
 			nombresPartidasArray = acceso.devolverPartidasNombre(c);
 		} catch (SQLException e) {
@@ -88,10 +93,17 @@ public class SeleccionarPartidaGM extends VistaDefault {
 		
 		//System.out.println(Arrays.toString(nombresPersonajesArray));
 		
-		for (String nombrePartida : nombresPartidasArray) {
-			System.out.println(nombrePartida);
-			agregarBotonPartida(nombrePartida);
-		}	
+		// for (String nombrePartida : nombresPartidasArray) {
+		// 	System.out.println(nombrePartida);
+		// 	agregarBotonPartida(nombrePartida);
+		// }	
+		if (nombresPartidasArray != null) {
+            for (String nombrePartida : nombresPartidasArray) {
+                agregarBotonPartida(nombrePartida);
+            }
+        } else {
+            System.out.println("No se encontraron nombres de partidas.");
+        }
 
 
 	}
@@ -148,6 +160,10 @@ public class SeleccionarPartidaGM extends VistaDefault {
 		}
 
 		return null;
+	}
+
+	public String getSelectedPartidaNombre() {
+		return getSelectedButtonText(botonesPartidas);
 	}
 
 }

@@ -8,8 +8,7 @@ import java.util.Enumeration;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import components.*;
-import java.awt.FlowLayout;
-import java.awt.BorderLayout;
+import control.*;
 
 public class CrearPersonaje extends VistaDefault {
 
@@ -44,6 +43,8 @@ public class CrearPersonaje extends VistaDefault {
 	private ButtonGroup sexo;
 	private ButtonGroup raza;
 	private ButtonGroup clase;
+	private ImageIcon imagenPersonaje;
+
 
 	public JLabel getLogoAlianza() {
 		return logoAlianza;
@@ -347,6 +348,7 @@ public class CrearPersonaje extends VistaDefault {
 		}
 
 		rdbtnHumano = new CircularToggleButton(imageHuman, "Humano");
+		rdbtnHumano.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnHumano.setText("Humano");
 		rdbtnHumano.setBounds(45, 135, 55, 55);
 		getContentPane().add(rdbtnHumano);
@@ -361,6 +363,7 @@ public class CrearPersonaje extends VistaDefault {
 		}
 
 		rdbtnEnano = new CircularToggleButton(imageDwarf, "Enano");
+		rdbtnEnano.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnEnano.setText("Enano");
 		rdbtnEnano.setBounds(45, 185, 55, 55);
 		getContentPane().add(rdbtnEnano);
@@ -375,6 +378,7 @@ public class CrearPersonaje extends VistaDefault {
 		}
 
 		rdbtnElfoNoche = new CircularToggleButton(imageNE, "Elfo de la noche");
+		rdbtnElfoNoche.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnElfoNoche.setText("Elfo de la noche");
 		rdbtnElfoNoche.setBounds(45, 235, 55, 55);
 		getContentPane().add(rdbtnElfoNoche);
@@ -389,6 +393,7 @@ public class CrearPersonaje extends VistaDefault {
 		}
 
 		rdbtnHuargen = new CircularToggleButton(imageHuargen, "Huargen");
+		rdbtnHuargen.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnHuargen.setText("Huargen");
 		rdbtnHuargen.setBounds(45, 285, 55, 55);
 		getContentPane().add(rdbtnHuargen);
@@ -403,7 +408,8 @@ public class CrearPersonaje extends VistaDefault {
 		}
 
 		rdbtnPandaAlianza = new CircularToggleButton(imagePandaA, "Panda");
-		rdbtnPandaAlianza.setText("Panda");
+		rdbtnPandaAlianza.addItemListener(new CrearPersonajeSeleccionadoListener(this));
+		rdbtnPandaAlianza.setText("Pandaren");
 		rdbtnPandaAlianza.setBounds(45, 335, 55, 55);
 		getContentPane().add(rdbtnPandaAlianza);
 
@@ -417,6 +423,7 @@ public class CrearPersonaje extends VistaDefault {
 		}
 
 		rdbtnOrco = new CircularToggleButton(imageOrco, "Orco");
+		rdbtnOrco.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnOrco.setText("Orco");
 		rdbtnOrco.setBounds(884, 135, 55, 55);
 		getContentPane().add(rdbtnOrco);
@@ -431,6 +438,7 @@ public class CrearPersonaje extends VistaDefault {
 		}
 
 		rdbtnNoMuerto = new CircularToggleButton(imageNoMuerto, "No Muerto");
+		rdbtnNoMuerto.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnNoMuerto.setText("No muerto");
 		rdbtnNoMuerto.setBounds(884, 185, 55, 55);
 		getContentPane().add(rdbtnNoMuerto);
@@ -445,6 +453,7 @@ public class CrearPersonaje extends VistaDefault {
 		}
 
 		rdbtnTauren = new CircularToggleButton(imageTauren, "Tauren");
+		rdbtnTauren .addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnTauren.setText("Tauren");
 		rdbtnTauren.setBounds(884, 235, 55, 55);
 		getContentPane().add(rdbtnTauren);
@@ -459,6 +468,7 @@ public class CrearPersonaje extends VistaDefault {
 		}
 
 		rdbtnTroll = new CircularToggleButton(imageTroll, "Troll");
+		rdbtnTroll.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnTroll.setText("Troll");
 		rdbtnTroll.setBounds(884, 285, 55, 55);
 		getContentPane().add(rdbtnTroll);
@@ -473,6 +483,7 @@ public class CrearPersonaje extends VistaDefault {
 		}
 
 		rdbtnDracthyr = new CircularToggleButton(imageDracthyr, "Dracthyr");
+		rdbtnDracthyr.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnDracthyr.setText("Dracthyr");
 		rdbtnDracthyr.setBounds(884, 335, 55, 55);
 		getContentPane().add(rdbtnDracthyr);
@@ -486,6 +497,7 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 		rdbtnMujer = new CircularToggleButton(imageMujer, "Mujer");
+		rdbtnMujer.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnMujer.setText("Mujer");
 		rdbtnMujer.setBounds(494, 10, 55, 55);
 		getContentPane().add(rdbtnMujer);
@@ -499,6 +511,7 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 		rdbtnHombre = new CircularToggleButton(imageHombre, "Hombre");
+		rdbtnHombre .addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnHombre.setText("Hombre");
 		rdbtnHombre.setBounds(440, 10, 55, 55);
 		getContentPane().add(rdbtnHombre);
@@ -512,6 +525,7 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 		btnGuerrero = new CircularToggleButton(imageGuerrero, "Guerrero");
+		btnGuerrero.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		btnGuerrero.setText("Guerrero");
 		btnGuerrero.setBounds(159, 506, 55, 55);
 		getContentPane().add(btnGuerrero);
@@ -525,6 +539,7 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 		btnCazador = new CircularToggleButton(imageCazador, "Cazador");
+		btnCazador.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		btnCazador.setText("Cazador");
 		btnCazador.setBounds(211, 506, 55, 55);
 		getContentPane().add(btnCazador);
@@ -539,6 +554,7 @@ public class CrearPersonaje extends VistaDefault {
 		}
 
 		rdbtnMago = new CircularToggleButton(imageMago, "Mago");
+		rdbtnMago.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnMago.setText("Mago");
 		rdbtnMago.setBounds(263, 506, 55, 55);
 		getContentPane().add(rdbtnMago);
@@ -553,6 +569,7 @@ public class CrearPersonaje extends VistaDefault {
 		}
 
 		rdbtnPicaro = new CircularToggleButton(imagePicaro, "Picaro");
+		rdbtnPicaro.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnPicaro.setText("Picaro");
 		rdbtnPicaro.setBounds(315, 506, 55, 55);
 		getContentPane().add(rdbtnPicaro);
@@ -567,6 +584,7 @@ public class CrearPersonaje extends VistaDefault {
 		}
 
 		rdbtnSacerdote = new CircularToggleButton(imageSacerdote, "Sacerdote");
+		rdbtnSacerdote.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnSacerdote.setText("Sacerdote");
 		rdbtnSacerdote.setBounds(367, 506, 55, 55);
 		getContentPane().add(rdbtnSacerdote);
@@ -581,6 +599,7 @@ public class CrearPersonaje extends VistaDefault {
 		}
 
 		rdbtnBrujo = new CircularToggleButton(imageBrujo, "Brujo");
+		rdbtnBrujo.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnBrujo.setText("Brujo");
 		rdbtnBrujo.setBounds(419, 506, 55, 55);
 		getContentPane().add(rdbtnBrujo);
@@ -595,6 +614,7 @@ public class CrearPersonaje extends VistaDefault {
 		}
 
 		rdbtnPaladin = new CircularToggleButton(imagePaladin, "Paladin");
+		rdbtnPaladin.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnPaladin.setText("Paladin");
 		rdbtnPaladin.setBounds(471, 506, 55, 55);
 		getContentPane().add(rdbtnPaladin);
@@ -609,6 +629,7 @@ public class CrearPersonaje extends VistaDefault {
 		}
 
 		rdbtnDruida = new CircularToggleButton(imageDruida, "Druida");
+		rdbtnDruida .addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnDruida.setText("Druida");
 		rdbtnDruida.setBounds(523, 506, 55, 55);
 		getContentPane().add(rdbtnDruida);
@@ -623,6 +644,7 @@ public class CrearPersonaje extends VistaDefault {
 		}
 
 		rdbtnChaman = new CircularToggleButton(imageChaman, "Chaman");
+		rdbtnChaman .addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnChaman.setText("Chaman");
 		rdbtnChaman.setBounds(575, 506, 55, 55);
 		getContentPane().add(rdbtnChaman);
@@ -637,6 +659,7 @@ public class CrearPersonaje extends VistaDefault {
 		}
 
 		rdbtnCaballeroMuerte = new CircularToggleButton(imageDK, "Cabellero de la Muerte");
+		rdbtnCaballeroMuerte.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnCaballeroMuerte.setText("Caballero de la muerte");
 		rdbtnCaballeroMuerte.setBounds(627, 506, 55, 55);
 		getContentPane().add(rdbtnCaballeroMuerte);
@@ -651,6 +674,7 @@ public class CrearPersonaje extends VistaDefault {
 		}
 
 		rdbtnCazadorDemonios = new CircularToggleButton(imageDH, "Cazador de Demonios");
+		rdbtnCazadorDemonios.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnCazadorDemonios.setText("Cazador de demonios");
 		rdbtnCazadorDemonios.setBounds(679, 506, 55, 55);
 		getContentPane().add(rdbtnCazadorDemonios);
@@ -665,22 +689,24 @@ public class CrearPersonaje extends VistaDefault {
 		}
 
 		rdbtnEvocador = new CircularToggleButton(imageEvocador, "Evocador");
+		rdbtnEvocador.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnEvocador.setText("Evocador");
 		rdbtnEvocador.setBounds(731, 506, 55, 55);
 		getContentPane().add(rdbtnEvocador);
 
 		personaje = new JLabel();
 		personaje.setHorizontalAlignment(SwingConstants.CENTER);
-		ImageIcon orco = new ImageIcon("src/main/resources/enanoBailongo.gif");
+		personaje.setBounds(342, 151, 300, 300);
+		getContentPane().add(personaje);
+		// ImageIcon orco = new ImageIcon("src/main/resources/enanoBailongo.gif");
+		// personaje.setIcon(orco);
+
 
 		txtNombrePersonaje = new JTextField();
 		txtNombrePersonaje.setBounds(426, 107, 132, 20);
 		getContentPane().add(txtNombrePersonaje);
 		txtNombrePersonaje.setColumns(10);
-		personaje.setIcon(orco);
-		personaje.setBounds(342, 151, 300, 300);
-		getContentPane().add(personaje);
-
+		
 		JLabel lblNewLabel = new JLabel("Nombre Personaje");
 		lblNewLabel.setBounds(427, 80, 140, 14);
 		getContentPane().add(lblNewLabel);
@@ -716,5 +742,13 @@ public class CrearPersonaje extends VistaDefault {
 		clase.add(rdbtnCazadorDemonios);
 		clase.add(rdbtnEvocador);
 
+	}
+
+	public void cambiarImagenPersonaje(String rutaImagen) {
+		imagenPersonaje = new ImageIcon(rutaImagen);
+		personaje.setIcon(imagenPersonaje);
+
+		personaje.revalidate();
+		personaje.repaint();
 	}
 }

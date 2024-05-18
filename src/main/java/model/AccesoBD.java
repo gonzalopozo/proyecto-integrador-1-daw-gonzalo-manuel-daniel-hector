@@ -9,6 +9,7 @@ import java.util.Random;
 import java.util.random.*;
 
 import main.*;
+import views.PaginaPrincipal;
 
 public class AccesoBD {
 
@@ -167,6 +168,137 @@ public class AccesoBD {
     
         return arrayListBidimensional;
     }
+
+    // public ArrayList<String[]> hacerConsultaTablaDetallesPartida(Connection c, String nombrePartida, String ambientacionPartida) throws SQLException {
+    //     ArrayList<String[]> arrayListBidimensional = new ArrayList<>();
+    
+    //     String query = "SELECT personaje_id, nivel, salud, fuerza, destreza, sabiduria, carisma, inteligencia, constitucion FROM juega WHERE nombre = ? AND ambientacion = ?";
+    //     String query2 = "SELECT nombre, raza, clase FROM personajes WHERE personaje_id = ?";
+    
+    //     ResultSet resultados = null;
+    //     ResultSet resultados2 = null;
+    
+    //     PreparedStatement pstmt1 = null;
+    //     PreparedStatement pstmt2 = null;
+    
+    //     try {
+    //         Connection con = getConexion();
+    //         pstmt1 = con.prepareStatement(query);
+    //         pstmt1.setString(1, nombrePartida);
+    //         pstmt1.setString(2, ambientacionPartida);
+    //         resultados = pstmt1.executeQuery();
+    
+    //         while (resultados.next()) {
+    //             int personajeId = resultados.getInt("personaje_id");
+    
+    //             try {
+    //                 pstmt2 = con.prepareStatement(query2);
+    //                 pstmt2.setInt(1, personajeId);
+    //                 resultados2 = pstmt2.executeQuery();
+    
+    //                 while (resultados2.next()) {
+    //                     String[] fila = new String[11];  // Crear una nueva instancia de fila para cada partida
+    
+    //                     fila[0] = resultados2.getString("nombre");
+    //                     fila[1] = resultados2.getString("raza");
+    //                     fila[2] = resultados2.getString("clase");
+    
+    //                     // int personajeId = resultados2.getInt("personaje_id");
+    
+    //                     fila[3] = String.valueOf(resultados.getInt("nivel"));
+    //                     fila[4] = String.valueOf(resultados.getInt("salud"));
+    //                     fila[5] = String.valueOf(resultados.getInt("fuerza"));
+    //                     fila[6] = String.valueOf(resultados.getInt("destreza"));
+    //                     fila[7] = String.valueOf(resultados.getInt("sabiduria"));
+    //                     fila[8] = String.valueOf(resultados.getInt("carisma"));
+    //                     fila[9] = String.valueOf(resultados.getInt("inteligencia"));
+    //                     fila[10] = String.valueOf(resultados.getInt("constitucion"));
+    
+    //                     arrayListBidimensional.add(fila);
+    //                 }
+    
+    //             } finally {
+    //                 if (resultados2 != null) {
+    //                     resultados2.close();
+    //                 }
+    //                 if (pstmt2 != null) {
+    //                     pstmt2.close();
+    //                 }
+    //             }
+    //         }
+    
+    //     } finally {
+    //         if (resultados != null) {
+    //             resultados.close();
+    //         }
+    //         if (pstmt1 != null) {
+    //             pstmt1.close();
+    //         }
+    //     }
+    
+    //     return arrayListBidimensional;
+    // }
+
+    public ArrayList<String[]> hacerConsultaTablaDetallesPartida(Connection c, String nombrePartida, String ambientacionPartida) throws SQLException {
+    ArrayList<String[]> arrayListBidimensional = new ArrayList<>();
+
+    String query = "SELECT id FROM partidas WHERE nombre = ? AND ambientacion = ?";
+    String query2 = "SELECT personaje_id, nivel, salud, fuerza, destreza, sabiduria, carisma, inteligencia, constitucion FROM juega WHERE partida_id = ?";
+    String query3 = "SELECT nombre, raza, clase FROM personajes WHERE id = ?";
+
+    try (PreparedStatement pstmt1 = c.prepareStatement(query)) {
+        pstmt1.setString(1, nombrePartida);
+        pstmt1.setString(2, ambientacionPartida);
+        
+        try (ResultSet resultados = pstmt1.executeQuery()) {
+            while (resultados.next()) {
+                int partidaId = resultados.getInt("id");
+                
+                try (PreparedStatement pstmt2 = c.prepareStatement(query2)) {
+                    pstmt2.setInt(1, partidaId);
+                    
+                    try (ResultSet resultados2 = pstmt2.executeQuery()) {
+                        while (resultados2.next()) {
+                            int personajeId = resultados2.getInt("personaje_id");
+                            String[] fila = new String[11];
+
+
+
+                            // fila[0] = resultados2.getString("nombre");
+                            // fila[1] = resultados2.getString("raza");
+                            // fila[2] = resultados2.getString("clase");
+                            fila[3] = String.valueOf(resultados2.getInt("nivel"));
+                            fila[4] = String.valueOf(resultados2.getInt("salud"));
+                            fila[5] = String.valueOf(resultados2.getInt("fuerza"));
+                            fila[6] = String.valueOf(resultados2.getInt("destreza"));
+                            fila[7] = String.valueOf(resultados2.getInt("sabiduria"));
+                            fila[8] = String.valueOf(resultados2.getInt("carisma"));
+                            fila[9] = String.valueOf(resultados2.getInt("inteligencia"));
+                            fila[10] = String.valueOf(resultados2.getInt("constitucion"));
+
+                            try (PreparedStatement pstmt3 = c.prepareStatement(query3)) {
+                                pstmt3.setInt(1, personajeId);
+                                try (ResultSet resultados3 = pstmt3.executeQuery()) {
+                                    if (resultados3.next()) {
+                                        fila[0] = resultados3.getString("nombre");
+                                        fila[1] = resultados3.getString("raza");
+                                        fila[2] = resultados3.getString("clase");
+
+                                    }
+                                } 
+                            } 
+                            
+                            arrayListBidimensional.add(fila);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return arrayListBidimensional;
+}
+
     
 
     // public ArrayList<String[]> hacerConsultaTablaPartidas(Connection c, int personaje_id) throws SQLException{
@@ -515,7 +647,7 @@ public class AccesoBD {
     }
     
 
-    public ArrayList<String> devolverPartidasNombre (Connection c) throws SQLException{
+    public ArrayList<String> devolverPartidasNombre(Connection c) throws SQLException{
         ArrayList<String> arrayPartidasNombre = new ArrayList<>();
 
         
@@ -539,7 +671,7 @@ public class AccesoBD {
             pstmt.close();
         } catch (SQLException e) {
             System.err.println(e.getMessage()); 
-        }
+        }   
                 
         while(resultados.next()) {
         	arrayPartidasNombre.add(resultados.getString(1));
@@ -636,6 +768,37 @@ public class AccesoBD {
     //     }
     //     cerrarConexion(abc);
     // }
+
+    // TODO Metodo BORRAR PERSONAJE
+    public void borrarPersonaje(Connection c, String nombrePersonaje, int personajeId){
+        String query = "DELETE FROM personajes WHERE nombre = ? AND miembro_id = ?"; // ! La wea que borra personaje
+        String query2 = "DELETE FROM juega WHERE personaje_id = ?";
+        System.out.println(query);
+        try (PreparedStatement ps = c.prepareStatement(query)){
+            ps.setString(1, nombrePersonaje); // ! Nombre del personaje
+            ps.setInt(2, App.getMiembroActualId()); 
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                System.out.println("Borrado exitoso en personajes");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            
+        }
+
+        try (PreparedStatement ps = c.prepareStatement(query2)){
+            ps.setInt(1, personajeId); 
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                System.out.println("Borrado exitoso en juega");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            
+        }
+    }
+
+
 
 }
 

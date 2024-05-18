@@ -20,10 +20,7 @@ public class DetallesPersonajesCuenta extends VistaDefault {
         volver.setBounds(10, 327, 107, 23);
         getContentPane().add(volver);
 
-        
-
         // String[] nombresColumnas = {"Nombre", "Raza", "Clase", "Partida", "Nivel", "Salud", "Fuerza", "Destreza", "Sabiduría", "Carisma", "Inteligencia", "Constitución"};
-
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nombre");
         model.addColumn("Raza");

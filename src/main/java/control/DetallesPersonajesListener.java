@@ -45,7 +45,7 @@ public class DetallesPersonajesListener implements ActionListener {
         
         model.setRowCount(0);
 
-        System.out.println(Arrays.toString(datos.get(0)));
+        // System.out.println(Arrays.toString(datos.get(0)));
 
         for (String[] fila : datos) {
             model.addRow(fila);
