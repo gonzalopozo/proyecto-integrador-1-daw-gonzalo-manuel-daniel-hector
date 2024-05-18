@@ -262,6 +262,9 @@ public class App {
                 // MoverseListener unirsePartidaDetallesPersonajesPartida = new MoverseListener(unirsePartida, detallesPersonajesPartida);
                 // unirsePartida.setListenerBotonDetalles(unirsePartidaDetallesPersonajesPartida);
                 
+                UnirsePartidaListener unirsePartidaListener = new UnirsePartidaListener(unirsePartida);
+                unirsePartida.setListenerBotonContinuar(unirsePartidaListener);
+
                 MoverseListener detallesPersonajesPartidaUnirsePartida = new MoverseListener(detallesPersonajesPartida, unirsePartida);
                 detallesPersonajesPartida.setListenerBotonVolver(detallesPersonajesPartidaUnirsePartida);
                 

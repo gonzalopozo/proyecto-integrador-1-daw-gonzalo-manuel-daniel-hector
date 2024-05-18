@@ -539,6 +539,8 @@ public class AccesoBD {
     public void unirsePartida(Connection c, int idPersonaje, int idPartida){
         // TODO: IMPLEMENTAR MÉTODO
 
+        // insert tipo --> INSERT INTO juega VALUES (70, 1, 2, 50000, 10000, 1000, 1000, 3000, 1000, 450);
+
         String query = "INSERT INTO juega VALUES (1, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         try (Connection con = getConexion(); PreparedStatement pstmt = con.prepareStatement(query)){
@@ -681,6 +683,86 @@ public class AccesoBD {
 
         return arrayPartidasNombre;
     }
+
+    // public int devolverIdPartida(Connection c, String nombrePartida, String ambientacionPartida) throws SQLException {
+    //     int partidaSeleccionadaId = 0;
+        
+    //     String query = "SELECT id FROM partidas WHERE nombre = ? AND ambientacion = ?";
+        
+    //     System.out.println(query);
+
+    //     ResultSet resultados = null;
+
+    //     try {
+            
+    //         Connection con = getConexion();
+    //         PreparedStatement pstmt = con.prepareStatement(query);
+
+    //         pstmt.setString(1, nombrePartida);
+    //         pstmt.setString(2, ambientacionPartida);
+
+    //         resultados = pstmt.executeQuery();
+            
+            
+    //         pstmt.close();
+    //     } catch (SQLException e) {
+    //         System.err.println(e.getMessage()); 
+    //     }   
+                
+    //     while (resultados.next()) {
+    //         System.out.println("a");
+    //     	partidaSeleccionadaId = resultados.getInt(1);
+    //     }
+    //     resultados.close();
+
+
+
+    //     return partidaSeleccionadaId;
+    // }
+
+    public int devolverIdPartida(Connection c, String nombrePartida, String ambientacionPartida) throws SQLException {
+        int partidaSeleccionadaId = 0;
+        
+        String query = "SELECT id FROM partidas WHERE nombre = ? AND ambientacion = ?";
+        
+        System.out.println(query);
+    
+        ResultSet resultados = null;
+        PreparedStatement pstmt = null;
+    
+        try {
+            pstmt = c.prepareStatement(query);
+            pstmt.setString(1, nombrePartida);
+            pstmt.setString(2, ambientacionPartida);
+    
+            resultados = pstmt.executeQuery();
+            
+            if (resultados.next()) {
+                partidaSeleccionadaId = resultados.getInt("id");
+            }
+            
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            if (resultados != null) {
+                try {
+                    resultados.close();
+                } catch (SQLException e) {
+                    System.err.println(e.getMessage());
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    System.err.println(e.getMessage());
+                }
+            }
+        }
+        
+        return partidaSeleccionadaId;
+    }
+    
 
     public Object [] devolverPersonajeSeleccionadoMiembro(Connection c, String nombrePersonaje) throws SQLException{
         Object [] datosPersonajeSeleccionado = new Object[3];
