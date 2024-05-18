@@ -14,7 +14,7 @@ import java.util.Arrays;
 import javax.swing.*;
 import javax.swing.table.*;
 
-public class DetallesPersonajesListener implements ActionListener{
+public class DetallesPersonajesListener implements ActionListener {
     
     private PaginaPrincipal paginaPrincipal;
     private DetallesPersonajesCuenta detallesPersonajesCuenta;
@@ -32,7 +32,6 @@ public class DetallesPersonajesListener implements ActionListener{
         Connection c = acceso.getConexion();
         ArrayList<String[]> datos = null;
         try {
-            acceso.obtenerDatos(c);
             datos = acceso.hacerConsultaTablaCuenta(c);
         } catch (SQLException sqle) {
             sqle.printStackTrace();

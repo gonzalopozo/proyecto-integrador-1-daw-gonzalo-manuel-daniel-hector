@@ -52,9 +52,11 @@ public class UnirsePartida extends VistaDefault {
         btnDetalles = new JButton("DETALLES");
         btnDetalles.setBounds(221, 327, 141, 23);
         getContentPane().add(btnDetalles);
+
+		table.getSelectedRow();
     }
 
-    public void setListenerBotonDetalles(MoverseListener listener) {
+    public void setListenerBotonDetalles(DetallesPersonajesPartidaJugarListener listener) {
         btnDetalles.addActionListener(listener);
     }
 

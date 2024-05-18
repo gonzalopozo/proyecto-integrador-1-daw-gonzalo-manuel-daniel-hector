@@ -32,14 +32,13 @@ public class JugarPaginaPrincipalListener implements ActionListener{
         Connection c = acceso.getConexion();
         ArrayList<String[]> datos = null;
         try {
-            acceso.obtenerDatos(c);
-            datos = acceso.hacerConsultaTablaCuenta(c);
+            datos = acceso.hacerConsultaTablaPartidas(c, PaginaPrincipal.getPersonajeSeleccionadoId());
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             // TODO: handle exception
         }
 
-        JTable tabla = detallesPersonajesCuenta.getTablaDatos();
+        JTable tabla = unirsePartida.getTable();
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
         
         model.setRowCount(0);
@@ -57,7 +56,7 @@ public class JugarPaginaPrincipalListener implements ActionListener{
         tabla.setModel(model);
 
 
-        detallesPersonajesCuenta.setTablaDatos(tabla);
+        unirsePartida.setTable(tabla);
 
 
         //String[][] datos = {
@@ -77,7 +76,7 @@ public class JugarPaginaPrincipalListener implements ActionListener{
 
         paginaPrincipal.dispose();
 
-        detallesPersonajesCuenta.hacerVisible();
+        unirsePartida.hacerVisible();
 
         
 

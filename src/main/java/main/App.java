@@ -31,7 +31,7 @@ public class App {
     private static PaginaPrincipal paginaPrincipal;
     private static PaginaPrincipalGM paginaPrincipalGM;
     private static SeleccionarPartida seleccionarPartida;
-    private static PartidasDisponibles partidasDisponibles;
+    // private static PartidasDisponibles partidasDisponibles;
     private static SeleccionRol seleccionRol;
     private static UnirsePartida unirsePartida;
     private static SeleccionarPartidaGM seleccionarPartidaGM;
@@ -101,9 +101,9 @@ public class App {
         return seleccionarPartida;
     }
 
-    public static PartidasDisponibles getPartidasdisponibles() {
-        return partidasDisponibles;
-    }
+    // public static PartidasDisponibles getPartidasdisponibles() {
+    //     return partidasDisponibles;
+    // }
 
     public static SeleccionRol getSeleccionrol() {
         return seleccionRol;
@@ -161,7 +161,7 @@ public class App {
                 paginaPrincipal = new PaginaPrincipal();
                 paginaPrincipalGM = new PaginaPrincipalGM();
                 seleccionarPartida = new SeleccionarPartida();
-                partidasDisponibles = new PartidasDisponibles();
+                // partidasDisponibles = new PartidasDisponibles();
                 seleccionRol = new SeleccionRol();
                 unirsePartida = new UnirsePartida();
                 seleccionarPartidaGM = new SeleccionarPartidaGM();
@@ -199,11 +199,11 @@ public class App {
 
 
 
-                MoverseListener paginaPrincipalGMpartidasDisponibles = new MoverseListener(paginaPrincipalGM, partidasDisponibles);
-                paginaPrincipalGM.setListenerBotonContinuar(paginaPrincipalGMpartidasDisponibles);
+                MoverseListener paginaPrincipalGMseleccionarPartidaGM = new MoverseListener(paginaPrincipalGM, seleccionarPartidaGM);
+                paginaPrincipalGM.setListenerBotonContinuar(paginaPrincipalGMseleccionarPartidaGM);
 
-                MoverseListener PartidasDisponibles = new MoverseListener(partidasDisponibles, paginaPrincipalGM);
-                partidasDisponibles.setListenerBotonVolver(PartidasDisponibles);
+                MoverseListener seleccionarPartidaGMListener = new MoverseListener(paginaPrincipalGM, paginaPrincipalGM);
+                seleccionarPartidaGM.setListenerBotonVolver(seleccionarPartidaGMListener);
 
 
                 MoverseListener PaginaPrincipalGMSeleccionRol = new MoverseListener(paginaPrincipalGM, seleccionRol);
@@ -241,14 +241,14 @@ public class App {
                 MoverseListener detallesPersonajesCuentaPaginaPrincipal = new MoverseListener (detallesPersonajesCuenta, paginaPrincipal);
                 detallesPersonajesCuenta.setListenerBotonVolver(detallesPersonajesCuentaPaginaPrincipal);
 
-                MoverseListener paginaPrincipalUnirsePartida = new MoverseListener(paginaPrincipal, unirsePartida);
+                JugarPaginaPrincipalListener paginaPrincipalUnirsePartida = new JugarPaginaPrincipalListener(paginaPrincipal, unirsePartida);
                 paginaPrincipal.setListenerBotonJugar(paginaPrincipalUnirsePartida);
 
                 MoverseListener unirsePartidaPaginaPrincipal = new MoverseListener(unirsePartida, paginaPrincipal);
                 unirsePartida.setListenerBotonVolver(unirsePartidaPaginaPrincipal);
                 
-                MoverseListener unirsePartidaDetallesPersonajesPartida = new MoverseListener(unirsePartida, detallesPersonajesPartida);
-                unirsePartida.setListenerBotonDetalles(unirsePartidaDetallesPersonajesPartida);
+                // MoverseListener unirsePartidaDetallesPersonajesPartida = new MoverseListener(unirsePartida, detallesPersonajesPartida);
+                // unirsePartida.setListenerBotonDetalles(unirsePartidaDetallesPersonajesPartida);
                 
                 MoverseListener detallesPersonajesPartidaUnirsePartida = new MoverseListener(detallesPersonajesPartida, unirsePartida);
                 detallesPersonajesPartida.setListenerBotonVolver(detallesPersonajesPartidaUnirsePartida);

@@ -28,8 +28,19 @@ public class PaginaPrincipal extends VistaDefault {
 	private ImageIcon orco;
 	private JPanel pnlContenedor;
 	private JPanel panelPersonajes;
-	private ButtonGroup botonesPersonajes;
+	private ButtonGroup botonesPersonajes;	
 	private ArrayList<String> nombresPersonajes;
+	private String nombrePersonaje;
+
+	private static int personajeSeleccionadoId;
+
+	public static int getPersonajeSeleccionadoId() {
+		return personajeSeleccionadoId;
+	}
+
+	public static void setPersonajeSeleccionadoId(int personajeSeleccionadoId) {
+		PaginaPrincipal.personajeSeleccionadoId = personajeSeleccionadoId;
+	}
 
 	public PaginaPrincipal() {
 		super();
@@ -50,8 +61,6 @@ public class PaginaPrincipal extends VistaDefault {
 		volver = new JButton("VOLVER");
 		volver.setBounds(10, 524, 128, 23);
 		getContentPane().add(volver);
-		
-						
 		
 		pnlContenedor = new JPanel();
 		pnlContenedor.setForeground(new Color(255, 255, 255));
@@ -101,7 +110,7 @@ public class PaginaPrincipal extends VistaDefault {
 		lblPersonaje.setIcon(orco);
 		orco = new ImageIcon("src/main/resources/enanoBailongo.gif");
 		
-		lblNombrePersonaje = new JLabel("PepeElDelMadrid");
+		lblNombrePersonaje = new JLabel();
 		lblNombrePersonaje.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNombrePersonaje.setFont(new Font("Arial", Font.BOLD, 15));
 		lblNombrePersonaje.setBounds(410, 400, 164, 81);
@@ -138,12 +147,20 @@ public class PaginaPrincipal extends VistaDefault {
 		return botonesPersonajes;
 	}
 
+	public JLabel getLblNombrePersonaje() {
+		return lblNombrePersonaje;
+	}
+
+	public void setLblNombrePersonaje(JLabel lblNombrePersonaje) {
+		this.lblNombrePersonaje = lblNombrePersonaje;
+	}
+
 	public void setBotonesPersonajes(ButtonGroup botonesPersonajes) {
 		this.botonesPersonajes = botonesPersonajes;
 	}
 
-	public void setListenerBotonJugar(MoverseListener listener) {
-		btnJugar.addActionListener(listener);
+	public void setListenerBotonJugar(JugarPaginaPrincipalListener paginaPrincipalUnirsePartida) {
+		btnJugar.addActionListener(paginaPrincipalUnirsePartida);
 	}
 
 	public void setListenerBotonCrearPersonaje(MoverseListener listener) {
@@ -159,9 +176,12 @@ public class PaginaPrincipal extends VistaDefault {
 		botonesPersonajes.add(nuevoBotonPersonaje);
 		panelPersonajes.add(nuevoBotonPersonaje);
 
+		nuevoBotonPersonaje.addItemListener(new PersonajeSeleccionadoListener(this));
+
 		// PersonajeSeleccionadoListener itemListener = new PersonajeSeleccionadoListener();
 
 		// nuevoBotonPersonaje.addItemListener();
+
 
 		panelPersonajes.revalidate();
 		panelPersonajes.repaint();
@@ -196,11 +216,12 @@ public class PaginaPrincipal extends VistaDefault {
 			if (button.isSelected()) {
 				return button.getText();
 			}
+			
 		}
 
 		return null;
 	}
 
-		
+	
 
 }
