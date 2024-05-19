@@ -14,7 +14,7 @@ import views.PaginaPrincipal;
 public class AccesoBD {
 
     // private String url = "jdbc:sqlite:database/database.db";
-    private String url = "jdbc:sqlite:C:\\Users\\gonza\\OneDrive\\Escritorio\\pro-intega\\proyecto-integrador-1-daw-gonzalo-manuel-daniel-hector\\database\\database.db";
+    private String url = "jdbc:sqlite:C:\\Users\\Manu\\Desktop\\proyecto4\\proyecto-integrador-1-daw-gonzalo-manuel-daniel-hector\\database\\database.db";
 
     public Connection getConexion() {
         Connection con = null;
@@ -1239,27 +1239,28 @@ public class AccesoBD {
         String query = "SELECT id FROM miembros WHERE nombre = ? ";
 
         ResultSet resultados = null;
-
+        PreparedStatement pstmt = c.prepareStatement(query);
         try {
-
-            Connection con = getConexion();
-            PreparedStatement pstmt = con.prepareStatement(query);
 
             pstmt.setString(1, nombreMiembro);
 
             resultados = pstmt.executeQuery();
 
-            pstmt.close();
+            while (resultados.next()) {
+                miembroId = resultados.getInt("id");
+            }
 
         } catch (SQLException e) {
             System.err.println(e.getMessage());
-        }
+        } finally {
+            if (pstmt != null) {
+                pstmt.close();
+            }
 
-        while (resultados.next()) {
-            miembroId = resultados.getInt("id");
+            if (resultados != null) {
+                resultados.close();
+            }
         }
-
-        resultados.close();
 
         return miembroId;
 
