@@ -56,6 +56,7 @@ public class SubirNivelGMListener implements ActionListener {
                                                                                                                   // en
                                                                                                                   // el
                                                                                                                   // combobox
+        System.out.println(personajeId);
         } catch (SQLException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();

@@ -22,6 +22,7 @@ public class App {
 
     private static Login login;
     private static CrearCuenta crearCuenta;
+    
     private static CrearCuentaDos crearCuentaDos;
     private static CuentaCreada cuentaCreada;
     private static CrearPartida crearPartida;
