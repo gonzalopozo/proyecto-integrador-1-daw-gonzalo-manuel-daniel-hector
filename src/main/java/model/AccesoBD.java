@@ -14,7 +14,8 @@ import views.PaginaPrincipal;
 public class AccesoBD {
 
     private String url = "jdbc:sqlite:database/database.db";
-    // private String url = "jdbc:sqlite:C:\\Users\\gonza\\OneDrive\\Escritorio\\pro-intega\\proyecto-integrador-1-daw-gonzalo-manuel-daniel-hector\\database\\database.db";
+    // private String url =
+    // "jdbc:sqlite:C:\\Users\\gonza\\OneDrive\\Escritorio\\pro-intega\\proyecto-integrador-1-daw-gonzalo-manuel-daniel-hector\\database\\database.db";
 
     public Connection getConexion() {
         Connection con = null;
@@ -1240,6 +1241,7 @@ public class AccesoBD {
 
         ResultSet resultados = null;
         PreparedStatement pstmt = c.prepareStatement(query);
+        
         try {
 
             pstmt.setString(1, nombreMiembro);

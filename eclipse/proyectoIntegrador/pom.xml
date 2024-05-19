@@ -19,6 +19,16 @@
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.45.3.0</version>
         </dependency>
+        <dependency>
+        	<groupId>JUnit_Prueba</groupId>
+        	<artifactId>JUnit_Prueba</artifactId>
+        	<version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+        	<groupId>com.daw.maven</groupId>
+        	<artifactId>PruebasConMaven</artifactId>
+        	<version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     
 </project>
