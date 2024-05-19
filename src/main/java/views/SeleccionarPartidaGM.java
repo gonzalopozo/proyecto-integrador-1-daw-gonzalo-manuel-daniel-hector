@@ -27,6 +27,17 @@ public class SeleccionarPartidaGM extends VistaDefault {
 	private ArrayList<String> nombresPartidas;
 
 	private static int partidaSeleccionadaId;
+	private static int gameMasterId;
+
+	
+
+	public static int getGameMasterId() {
+		return gameMasterId;
+	}
+
+	public static void setGameMasterId(int gameMasterId) {
+		SeleccionarPartidaGM.gameMasterId = gameMasterId;
+	}
 
 	/**
 	 * Constructor de la clase SeleccionarPartidaGM.

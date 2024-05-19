@@ -63,8 +63,7 @@ public class CrearPersonajeListener implements ActionListener {
             Connection c = accesoBD.getConexion();
 
             // Intenta crear el personaje en la BBDD y obtiene el resultado
-            boolean exitoso = accesoBD.crearPersonaje(c, nombrePersonaje, sexoPersonaje, razaPersonaje, clasePersonaje,
-                    App.getMiembroActualId());
+            boolean exitoso = accesoBD.crearPersonaje(c, nombrePersonaje, sexoPersonaje, razaPersonaje, clasePersonaje, App.getMiembroActualId());
 
             accesoBD.cerrarConexion(c);
 

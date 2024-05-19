@@ -41,9 +41,7 @@ public class PartidaSeleccionadaListener implements ItemListener {
             // de datos.
             int partidaSeleccionadaId = 0;
             try {
-                partidaSeleccionadaId = accesoBD.devolverIdPartidaGM(c,
-                        seleccionarPartidaGM.getSelectedButtonText(seleccionarPartidaGM.getBotonesPartidas()),
-                        App.getmiembroActualId());
+                partidaSeleccionadaId = accesoBD.devolverIdPartidaGM(c, seleccionarPartidaGM.getSelectedButtonText(seleccionarPartidaGM.getBotonesPartidas()), App.getmiembroActualId());
             } catch (SQLException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();

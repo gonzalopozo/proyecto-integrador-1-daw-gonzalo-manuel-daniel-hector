@@ -196,7 +196,7 @@ public class App {
                 // MoverseListener loginSeleccionRol = new MoverseListener(login, seleccionRol);
                 // login.setListenerBotonContinuar(loginSeleccionRol);
 
-                LoginListener loginCuenta = new LoginListener(login, seleccionRol);
+                LoginListener loginCuenta = new LoginListener(login, seleccionRol, paginaPrincipal);
                 login.setListenerBotonContinuar(loginCuenta);
 
                 SeleccionRolListener seleccionRolListener = new SeleccionRolListener(seleccionRol, paginaPrincipal,
