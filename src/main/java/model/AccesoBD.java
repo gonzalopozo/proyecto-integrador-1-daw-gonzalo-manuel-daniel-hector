@@ -657,28 +657,48 @@ public class AccesoBD {
         
         System.out.println(query);
 
-
         ResultSet resultados = null;
+        PreparedStatement pstmt = null;
 
         try {
             
-            Connection con = getConexion();
-            PreparedStatement pstmt = con.prepareStatement(query);
-
+            pstmt = c.prepareStatement(query);
             pstmt.setInt(1, App.getMiembroActualId());
 
             resultados = pstmt.executeQuery();
+
+            while(resultados.next()) {
+        	    arrayPartidasNombre.add(resultados.getString(1));
+        	    System.out.println(resultados.getString(1));
+            }
             
-            
-            pstmt.close();
         } catch (SQLException e) {
             System.err.println(e.getMessage()); 
-        }   
-                
-        while(resultados.next()) {
-        	arrayPartidasNombre.add(resultados.getString(1));
-        	System.out.println(resultados.getString(1));
+        } finally {
+            if (resultados != null) {
+                try {
+                    resultados.close();
+                } catch (SQLException e) {
+                    System.err.println("Error closing ResultSet: " + e.getMessage());
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    System.err.println("Error closing PreparedStatement: " + e.getMessage());
+                }
+            }
+            if (c != null) {
+                try {
+                    c.close();
+                } catch (SQLException e) {
+                    System.err.println("Error closing Connection: " + e.getMessage());
+                }
+            }
         }
+                
+        
         resultados.close();
 
         return arrayPartidasNombre;

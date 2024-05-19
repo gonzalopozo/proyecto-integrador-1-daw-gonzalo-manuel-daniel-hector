@@ -1,6 +1,5 @@
 package views;
 
-
 import javax.swing.*;
 import javax.swing.border.*;
 
@@ -14,25 +13,42 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import java.awt.event.*;
+
+import java.io.IOException;
+import java.util.Enumeration;
+
 public class PaginaPrincipal extends VistaDefault {
 
 	private JButton btnJugar;
 	private JButton btnCrearPersonaje;
+	private JButton btnBorrarPersonaje;
 	private JButton btnVerPartidas;
 	private JLabel lblPersonaje;
 	private JLabel lblNombrePersonaje;
-	private ImageIcon orco;
+	private ImageIcon imagenPersonaje;
 	private JPanel pnlContenedor;
 	private JPanel panelPersonajes;
-	private ArrayList<JToggleButton> botonesPersonajes;
+	private ButtonGroup botonesPersonajes;	
 	private ArrayList<String> nombresPersonajes;
+	private String nombrePersonaje;
+
+	private static int personajeSeleccionadoId;
+
+	public static int getPersonajeSeleccionadoId() {
+		return personajeSeleccionadoId;
+	}
+
+	public static void setPersonajeSeleccionadoId(int personajeSeleccionadoId) {
+		PaginaPrincipal.personajeSeleccionadoId = personajeSeleccionadoId;
+	}
 
 	public PaginaPrincipal() {
 		super();
-        setSize(1000, 600);
-        setLocationRelativeTo(null);
-        inicializarComponentes();
-        asignarLogo(imagenLogo);
+		setSize(1000, 600);
+		setLocationRelativeTo(null);
+		inicializarComponentes();
+		asignarLogo(imagenLogo);
 		setLocationRelativeTo(null);
 	}
 
@@ -58,6 +74,14 @@ public class PaginaPrincipal extends VistaDefault {
 		btnCrearPersonaje = new JButton("CREAR PERSONAJE");
 		btnCrearPersonaje.setBounds(10, 510, 191, 23);
 		pnlContenedor.add(btnCrearPersonaje);
+
+		btnBorrarPersonaje = new JButton("BORRAR PERSONAJE");
+		btnBorrarPersonaje.setBounds(10, 460, 191, 23);
+		pnlContenedor.add(btnBorrarPersonaje);
+		
+
+		
+		
 		
 		//TODO: JToggleButton
 
@@ -82,7 +106,7 @@ public class PaginaPrincipal extends VistaDefault {
 		btnVerPartidas.setBounds(29, 11, 151, 23);
 		pnlContenedor.add(btnVerPartidas);
 		
-		botonesPersonajes = new ArrayList<JToggleButton>();
+		botonesPersonajes = new ButtonGroup();
 		
 		
 		panelPersonajes = new JPanel();
@@ -90,15 +114,19 @@ public class PaginaPrincipal extends VistaDefault {
 		pnlContenedor.add(panelPersonajes);
 		
 		lblPersonaje = new JLabel();
-		getContentPane().add(lblPersonaje);
 		lblPersonaje.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPersonaje.setIcon(orco);
-		orco = new ImageIcon("src/main/resources/enanoBailongo.gif");
+		lblPersonaje.setBounds(342, 150, 300, 300);
+		getContentPane().add(lblPersonaje);
+
+		// imagenPersonaje = new ImageIcon("src/main/resources/enanoBailongo.gif");
+		// lblPersonaje.setIcon(imagenPersonaje);
+
 		
-		lblNombrePersonaje = new JLabel("PepeElDelMadrid");
+		
+		lblNombrePersonaje = new JLabel();
 		lblNombrePersonaje.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNombrePersonaje.setFont(new Font("Arial", Font.BOLD, 15));
-		lblNombrePersonaje.setBounds(410, 400, 164, 81);
+		lblNombrePersonaje.setBounds(410, 450, 164, 81);
 		getContentPane().add(lblNombrePersonaje);
 		
 		AccesoBD acceso = new AccesoBD();
@@ -109,8 +137,21 @@ public class PaginaPrincipal extends VistaDefault {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			acceso.cerrarConexion(c);
 		}
 		
+
+		// try {
+		// 	acceso.borrarPersonaje(c);
+		// } catch (Exception e) { // TODO: AQUÍ HEMOS BORRADO SQLEXCEPTION PORQUE DABA ERROR
+		// 	// TODO Auto-generated catch block
+		// 	e.printStackTrace();
+		// } finally {
+		// 	acceso.cerrarConexion(c);
+		// }
+
+
 		//System.out.println(Arrays.toString(nombresPersonajesArray));
 		
 		for (String nombrePersonaje : nombresPersonajesArray) {
@@ -128,16 +169,24 @@ public class PaginaPrincipal extends VistaDefault {
 		this.panelPersonajes = panelPersonajes;
 	}
 
-	public ArrayList<JToggleButton> getBotonesPersonajes() {
+	public ButtonGroup getBotonesPersonajes() {
 		return botonesPersonajes;
 	}
 
-	public void setBotonesPersonajes(ArrayList<JToggleButton> botonesPersonajes) {
+	public JLabel getLblNombrePersonaje() {
+		return lblNombrePersonaje;
+	}
+
+	public void setLblNombrePersonaje(JLabel lblNombrePersonaje) {
+		this.lblNombrePersonaje = lblNombrePersonaje;
+	}
+
+	public void setBotonesPersonajes(ButtonGroup botonesPersonajes) {
 		this.botonesPersonajes = botonesPersonajes;
 	}
 
-	public void setListenerBotonJugar(MoverseListener listener) {
-		btnJugar.addActionListener(listener);
+	public void setListenerBotonJugar(JugarPaginaPrincipalListener paginaPrincipalUnirsePartida) {
+		btnJugar.addActionListener(paginaPrincipalUnirsePartida);
 	}
 
 	public void setListenerBotonCrearPersonaje(MoverseListener listener) {
@@ -147,15 +196,42 @@ public class PaginaPrincipal extends VistaDefault {
 	public void setListenerBotonVerPartidas(DetallesPersonajesListener listener) {
 		btnVerPartidas.addActionListener(listener);
 	}
-	
+
+	public void setListenerBotonBorrarPersonaje(BorrarPersonajeListener listener) {
+		btnBorrarPersonaje.addActionListener(listener);
+	}
+
 	public void agregarBotonPersonaje(String p) {
 		JToggleButton nuevoBotonPersonaje = new JToggleButton(p);
-        botonesPersonajes.add(nuevoBotonPersonaje);
-        panelPersonajes.add(nuevoBotonPersonaje);
+		botonesPersonajes.add(nuevoBotonPersonaje);
+		panelPersonajes.add(nuevoBotonPersonaje);
 
-        panelPersonajes.revalidate();
-        panelPersonajes.repaint();
-        
+		nuevoBotonPersonaje.addItemListener(new PersonajeSeleccionadoListener(this));
+
+		// PersonajeSeleccionadoListener itemListener = new PersonajeSeleccionadoListener();
+
+		// nuevoBotonPersonaje.addItemListener();
+
+
+		panelPersonajes.revalidate();
+		panelPersonajes.repaint();
+
+	}
+
+	public void cambiarImagenPersonaje(String rutaImagen) {
+		imagenPersonaje = new ImageIcon(rutaImagen);
+		lblPersonaje.setIcon(imagenPersonaje);
+		
+		lblPersonaje.revalidate();
+		lblPersonaje.repaint();
+	}
+
+	public JLabel getLblPersonaje() {
+		return lblPersonaje;
+	}
+
+	public void setLblPersonaje(JLabel lblPersonaje) {
+		this.lblPersonaje = lblPersonaje;
 	}
 
 	public ArrayList<String> getNombresPersonajes() {
@@ -165,9 +241,63 @@ public class PaginaPrincipal extends VistaDefault {
 	public void setNombresPersonajes(ArrayList<String> nombresPersonajes) {
 		this.nombresPersonajes = nombresPersonajes;
 	}
-	
-	public void limpiarPersonajes() {
+
+	public void limpiarPantalla() {
+		for (Component c : panelPersonajes.getComponents()) {
+			if (c instanceof JToggleButton) {
+				botonesPersonajes.remove((AbstractButton) c);
+				panelPersonajes.remove(c);
+
+			}
+		}
+
 		
 	}
+
+	public void limpiarTextoImagen() {
+		lblNombrePersonaje.setText("");
+		lblPersonaje.setIcon(null);
+
+		panelPersonajes.revalidate();
+		panelPersonajes.repaint();
+	}
+
+	public String getSelectedButtonText(ButtonGroup buttonGroup) {
+		for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
+			AbstractButton button = buttons.nextElement();
+
+			if (button.isSelected()) {
+				return button.getText();
+			}
+			
+		}
+
+		return null;
+	}
+
+	// //TODO: Cambiar a getSelectedPersonajeNombre
+
+	// public String getSelectedPersonajeNombre() {
+	// 	return getSelectedButtonText(botonesPersonajes);
+	// }
+
+	//TODO: BotonBorrarPersonaje
+	public void removeBotonPersonaje(String nombrePersonaje) {
+		for (Enumeration<AbstractButton> buttons = botonesPersonajes.getElements(); buttons.hasMoreElements();) {
+			AbstractButton button = buttons.nextElement();
+
+			if (button.getText().equals(nombrePersonaje)) {
+				System.out.println("Elimina del buttongroup");
+				botonesPersonajes.remove(button);
+				panelPersonajes.remove(button);
+				break;
+			}
+		}
+
+		panelPersonajes.revalidate();
+		panelPersonajes.repaint();
+	}
 	
+
+
 }

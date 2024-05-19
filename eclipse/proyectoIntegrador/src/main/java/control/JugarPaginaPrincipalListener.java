@@ -14,25 +14,28 @@ import java.util.Arrays;
 import javax.swing.*;
 import javax.swing.table.*;
 
-public class DetallesPersonajesListener implements ActionListener {
+public class JugarPaginaPrincipalListener implements ActionListener{
     
     private PaginaPrincipal paginaPrincipal;
-    private DetallesPersonajesCuenta detallesPersonajesCuenta;
+    private UnirsePartida unirsePartida;
 
-    public DetallesPersonajesListener(PaginaPrincipal paginaPrincipal, DetallesPersonajesCuenta detallesPersonajesCuenta) {
+    public JugarPaginaPrincipalListener(PaginaPrincipal paginaPrincipal, UnirsePartida unirsePartida) {
         this.paginaPrincipal = paginaPrincipal;
-        this.detallesPersonajesCuenta = detallesPersonajesCuenta;
+        this.unirsePartida = unirsePartida;
     }
 
     @Override
     public void actionPerformed(ActionEvent e){
         
-        AccesoBD acceso = new AccesoBD();
+        if (PaginaPrincipal.getPersonajeSeleccionadoId() == 0) {
+            JOptionPane.showMessageDialog(null, "¡SELECCIONA UN PERSONAJE!");
+        } else {
+            AccesoBD acceso = new AccesoBD();
         
         Connection c = acceso.getConexion();
         ArrayList<String[]> datos = null;
         try {
-            datos = acceso.hacerConsultaTablaCuenta(c);
+            datos = acceso.hacerConsultaTablaPartidas(c, PaginaPrincipal.getPersonajeSeleccionadoId());
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             // TODO: handle exception
@@ -40,12 +43,12 @@ public class DetallesPersonajesListener implements ActionListener {
             acceso.cerrarConexion(c);
         }
 
-        JTable tabla = detallesPersonajesCuenta.getTablaDatos();
+        JTable tabla = unirsePartida.getTable();
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
         
         model.setRowCount(0);
 
-        // System.out.println(Arrays.toString(datos.get(0)));
+        // System.out.println(Arrays.toString(datos.get(1)));
 
         for (String[] fila : datos) {
             model.addRow(fila);
@@ -58,7 +61,7 @@ public class DetallesPersonajesListener implements ActionListener {
         tabla.setModel(model);
 
 
-        detallesPersonajesCuenta.setTablaDatos(tabla);
+        unirsePartida.setTable(tabla);
 
 
         //String[][] datos = {
@@ -78,8 +81,9 @@ public class DetallesPersonajesListener implements ActionListener {
 
         paginaPrincipal.dispose();
 
-        detallesPersonajesCuenta.hacerVisible();
+        unirsePartida.hacerVisible();
 
+        }
         
 
     }

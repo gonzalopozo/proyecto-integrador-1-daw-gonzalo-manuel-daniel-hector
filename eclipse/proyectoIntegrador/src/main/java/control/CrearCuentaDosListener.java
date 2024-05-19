@@ -33,6 +33,23 @@ public class CrearCuentaDosListener implements ActionListener {
 
             accesoBD.crearMiembro(c, nombreUsuario, CrearCuentaDos.getApellido(), contrasenaUsuario, CrearCuentaDos.getNumExpediente(), CrearCuentaDos.getEstudios());
 
+            Object[] usuarioDatos = null;
+            int usuarioId = 0;
+    
+            try{
+                usuarioDatos = accesoBD.comprobarLogin(c, nombreUsuario);
+
+                usuarioId = (Integer) usuarioDatos[0];
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+
+            System.out.println(usuarioId);
+
+            accesoBD.cerrarConexion(c);
+
+            App.setMiembroActualId(usuarioId);
+            
             crearCuentaDos.dispose();
             cuentaCreada.hacerVisible();
             // accesoBD.crearCuenta(c, nombrePersonaje, sexoPersonaje, razaPersonaje, clasePersonaje, App.getMiembroActualId());}

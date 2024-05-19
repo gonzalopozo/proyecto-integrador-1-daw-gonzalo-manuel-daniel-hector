@@ -2,16 +2,10 @@ package views;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class PaginaPrincipalGM extends VistaDefault {
-	// private JButton continuar;
 	private JButton btnNuevaPartida;
-	// private JButton volver;
-	private JButton btnPartida1;
-	private JButton btnPartida2;
-	private JButton btnEntrarMundo;
-	private JButton btnVolverInternalFrame;
-	private JButton botonContinuar2;
 
 	public PaginaPrincipalGM() {
 		super();
@@ -28,9 +22,9 @@ public class PaginaPrincipalGM extends VistaDefault {
 		continuar.setBounds(408, 314, 184, 23);
 		getContentPane().add(continuar);
 		
-		continuarDos = new JButton("NUEVA PARTIDA");
-		continuarDos.setBounds(408, 364, 184, 23);
-		getContentPane().add(continuarDos);
+		btnNuevaPartida = new JButton("NUEVA PARTIDA");
+		btnNuevaPartida.setBounds(408, 364, 184, 23);
+		getContentPane().add(btnNuevaPartida);
 		
 		volver = new JButton("VOLVER");
 		volver.setBounds(10, 530, 105, 23);
@@ -41,9 +35,9 @@ public class PaginaPrincipalGM extends VistaDefault {
 		// continuar.setBackground(new Color(247, 178, 44));
 		// continuar.setBounds(408, 314, 184, 23);
 		// getContentPane().add(botonContinuar2);
+	}
 
-
-		
-		
+	public void setListenerBotonCrearPartida(ActionListener listener) {
+		btnNuevaPartida.addActionListener(listener);
 	}
 }

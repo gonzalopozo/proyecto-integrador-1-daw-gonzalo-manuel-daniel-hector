@@ -1,6 +1,11 @@
 package views;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+
 import control.*;
 
 public class UnirsePartida extends VistaDefault {
@@ -21,15 +26,20 @@ public class UnirsePartida extends VistaDefault {
         volver.setBounds(10, 327, 107, 23);
         getContentPane().add(volver);
 
-        String[][] datos = {
-            { "La batalla por el templo del Tigre Blanco", "Estepas de Tong Long", "33"},
-            { "Lucha contra el Rey Exánime", "Cementerio de Dragones", "7"},
-            {"La conquista demoníaca", "Argus", "24"}
-        };
+		DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Jugando");
+        model.addColumn("Partida");
+        model.addColumn("Ambientación");
+        model.addColumn("Nivel medio");
 
-        String[] nombresColumnas = { "Partida", "Ambientación", "Nivel medio" };
+		TableColumnModel columnModel = new DefaultTableColumnModel();
+        for (int i = 0; i < model.getColumnCount(); i++) {
+            TableColumn column = new TableColumn(i);
+            column.setHeaderValue(model.getColumnName(i));
+            columnModel.addColumn(column);
+        }
 
-        table = new JTable(datos, nombresColumnas);
+        table = new JTable(model, columnModel);
 
         scrbarraHorizontal = new JScrollPane(table);
         scrbarraHorizontal.setBounds(10, 11, 564, 302);
@@ -42,9 +52,11 @@ public class UnirsePartida extends VistaDefault {
         btnDetalles = new JButton("DETALLES");
         btnDetalles.setBounds(221, 327, 141, 23);
         getContentPane().add(btnDetalles);
+
+		table.getSelectedRow();
     }
 
-    public void setListenerBotonDetalles(MoverseListener listener) {
+    public void setListenerBotonDetalles(DetallesPersonajesPartidaJugarListener listener) {
         btnDetalles.addActionListener(listener);
     }
 
@@ -89,7 +101,4 @@ public class UnirsePartida extends VistaDefault {
 	public void setBtnDetalles(JButton btnDetalles) {
 		this.btnDetalles = btnDetalles;
 	}
-    
-     
-
 }

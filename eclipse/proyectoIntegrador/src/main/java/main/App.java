@@ -31,7 +31,7 @@ public class App {
     private static PaginaPrincipal paginaPrincipal;
     private static PaginaPrincipalGM paginaPrincipalGM;
     private static SeleccionarPartida seleccionarPartida;
-    private static PartidasDisponibles partidasDisponibles;
+    // private static PartidasDisponibles partidasDisponibles;
     private static SeleccionRol seleccionRol;
     private static UnirsePartida unirsePartida;
     private static SeleccionarPartidaGM seleccionarPartidaGM;
@@ -101,9 +101,9 @@ public class App {
         return seleccionarPartida;
     }
 
-    public static PartidasDisponibles getPartidasdisponibles() {
-        return partidasDisponibles;
-    }
+    // public static PartidasDisponibles getPartidasdisponibles() {
+    //     return partidasDisponibles;
+    // }
 
     public static SeleccionRol getSeleccionrol() {
         return seleccionRol;
@@ -116,6 +116,12 @@ public class App {
     public static SeleccionarPartidaGM getSeleccionarpartidagm() {
         return seleccionarPartidaGM;
     }
+
+    public static int getmiembroActualId() {
+        return miembroActualId;
+    }
+
+
 
 	public static void main(String[] args) {
 		
@@ -143,14 +149,14 @@ public class App {
                     UIManager.put("Button.background", COLOR_LIGHTING_YELLOW);
                     UIManager.put("CheckBox.foreground", COLOR_LIGHTING_YELLOW);
                     UIManager.put("CheckBox.font", LABEL_FONT);
-                    
+
                     System.out.println("b");
 
                 } catch (UnsupportedLookAndFeelException ex) {
                     ex.printStackTrace();
                 }
 
-	            login = new Login();
+                login = new Login();
                 crearCuenta = new CrearCuenta();
                 crearCuentaDos = new CrearCuentaDos();
                 cuentaCreada = new CuentaCreada();
@@ -161,7 +167,7 @@ public class App {
                 paginaPrincipal = new PaginaPrincipal();
                 paginaPrincipalGM = new PaginaPrincipalGM();
                 seleccionarPartida = new SeleccionarPartida();
-                partidasDisponibles = new PartidasDisponibles();
+                // partidasDisponibles = new PartidasDisponibles();
                 seleccionRol = new SeleccionRol();
                 unirsePartida = new UnirsePartida();
                 seleccionarPartidaGM = new SeleccionarPartidaGM();
@@ -181,8 +187,6 @@ public class App {
                 DetallesPersonajesListener detallesPersonajesListener = new DetallesPersonajesListener(paginaPrincipal, detallesPersonajesCuenta);
                 paginaPrincipal.setListenerBotonVerPartidas(detallesPersonajesListener);
                 
-
-                
                 MoverseListener seleccionRolLogin = new MoverseListener(seleccionRol, login);
                 seleccionRol.setListenerBotonVolver(seleccionRolLogin);
 
@@ -201,19 +205,19 @@ public class App {
 
 
 
-                MoverseListener paginaPrincipalGMpartidasDisponibles = new MoverseListener(paginaPrincipalGM, partidasDisponibles);
-                paginaPrincipalGM.setListenerBotonContinuar(paginaPrincipalGMpartidasDisponibles);
+                PartidasDisponiblesGMListener paginaPrincipalGMseleccionarPartidaGM = new PartidasDisponiblesGMListener(paginaPrincipalGM, seleccionarPartidaGM);
+                paginaPrincipalGM.setListenerBotonContinuar(paginaPrincipalGMseleccionarPartidaGM);
 
-                MoverseListener PartidasDisponibles = new MoverseListener(partidasDisponibles, paginaPrincipalGM);
-                partidasDisponibles.setListenerBotonVolver(PartidasDisponibles);
+                MoverseListener seleccionarPartidaGMListener = new MoverseListener(seleccionarPartidaGM, paginaPrincipalGM);
+                seleccionarPartidaGM.setListenerBotonVolver(seleccionarPartidaGMListener);
 
 
                 MoverseListener PaginaPrincipalGMSeleccionRol = new MoverseListener(paginaPrincipalGM, seleccionRol);
                 paginaPrincipalGM.setListenerBotonVolver(PaginaPrincipalGMSeleccionRol);
 
 
-                MoverseListenerDos PaginaPrincipalGMCrearPartida = new MoverseListenerDos(paginaPrincipalGM, crearPartida);
-                paginaPrincipalGM.setListenerBotonContinuarDos(PaginaPrincipalGMCrearPartida);
+                MoverseListener PaginaPrincipalGMCrearPartida = new MoverseListener(paginaPrincipalGM, crearPartida);
+                paginaPrincipalGM.setListenerBotonCrearPartida(PaginaPrincipalGMCrearPartida);
 
 
                 MoverseListener CrearPartidaPaginaPrincipalGM = new MoverseListener(crearPartida, paginaPrincipalGM);
@@ -224,6 +228,9 @@ public class App {
 
                 MoverseListener paginaPrincipalSeleccionRol = new MoverseListener(paginaPrincipal, seleccionRol);
                 paginaPrincipal.setListenerBotonVolver(paginaPrincipalSeleccionRol);
+
+                BorrarPersonajeListener borrarPersonajeListener = new BorrarPersonajeListener(paginaPrincipal);
+                paginaPrincipal.setListenerBotonBorrarPersonaje(borrarPersonajeListener);
 
                 //MoverseListener crearPersonajePaginaPrincipal = new MoverseListener(crearPersonaje, paginaPrincipal);
                 CrearPersonajeListener crearPersonajeListener = new CrearPersonajeListener(crearPersonaje, paginaPrincipal);
@@ -243,15 +250,21 @@ public class App {
                 MoverseListener detallesPersonajesCuentaPaginaPrincipal = new MoverseListener (detallesPersonajesCuenta, paginaPrincipal);
                 detallesPersonajesCuenta.setListenerBotonVolver(detallesPersonajesCuentaPaginaPrincipal);
 
-                MoverseListener paginaPrincipalUnirsePartida = new MoverseListener(paginaPrincipal, unirsePartida);
+                JugarPaginaPrincipalListener paginaPrincipalUnirsePartida = new JugarPaginaPrincipalListener(paginaPrincipal, unirsePartida);
                 paginaPrincipal.setListenerBotonJugar(paginaPrincipalUnirsePartida);
 
                 MoverseListener unirsePartidaPaginaPrincipal = new MoverseListener(unirsePartida, paginaPrincipal);
                 unirsePartida.setListenerBotonVolver(unirsePartidaPaginaPrincipal);
+
+                DetallesPersonajesPartidaJugarListener detallesPartidas = new DetallesPersonajesPartidaJugarListener(unirsePartida, detallesPersonajesPartida);
+                unirsePartida.setListenerBotonDetalles(detallesPartidas);
                 
-                MoverseListener unirsePartidaDetallesPersonajesPartida = new MoverseListener(unirsePartida, detallesPersonajesPartida);
-                unirsePartida.setListenerBotonDetalles(unirsePartidaDetallesPersonajesPartida);
+                // MoverseListener unirsePartidaDetallesPersonajesPartida = new MoverseListener(unirsePartida, detallesPersonajesPartida);
+                // unirsePartida.setListenerBotonDetalles(unirsePartidaDetallesPersonajesPartida);
                 
+                UnirsePartidaListener unirsePartidaListener = new UnirsePartidaListener(unirsePartida);
+                unirsePartida.setListenerBotonContinuar(unirsePartidaListener);
+
                 MoverseListener detallesPersonajesPartidaUnirsePartida = new MoverseListener(detallesPersonajesPartida, unirsePartida);
                 detallesPersonajesPartida.setListenerBotonVolver(detallesPersonajesPartidaUnirsePartida);
                 
@@ -263,7 +276,6 @@ public class App {
 
                 // MoverseListener cuentaCreadaDos = new MoverseListener(crearCuentaDos, cuentaCreada);
                 // crearCuentaDos.setListenerBotonContinuar(cuentaCreadaDos);
-
                 
             }
 

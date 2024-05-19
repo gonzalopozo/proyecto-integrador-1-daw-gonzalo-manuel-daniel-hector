@@ -33,6 +33,22 @@ public class SeleccionarPartidaGM extends VistaDefault {
 	}
 
 	
+	
+
+	public ArrayList<String> getNombresPartidas() {
+		return nombresPartidas;
+	}
+
+
+
+
+	public void setNombresPartidas(ArrayList<String> nombresPartidas) {
+		this.nombresPartidas = nombresPartidas;
+	}
+
+
+
+
 	public void inicializarComponentes() {
 		
 		
@@ -97,15 +113,23 @@ public class SeleccionarPartidaGM extends VistaDefault {
 		// 	System.out.println(nombrePartida);
 		// 	agregarBotonPartida(nombrePartida);
 		// }	
-		if (nombresPartidasArray != null) {
-            for (String nombrePartida : nombresPartidasArray) {
-                agregarBotonPartida(nombrePartida);
-            }
-        } else {
-            System.out.println("No se encontraron nombres de partidas.");
+		for (String nombrePartida : nombresPartidasArray) {
+            agregarBotonPartida(nombrePartida);
         }
 
 
+	}
+
+	public void limpiarPantalla() {
+		for (Component c : panelPartidas.getComponents()) {
+			if (c instanceof JToggleButton) {
+				botonesPartidas.remove((AbstractButton) c);
+				panelPartidas.remove(c);
+
+			}
+		}
+
+		
 	}
 
 	public ButtonGroup getBotonesPartidas() {
