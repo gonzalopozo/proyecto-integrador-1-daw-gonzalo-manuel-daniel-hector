@@ -15,7 +15,6 @@ import views.PaginaPrincipal;
 public class BorrarPersonajeListener implements ActionListener {
     private PaginaPrincipal paginaPrincipal;
 
-    
     /**
      * Constructor de la clase que inicializa la referencia a la vista principal.
      *
