@@ -3,7 +3,9 @@ package views;
 import javax.swing.*;
 import javax.swing.table.*;
 
-
+/**
+ * Vista de la tabla de detalles de los personajes de una partida en curso.
+ */
 public class DetallesPersonajesPartida extends VistaDefault {
     private JTable tablaDatos;
     private JScrollPane scrBarraHorizontal;
@@ -12,20 +14,27 @@ public class DetallesPersonajesPartida extends VistaDefault {
         super();
         setSize(600, 400);
         inicializarComponentes();
-        asignarLogo(imagenLogo);
+        asignarLogo(IMAGEN_LOGO); // Asignar el logo de la ventana
         setLocationRelativeTo(null);
     }
 
     private void inicializarComponentes() {
-        volver = new JButton("VOLVER");
+        volver = new JButton("VOLVER"); // Crear botón de volver
         volver.setBounds(10, 327, 107, 23);
         getContentPane().add(volver);
 
         // Object[][] datos = {};
 
-        // String[] nombresColumnas = {"Icono", "Nombre", "Raza", "Clase", "Nivel", "Salud", "Fuerza", "Destreza", "Sabiduría", "Carisma", "Inteligencia", "Constitución"};
+        // String[] nombresColumnas = {"Icono", "Nombre", "Raza", "Clase", "Nivel",
+        // "Salud", "Fuerza", "Destreza", "Sabiduría", "Carisma", "Inteligencia",
+        // "Constitución"};
 
-        // String[] nombresColumnas = {"Nombre", "Raza", "Clase", "Partida", "Nivel", "Salud", "Fuerza", "Destreza", "Sabiduría", "Carisma", "Inteligencia", "Constitución"};
+        // String[] nombresColumnas = {"Nombre", "Raza", "Clase", "Partida", "Nivel",
+        // "Salud", "Fuerza", "Destreza", "Sabiduría", "Carisma", "Inteligencia",
+        // "Constitución"};
+
+        // Crear el modelo de datos con los datos y las columnas correspondientes a
+        // mostrar en la tabla de datos de personajes de partida.
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nombre");
         model.addColumn("Raza");
@@ -50,11 +59,13 @@ public class DetallesPersonajesPartida extends VistaDefault {
         // Crear la JTable con el modelo de datos y el modelo de columnas
         tablaDatos = new JTable(model, columnModel);
 
+        // Ajustar el tamaño de las columnas
         scrBarraHorizontal = new JScrollPane(tablaDatos);
         scrBarraHorizontal.setBounds(10, 11, 564, 302);
         getContentPane().add(scrBarraHorizontal);
     }
 
+    // Getters y Setters
     public JTable getTablaDatos() {
         return tablaDatos;
     }

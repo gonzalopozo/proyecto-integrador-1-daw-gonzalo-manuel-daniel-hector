@@ -9,63 +9,81 @@ import model.AccesoBD;
 import views.*;
 import main.*;
 
-public class LoginListener implements ActionListener{
-    
+/**
+ * Clase que implementa la interfaz ActionListener y que se encarga de gestionar
+ * el evento de pulsar el botón de login.
+ */
+public class LoginListener implements ActionListener {
+
     private Login login;
     private SeleccionRol seleccionRol;
     private int cont = 3;
 
+    /**
+     * Constructor de la clase.
+     * 
+     * @param login        Ventana de login.
+     * @param seleccionRol Ventana de selección de rol.
+     */
     public LoginListener(Login login, SeleccionRol seleccionRol) {
         this.login = login;
         this.seleccionRol = seleccionRol;
     }
 
+    /**
+     * Método que se ejecuta al ocurrir un evento de acción, como hacer clic en un
+     * botón.
+     * 
+     * @param e Evento de acción.
+     */
     @Override
-    public void actionPerformed(ActionEvent e){
+    public void actionPerformed(ActionEvent e) {
 
-        String password = login.getTxtPassword().getText();
-        String usuario = login.getTxtUsuario().getText();
+        String password = login.getTxtPassword().getText(); // Obtenemos la contraseña introducida por el usuario
+        String usuario = login.getTxtUsuario().getText(); // Obtenemos el usuario introducido por el usuario
 
-        Object[] usuarioDatos = null;
-        String contraBD = "";
-        int usuarioId;
+        Object[] usuarioDatos = null; // Array que almacena los datos del usuario
+        String contraBD = ""; // Contraseña almacenada en la base de datos
+        int usuarioId; // Id del usuario
 
+        AccesoBD acceso = new AccesoBD(); // Creamos un objeto de la clase AccesoBD
+        Connection c = acceso.getConexion(); // Establecemos la conexión con la base de datos
 
-        AccesoBD acceso = new AccesoBD();
-        Connection c = acceso.getConexion();
-
-        try{
-            usuarioDatos = acceso.comprobarLogin(c, usuario);
-        } catch (SQLException ex) {
+        try {
+            usuarioDatos = acceso.comprobarLogin(c, usuario); // Comprobamos si el usuario existe en la base de datos
+        } catch (SQLException ex) { // Si se produce una excepción, la capturamos
             ex.printStackTrace();
         }
         acceso.cerrarConexion(c);
 
-        usuarioId = (Integer) usuarioDatos[0];
-        contraBD = String.valueOf(usuarioDatos[1]);
+        usuarioId = (Integer) usuarioDatos[0]; // Obtenemos el id del usuario del array de datos del usuario
+        contraBD = String.valueOf(usuarioDatos[1]); // Obtenemos la contraseña del usuario del array de datos del
+                                                    // usuario
 
-
-        if (contraBD == "") {
+        if (contraBD == "") { // Si la contraseña es nula, mostramos un mensaje de error
             login.getLblMensaje().setText("ERROR Introduza usuario y contraseña.");
-        } else if (contraBD == "" && password == "") {
+        } else if (contraBD == "" && password == "") { // Si la contraseña y el usuario son nulos, mostramos un mensaje
+                                                       // de error
             login.getLblMensaje().setText("Este Usuario no existe");
-        } else if (contraBD.equals(password)){
-            App.setMiembroActual(usuario);
-            App.setMiembroActualId(usuarioId);
-            login.dispose();
+        } else if (contraBD.equals(password)) { // Si la contraseña introducida por el usuario es igual a la contraseña
+                                                // almacenada en la base de datos, mostramos la ventana de selección de
+                                                // rol
+            App.setMiembroActual(usuario); // Establecemos el usuario actual
+            App.setMiembroActualId(usuarioId); // Establecemos el id del usuario actual
+            login.dispose(); // Cerramos la ventana de login
 
-            seleccionRol.hacerVisible();
-		
-        } else {
+            seleccionRol.hacerVisible(); // Mostramos la ventana de selección de rol
+
+        } else { // Si la contraseña introducida por el usuario no es igual a la contraseña
+                 // almacenada en la base de datos, mostramos un mensaje de error
 
             login.getLblMensaje().setText("Esta contraseña es incorrecta");
-            cont--;
-            if (cont == 0) {
-                login.dispose();
+            cont--; // Decrementamos el contador de intentos
+            if (cont == 0) { // Si el contador de intentos llega a 0, cerramos la ventana de login
+                login.dispose(); // Cerramos la ventana de login
             }
 
         }
-
 
     }
 }

@@ -13,81 +13,81 @@ public class Partida {
     private int duracion;
     private Date fecha;
     private ArrayList<Personaje> listaPersonajesPartida;
-    
+
     public int getId() {
         return id;
     }
-    
+
     public void setId(int id) {
         this.id = id;
     }
-    
+
     public String getNombre() {
         return nombre;
     }
-    
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
     public int getGameMasterId() {
         return gameMasterId;
     }
-    
+
     public void setGameMasterId(int gameMasterId) {
         this.gameMasterId = gameMasterId;
     }
-    
+
     public String getAmbientacion() {
         return ambientacion;
     }
-    
+
     public void setAmbientacion(String ambientacion) {
         this.ambientacion = ambientacion;
     }
-    
+
     public boolean isEstaEnCurso() {
         return estaEnCurso;
     }
-    
+
     public void setEstaEnCurso(boolean estaEnCurso) {
         this.estaEnCurso = estaEnCurso;
     }
-    
+
     public int getNumSesion() {
         return numSesion;
     }
-    
+
     public void setNumSesion(int numSesion) {
         this.numSesion = numSesion;
     }
-    
+
     public int getDuracion() {
         return duracion;
     }
-    
+
     public void setDuracion(int duracion) {
         this.duracion = duracion;
     }
-    
+
     public Date getFecha() {
         return fecha;
     }
-    
+
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    
+
     public ArrayList<Personaje> getListaPersonajesPartida() {
         return listaPersonajesPartida;
     }
-    
+
     public void setListaPersonajesPartida(ArrayList<Personaje> listaPersonajesPartida) {
         this.listaPersonajesPartida = listaPersonajesPartida;
     }
-    
 
-    public Partida(int id, String nombre, int gameMasterId, String ambientacion, boolean estaEnCurso, int numSesion, int duracion, Date fecha) {
+    public Partida(int id, String nombre, int gameMasterId, String ambientacion, boolean estaEnCurso, int numSesion,
+            int duracion, Date fecha) {
         this.id = id;
         this.nombre = nombre;
         this.gameMasterId = gameMasterId;
@@ -99,12 +99,13 @@ public class Partida {
         listaPersonajesPartida = new ArrayList<Personaje>();
     }
 
-    public void añadirPersonaje(Personaje personaje){
+    public void añadirPersonaje(Personaje personaje) {
+        // TODO: En caso de añadir el id, se añadiría Personaje
         listaPersonajesPartida.add(personaje);
     }
 
-    public void eliminarPersonaje(int id){
+    public void eliminarPersonaje(int id) {
         // TODO: En caso de borrar el id, se añadiría Personaje
         listaPersonajesPartida.remove(id);
     }
-}     
+}

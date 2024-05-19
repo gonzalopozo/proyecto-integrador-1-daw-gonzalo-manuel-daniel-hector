@@ -10,46 +10,32 @@ import java.sql.Connection;
 import model.AccesoBD;
 import views.*;
 
+/**
+ * Listener para moverse entre las distinas ventanas.
+ */
 public class MoverseListener implements ActionListener {
 
+	// Se definen las variables necesarias
 	private VistaDefault vistaActual;
 	private VistaDefault vistaDestino;
 
-	// private int intentosRestantes=3;
-	
-	public MoverseListener(VistaDefault vistaActual, VistaDefault vistaDestino) {	
+	/**
+	 * Constructor que define las vistas necesarias
+	 */
+	public MoverseListener(VistaDefault vistaActual, VistaDefault vistaDestino) {
 		this.vistaActual = vistaActual;
 		this.vistaDestino = vistaDestino;
 	}
-	
-	public void actionPerformed(ActionEvent e) {
-		// String usuarioVista = vista.getUsuario().getText();
-		// String claveVista = String.valueOf(vista.getClave().getPassword());
-		// String claveBD="";
 
-		// AccesoBDLogin accesobd = new AccesoBDLogin();
-		// Connection conexion = accesobd.getConexion();
-		
-		// claveBD = accesobd.hacerLogin(conexion, usuarioVista);
-		
-		// if (claveBD.equals(claveVista)) {
-		// 	//acceso conseguido
-		// 	vista.getLblIntentos().setText("Acceso conseguido!");
-		// }
-		// else {
-		// 	//acceso denegado
-		// 	intentosRestantes--;
-		// 	vista.getLblIntentos().setText("Intentos restantes: "+intentosRestantes);
-		// }
-		
-		// if (intentosRestantes == 0) {
-		// 	vista.dispose();
-		// }
+	/**
+	 * Método del actionPerformed que cierra la ventana actual, y abre la siguiente
+	 */
+	public void actionPerformed(ActionEvent e) {
 
 		vistaActual.dispose();
 
 		vistaDestino.setVisible(true);
-		
+
 	}
 
 }

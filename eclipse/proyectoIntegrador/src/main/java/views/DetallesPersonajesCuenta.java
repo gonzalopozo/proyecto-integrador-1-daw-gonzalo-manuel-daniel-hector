@@ -3,24 +3,33 @@ package views;
 import javax.swing.*;
 import javax.swing.table.*;
 
+/**
+ * Vista que muestra los detalles de los personajes de una cuenta de usuario.
+ */
 public class DetallesPersonajesCuenta extends VistaDefault {
     private JTable tablaDatos;
     private JScrollPane scrBarraHorizontal;
 
+    /**
+     * Constructor de la vista donde mostrar los detalles de los personajes de una
+     * cuenta de usuario.
+     */
     public DetallesPersonajesCuenta() {
         super();
         setSize(600, 400);
         inicializarComponentes();
-        asignarLogo(imagenLogo);
+        asignarLogo(IMAGEN_LOGO);
         setLocationRelativeTo(null);
     }
 
     private void inicializarComponentes() {
-        volver = new JButton("VOLVER");
+        volver = new JButton("VOLVER"); // Botón para volver a la vista anterior
         volver.setBounds(10, 327, 107, 23);
         getContentPane().add(volver);
 
-        // String[] nombresColumnas = {"Nombre", "Raza", "Clase", "Partida", "Nivel", "Salud", "Fuerza", "Destreza", "Sabiduría", "Carisma", "Inteligencia", "Constitución"};
+        // String[] nombresColumnas = {"Nombre", "Raza", "Clase", "Partida", "Nivel",
+        // "Salud", "Fuerza", "Destreza", "Sabiduría", "Carisma", "Inteligencia",
+        // "Constitución"};
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nombre");
         model.addColumn("Raza");
@@ -37,30 +46,30 @@ public class DetallesPersonajesCuenta extends VistaDefault {
 
         // Crear el modelo de columnas con el mismo encabezado que el modelo de datos
         TableColumnModel columnModel = new DefaultTableColumnModel();
-        for (int i = 0; i < model.getColumnCount(); i++) {
-            TableColumn column = new TableColumn(i);
-            column.setHeaderValue(model.getColumnName(i));
-            columnModel.addColumn(column);
+        for (int i = 0; i < model.getColumnCount(); i++) { // Recorrer las columnas del modelo de datos
+            TableColumn column = new TableColumn(i); // Crear una columna para la tabla
+            column.setHeaderValue(model.getColumnName(i)); // Asignar el nombre de la columna
+            columnModel.addColumn(column); // Agregar la columna al modelo de columnas
         }
 
         // Crear la JTable con el modelo de datos y el modelo de columnas
         tablaDatos = new JTable(model, columnModel);
 
         // String[][] datos = {
-        //     {"Pepe el del Madrid", "Troll", "Druida", "La batalla por el templo del Tigre Blanco", "70", "50000", "10000", "1000", "1000", "3000", "1000", "450"},
-        //     {"LeBron James", "Tauren", "Caballero de la muerte", "Liberación de los elfos", "50", "15000", "300", "10000", "1800", "800", "1750", "100"},
-        //     {"D'Angelo Russell", "Dracthyr", "Evocador", "Lucha contra el Rey Exánime", "40", "20000", "7000", "5000", "10000", "5000", "3000", "500"}
+        // {"Pepe el del Madrid", "Troll", "Druida", "La batalla por el templo del Tigre
+        // Blanco", "70", "50000", "10000", "1000", "1000", "3000", "1000", "450"},
+        // {"LeBron James", "Tauren", "Caballero de la muerte", "Liberación de los
+        // elfos", "50", "15000", "300", "10000", "1800", "800", "1750", "100"},
+        // {"D'Angelo Russell", "Dracthyr", "Evocador", "Lucha contra el Rey Exánime",
+        // "40", "20000", "7000", "5000", "10000", "5000", "3000", "500"}
         // };
 
-
         // for (String[] fila : datos) {
-        //     model.addRow(fila);
+        // model.addRow(fila);
         // }
-        
 
-
-        scrBarraHorizontal = new JScrollPane(tablaDatos);
-        scrBarraHorizontal.setBounds(10, 11, 564, 302);
+        scrBarraHorizontal = new JScrollPane(tablaDatos); // Crear un scroll para la tabla
+        scrBarraHorizontal.setBounds(10, 11, 564, 302); // Establecer las dimensiones del scroll
         getContentPane().add(scrBarraHorizontal);
 
     }
@@ -73,5 +82,4 @@ public class DetallesPersonajesCuenta extends VistaDefault {
         this.tablaDatos = tablaDatos;
     }
 
-    
 }

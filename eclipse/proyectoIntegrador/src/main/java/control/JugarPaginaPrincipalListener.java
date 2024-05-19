@@ -14,77 +14,81 @@ import java.util.Arrays;
 import javax.swing.*;
 import javax.swing.table.*;
 
-public class JugarPaginaPrincipalListener implements ActionListener{
-    
+/**
+ * Listener para manejar el evento de jugar desde la página principal.
+ */
+public class JugarPaginaPrincipalListener implements ActionListener {
+
     private PaginaPrincipal paginaPrincipal;
     private UnirsePartida unirsePartida;
 
+    /**
+     * Constructor que inicializa los componentes necesarios.
+     * 
+     * @param paginaPrincipal La página principal desde la cual se va a jugar.
+     * @param unirsePartida   La ventana para unirse a una partida.
+     */
     public JugarPaginaPrincipalListener(PaginaPrincipal paginaPrincipal, UnirsePartida unirsePartida) {
         this.paginaPrincipal = paginaPrincipal;
         this.unirsePartida = unirsePartida;
     }
 
+    /**
+     * Maneja el evento de jugar desde la página principal.
+     * 
+     * @param e El evento de acción.
+     */
+
     @Override
-    public void actionPerformed(ActionEvent e){
-        
+    public void actionPerformed(ActionEvent e) {
+        // Verificar si se ha seleccionado un personaje
         if (PaginaPrincipal.getPersonajeSeleccionadoId() == 0) {
-            JOptionPane.showMessageDialog(null, "¡SELECCIONA UN PERSONAJE!");
+            // Mostrar un mensaje de error si no se ha seleccionado personaje
+            JOptionPane.showMessageDialog(null, "¡Selecciona un personaje!");
         } else {
             AccesoBD acceso = new AccesoBD();
-        
-        Connection c = acceso.getConexion();
-        ArrayList<String[]> datos = null;
-        try {
-            datos = acceso.hacerConsultaTablaPartidas(c, PaginaPrincipal.getPersonajeSeleccionadoId());
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-            // TODO: handle exception
-        } finally {
-            acceso.cerrarConexion(c);
-        }
 
-        JTable tabla = unirsePartida.getTable();
-        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
-        
-        model.setRowCount(0);
+            Connection c = acceso.getConexion();
+            ArrayList<String[]> datos = null;
+            try {
+                // Obtener las partidas disponibles para el personaje seleccionado
+                datos = acceso.hacerConsultaTablaPartidas(c, PaginaPrincipal.getPersonajeSeleccionadoId());
+            } catch (SQLException sqle) {
+                sqle.printStackTrace();
 
-        // System.out.println(Arrays.toString(datos.get(1)));
-
-        for (String[] fila : datos) {
-            model.addRow(fila);
-            System.out.println("Fila agregada: " + Arrays.toString(fila));
-            for (String a : fila) {
-                System.out.println(a);
+            } finally {
+                acceso.cerrarConexion(c);
             }
+
+            // Obtener la tabla de unirse a partida
+            JTable tabla = unirsePartida.getTable();
+            DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+
+            // Limpiar los datos existentes en la tabla
+            model.setRowCount(0);
+
+            // Agregar las filas con los datos de las partidas a la tabla
+            for (String[] fila : datos) {
+                model.addRow(fila);
+                System.out.println("Fila agregada: " + Arrays.toString(fila));
+                for (String a : fila) {
+                    System.out.println(a);
+                }
+            }
+            // Notificar a la tabla que los datos han cambiado
+            model.fireTableDataChanged();
+            // Establecer el modelo de la tabla
+            tabla.setModel(model);
+
+            unirsePartida.setTable(tabla);
+
+            acceso.cerrarConexion(c);
+
+            paginaPrincipal.dispose();
+
+            unirsePartida.hacerVisible();
+
         }
-        model.fireTableDataChanged();
-        tabla.setModel(model);
-
-
-        unirsePartida.setTable(tabla);
-
-
-        //String[][] datos = {
-        //     {"Pepe el del Madrid", "Troll", "Druida", "La batalla por el templo del Tigre Blanco", "70", "50000", "10000", "1000", "1000", "3000", "1000", "450"},
-        //     {"LeBron James", "Tauren", "Caballero de la muerte", "Liberación de los elfos", "50", "15000", "300", "10000", "1800", "800", "1750", "100"},
-        //     {"D'Angelo Russell", "Dracthyr", "Evocador", "Lucha contra el Rey Exánime", "40", "20000", "7000", "5000", "10000", "5000", "3000", "500"}
-        // };
-
-
-        // for (String[] fila : datos) {
-        //     model.addRow(fila);
-        // }
-
-
-        
-        acceso.cerrarConexion(c);
-
-        paginaPrincipal.dispose();
-
-        unirsePartida.hacerVisible();
-
-        }
-        
 
     }
 }

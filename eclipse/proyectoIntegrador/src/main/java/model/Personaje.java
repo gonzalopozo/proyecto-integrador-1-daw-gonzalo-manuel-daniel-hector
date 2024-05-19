@@ -111,7 +111,8 @@ public class Personaje {
         this.constitucion = constitucion;
     }
 
-    public Personaje(String nombre, String raza, String clase, int nivel, int salud, int fuerza, int destreza, int sabiduria, int carisma, int inteligencia, int constitucion) {
+    public Personaje(String nombre, String raza, String clase, int nivel, int salud, int fuerza, int destreza,
+            int sabiduria, int carisma, int inteligencia, int constitucion) {
         this.nombre = nombre;
         this.raza = raza;
         this.clase = clase;

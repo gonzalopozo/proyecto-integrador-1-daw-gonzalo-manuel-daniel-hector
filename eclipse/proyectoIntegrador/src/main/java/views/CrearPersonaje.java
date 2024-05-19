@@ -10,8 +10,12 @@ import javax.swing.*;
 import components.*;
 import control.*;
 
+/**
+ * clase que va a extender de la de vista default
+ */
 public class CrearPersonaje extends VistaDefault {
 
+	// se definen todas las variables que se van a utilizar en la vista.
 	private JLabel logoAlianza;
 	private JLabel logoHorda;
 	private CircularToggleButton rdbtnHumano;
@@ -45,6 +49,7 @@ public class CrearPersonaje extends VistaDefault {
 	private ButtonGroup clase;
 	private ImageIcon imagenPersonaje;
 
+	// e crean los getters y setters
 
 	public JLabel getLogoAlianza() {
 		return logoAlianza;
@@ -294,6 +299,9 @@ public class CrearPersonaje extends VistaDefault {
 		this.clase = clase;
 	}
 
+	/**
+	 * Constructor de la vista, asignando los métodos necesarios.
+	 */
 	public CrearPersonaje() {
 		super();
 		setSize(1000, 600);
@@ -301,6 +309,9 @@ public class CrearPersonaje extends VistaDefault {
 		setLocationRelativeTo(null);
 	}
 
+	/**
+	 * Método que determina si el botón está seleccionado o no.
+	 */
 	public String getSelectedButtonText(ButtonGroup buttonGroup) {
 		for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
 			AbstractButton button = buttons.nextElement();
@@ -313,23 +324,31 @@ public class CrearPersonaje extends VistaDefault {
 		return null;
 	}
 
+	/**
+	 * Método el cual se va a encargar de inicializar todos los componentes que van
+	 * a aparecer en la vista.
+	 */
 	public void inicializarComponentes() {
 		getContentPane().setLayout(null);
 
+		// Creación de botón crear personaje, el cual hará las funciones de continuar
 		continuar = new JButton("CREAR PERSONAJE");
 		continuar.setBounds(778, 515, 200, 23);
 		getContentPane().add(continuar);
 
+		// Creación del botón de volver
 		volver = new JButton("VOLVER");
 		volver.setBounds(9, 515, 150, 23);
 		getContentPane().add(volver);
 
+		// Creación de etiqueta en la que aparecerá la imagen de la alianza
 		logoAlianza = new JLabel();
 		ImageIcon imgAlianza = new ImageIcon("src/main/resources/AllianceLogo.png");
 		logoAlianza.setIcon(imgAlianza);
 		logoAlianza.setBounds(28, 10, 98, 98);
 		getContentPane().add(logoAlianza);
 
+		// Creación de etiqueta en la que aparecerá la imagen de la horda
 		logoHorda = new JLabel();
 		ImageIcon imgHorda = new ImageIcon("src/main/resources/logohorda.png");
 		logoHorda.setIcon(imgHorda);
@@ -338,6 +357,7 @@ public class CrearPersonaje extends VistaDefault {
 		ImageIcon imgHombre = new ImageIcon("src/main/resources/iconoHombre.png");
 		ImageIcon imgMujer = new ImageIcon("src/main/resources/iconoMujer.png");
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoHuman = new File("src/main/resources/humano.png"); // Ruta de tu imagen
 		Image imageHuman = null;
 		try {
@@ -347,12 +367,14 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 
+		// Creación de radiobutton del humano al que se le asigna la imagen
 		rdbtnHumano = new CircularToggleButton(imageHuman, "Humano");
 		rdbtnHumano.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnHumano.setText("Humano");
 		rdbtnHumano.setBounds(45, 135, 55, 55);
 		getContentPane().add(rdbtnHumano);
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoDwarf = new File("src/main/resources/enano.png"); // Ruta de tu imagen
 		Image imageDwarf = null;
 		try {
@@ -362,12 +384,14 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 
+		// Creación de radiobutton del enano al que se le asigna la imagen
 		rdbtnEnano = new CircularToggleButton(imageDwarf, "Enano");
 		rdbtnEnano.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnEnano.setText("Enano");
 		rdbtnEnano.setBounds(45, 185, 55, 55);
 		getContentPane().add(rdbtnEnano);
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoNe = new File("src/main/resources/elfoNoche.png"); // Ruta de tu imagen
 		Image imageNE = null;
 		try {
@@ -377,12 +401,14 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 
+		// Creación de radiobutton del elfo de la noche al que se le asigna la imagen
 		rdbtnElfoNoche = new CircularToggleButton(imageNE, "Elfo de la noche");
 		rdbtnElfoNoche.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnElfoNoche.setText("Elfo de la noche");
 		rdbtnElfoNoche.setBounds(45, 235, 55, 55);
 		getContentPane().add(rdbtnElfoNoche);
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoHuargen = new File("src/main/resources/huargen.png"); // Ruta de tu imagen
 		Image imageHuargen = null;
 		try {
@@ -392,12 +418,14 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 
+		// Creación de radiobutton del huargen al que se le asigna la imagen
 		rdbtnHuargen = new CircularToggleButton(imageHuargen, "Huargen");
 		rdbtnHuargen.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnHuargen.setText("Huargen");
 		rdbtnHuargen.setBounds(45, 285, 55, 55);
 		getContentPane().add(rdbtnHuargen);
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoPandaA = new File("src/main/resources/pandaH.png"); // Ruta de tu imagen
 		Image imagePandaA = null;
 		try {
@@ -407,12 +435,14 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 
+		// Creación de radiobutton del panda al que se le asigna la imagen
 		rdbtnPandaAlianza = new CircularToggleButton(imagePandaA, "Panda");
 		rdbtnPandaAlianza.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnPandaAlianza.setText("Pandaren");
 		rdbtnPandaAlianza.setBounds(45, 335, 55, 55);
 		getContentPane().add(rdbtnPandaAlianza);
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoOrco = new File("src/main/resources/orcoH.png"); // Ruta de tu imagen
 		Image imageOrco = null;
 		try {
@@ -422,12 +452,14 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 
+		// Creación de radiobutton del huargen al que se le asigna la imagen
 		rdbtnOrco = new CircularToggleButton(imageOrco, "Orco");
 		rdbtnOrco.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnOrco.setText("Orco");
 		rdbtnOrco.setBounds(884, 135, 55, 55);
 		getContentPane().add(rdbtnOrco);
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoNoMuerto = new File("src/main/resources/nomuertoH.png"); // Ruta de tu imagen
 		Image imageNoMuerto = null;
 		try {
@@ -437,12 +469,14 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 
+		// Creación de radiobutton del no muerto al que se le asigna la imagen
 		rdbtnNoMuerto = new CircularToggleButton(imageNoMuerto, "No Muerto");
 		rdbtnNoMuerto.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnNoMuerto.setText("No muerto");
 		rdbtnNoMuerto.setBounds(884, 185, 55, 55);
 		getContentPane().add(rdbtnNoMuerto);
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoTauren = new File("src/main/resources/taurenH.png"); // Ruta de tu imagen
 		Image imageTauren = null;
 		try {
@@ -452,12 +486,14 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 
+		// Creación de radiobutton del tauren al que se le asigna la imagen
 		rdbtnTauren = new CircularToggleButton(imageTauren, "Tauren");
-		rdbtnTauren .addItemListener(new CrearPersonajeSeleccionadoListener(this));
+		rdbtnTauren.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnTauren.setText("Tauren");
 		rdbtnTauren.setBounds(884, 235, 55, 55);
 		getContentPane().add(rdbtnTauren);
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoTroll = new File("src/main/resources/trollH.png"); // Ruta de tu imagen
 		Image imageTroll = null;
 		try {
@@ -467,12 +503,14 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 
+		// Creación de radiobutton del troll al que se le asigna la imagen
 		rdbtnTroll = new CircularToggleButton(imageTroll, "Troll");
 		rdbtnTroll.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnTroll.setText("Troll");
 		rdbtnTroll.setBounds(884, 285, 55, 55);
 		getContentPane().add(rdbtnTroll);
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoDracthyr = new File("src/main/resources/dracthyrr.png"); // Ruta de tu imagen
 		Image imageDracthyr = null;
 		try {
@@ -482,12 +520,14 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 
+		// Creación de radiobutton del dracthyr al que se le asigna la imagen
 		rdbtnDracthyr = new CircularToggleButton(imageDracthyr, "Dracthyr");
 		rdbtnDracthyr.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnDracthyr.setText("Dracthyr");
 		rdbtnDracthyr.setBounds(884, 335, 55, 55);
 		getContentPane().add(rdbtnDracthyr);
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoMujer = new File("src/main/resources/logoMujer.png"); // Ruta de tu imagen
 		Image imageMujer = null;
 		try {
@@ -496,12 +536,15 @@ public class CrearPersonaje extends VistaDefault {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		// Creación de radiobutton de la mujer al que se le asigna la imagen
 		rdbtnMujer = new CircularToggleButton(imageMujer, "Mujer");
 		rdbtnMujer.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnMujer.setText("Mujer");
 		rdbtnMujer.setBounds(494, 10, 55, 55);
 		getContentPane().add(rdbtnMujer);
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoHombre = new File("src/main/resources/logoHombre.png"); // Ruta de tu imagen
 		Image imageHombre = null;
 		try {
@@ -510,12 +553,15 @@ public class CrearPersonaje extends VistaDefault {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		// Creación de radiobutton del hombre al que se le asigna la imagen
 		rdbtnHombre = new CircularToggleButton(imageHombre, "Hombre");
-		rdbtnHombre .addItemListener(new CrearPersonajeSeleccionadoListener(this));
+		rdbtnHombre.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnHombre.setText("Hombre");
 		rdbtnHombre.setBounds(440, 10, 55, 55);
 		getContentPane().add(rdbtnHombre);
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoGuerrero = new File("src/main/resources/guerrero.png"); // Ruta de tu imagen
 		Image imageGuerrero = null;
 		try {
@@ -524,12 +570,15 @@ public class CrearPersonaje extends VistaDefault {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		// Creación de radiobutton del guerrero al que se le asigna la imagen
 		btnGuerrero = new CircularToggleButton(imageGuerrero, "Guerrero");
 		btnGuerrero.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		btnGuerrero.setText("Guerrero");
 		btnGuerrero.setBounds(159, 506, 55, 55);
 		getContentPane().add(btnGuerrero);
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoCazador = new File("src/main/resources/cazador.png"); // Ruta de tu imagen
 		Image imageCazador = null;
 		try {
@@ -538,12 +587,15 @@ public class CrearPersonaje extends VistaDefault {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		// Creación de radiobutton del hombre al que se le asigna la imagen
 		btnCazador = new CircularToggleButton(imageCazador, "Cazador");
 		btnCazador.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		btnCazador.setText("Cazador");
 		btnCazador.setBounds(211, 506, 55, 55);
 		getContentPane().add(btnCazador);
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoMago = new File("src/main/resources/mago.png"); // Ruta de tu imagen
 		Image imageMago = null;
 		try {
@@ -553,12 +605,14 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 
+		// Creación de radiobutton del mago al que se le asigna la imagen
 		rdbtnMago = new CircularToggleButton(imageMago, "Mago");
 		rdbtnMago.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnMago.setText("Mago");
 		rdbtnMago.setBounds(263, 506, 55, 55);
 		getContentPane().add(rdbtnMago);
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoPicaro = new File("src/main/resources/picaro.png"); // Ruta de tu imagen
 		Image imagePicaro = null;
 		try {
@@ -568,12 +622,14 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 
+		// Creación de radiobutton del picaro al que se le asigna la imagen
 		rdbtnPicaro = new CircularToggleButton(imagePicaro, "Picaro");
 		rdbtnPicaro.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnPicaro.setText("Picaro");
 		rdbtnPicaro.setBounds(315, 506, 55, 55);
 		getContentPane().add(rdbtnPicaro);
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoSacerdote = new File("src/main/resources/sacerdote.png"); // Ruta de tu imagen
 		Image imageSacerdote = null;
 		try {
@@ -583,12 +639,14 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 
+		// Creación de radiobutton del sacerdote al que se le asigna la imagen
 		rdbtnSacerdote = new CircularToggleButton(imageSacerdote, "Sacerdote");
 		rdbtnSacerdote.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnSacerdote.setText("Sacerdote");
 		rdbtnSacerdote.setBounds(367, 506, 55, 55);
 		getContentPane().add(rdbtnSacerdote);
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoBrujo = new File("src/main/resources/brujo.png"); // Ruta de tu imagen
 		Image imageBrujo = null;
 		try {
@@ -598,12 +656,14 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 
+		// Creación de radiobutton del brujo al que se le asigna la imagen
 		rdbtnBrujo = new CircularToggleButton(imageBrujo, "Brujo");
 		rdbtnBrujo.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnBrujo.setText("Brujo");
 		rdbtnBrujo.setBounds(419, 506, 55, 55);
 		getContentPane().add(rdbtnBrujo);
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoPaladin = new File("src/main/resources/paladin.png"); // Ruta de tu imagen
 		Image imagePaladin = null;
 		try {
@@ -613,12 +673,14 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 
+		// Creación de radiobutton del paladín al que se le asigna la imagen
 		rdbtnPaladin = new CircularToggleButton(imagePaladin, "Paladin");
 		rdbtnPaladin.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnPaladin.setText("Paladin");
 		rdbtnPaladin.setBounds(471, 506, 55, 55);
 		getContentPane().add(rdbtnPaladin);
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoDruida = new File("src/main/resources/druida.png"); // Ruta de tu imagen
 		Image imageDruida = null;
 		try {
@@ -628,12 +690,14 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 
+		// Creación de radiobutton del druida al que se le asigna la imagen
 		rdbtnDruida = new CircularToggleButton(imageDruida, "Druida");
-		rdbtnDruida .addItemListener(new CrearPersonajeSeleccionadoListener(this));
+		rdbtnDruida.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnDruida.setText("Druida");
 		rdbtnDruida.setBounds(523, 506, 55, 55);
 		getContentPane().add(rdbtnDruida);
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoChaman = new File("src/main/resources/chaman.png"); // Ruta de tu imagen
 		Image imageChaman = null;
 		try {
@@ -643,12 +707,14 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 
+		// Creación de radiobutton del chamán al que se le asigna la imagen
 		rdbtnChaman = new CircularToggleButton(imageChaman, "Chaman");
-		rdbtnChaman .addItemListener(new CrearPersonajeSeleccionadoListener(this));
+		rdbtnChaman.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnChaman.setText("Chaman");
 		rdbtnChaman.setBounds(575, 506, 55, 55);
 		getContentPane().add(rdbtnChaman);
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoDK = new File("src/main/resources/caballeroMuerte.png"); // Ruta de tu imagen
 		Image imageDK = null;
 		try {
@@ -658,12 +724,15 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 
+		// Creación de radiobutton del caballero de la muerte al que se le asigna la
+		// imagen
 		rdbtnCaballeroMuerte = new CircularToggleButton(imageDK, "Cabellero de la Muerte");
 		rdbtnCaballeroMuerte.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnCaballeroMuerte.setText("Caballero de la muerte");
 		rdbtnCaballeroMuerte.setBounds(627, 506, 55, 55);
 		getContentPane().add(rdbtnCaballeroMuerte);
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoDH = new File("src/main/resources/cazadorDemonios.png"); // Ruta de tu imagen
 		Image imageDH = null;
 		try {
@@ -673,12 +742,14 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 
+		// Creación de radiobutton del cazador de demonios al que se le asigna la imagen
 		rdbtnCazadorDemonios = new CircularToggleButton(imageDH, "Cazador de Demonios");
 		rdbtnCazadorDemonios.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnCazadorDemonios.setText("Cazador de demonios");
 		rdbtnCazadorDemonios.setBounds(679, 506, 55, 55);
 		getContentPane().add(rdbtnCazadorDemonios);
 
+		// Creación del file para poner la ruta de la imagen
 		File iconoEvocador = new File("src/main/resources/dracthyr.png"); // Ruta de tu imagen
 		Image imageEvocador = null;
 		try {
@@ -688,12 +759,14 @@ public class CrearPersonaje extends VistaDefault {
 			e.printStackTrace();
 		}
 
+		// Creación de radiobutton del evocador al que se le asigna la imagen
 		rdbtnEvocador = new CircularToggleButton(imageEvocador, "Evocador");
 		rdbtnEvocador.addItemListener(new CrearPersonajeSeleccionadoListener(this));
 		rdbtnEvocador.setText("Evocador");
 		rdbtnEvocador.setBounds(731, 506, 55, 55);
 		getContentPane().add(rdbtnEvocador);
 
+		// Creación de la etiqueta del personaje
 		personaje = new JLabel();
 		personaje.setHorizontalAlignment(SwingConstants.CENTER);
 		personaje.setBounds(342, 151, 300, 300);
@@ -701,21 +774,26 @@ public class CrearPersonaje extends VistaDefault {
 		// ImageIcon orco = new ImageIcon("src/main/resources/enanoBailongo.gif");
 		// personaje.setIcon(orco);
 
-
+		// Creación del textfield del nombre del personaje
 		txtNombrePersonaje = new JTextField();
 		txtNombrePersonaje.setBounds(426, 107, 132, 20);
 		getContentPane().add(txtNombrePersonaje);
 		txtNombrePersonaje.setColumns(10);
-		
+
+		// Creación de la etiqueta del nombre personaje
 		JLabel lblNewLabel = new JLabel("Nombre Personaje");
 		lblNewLabel.setBounds(427, 80, 140, 14);
 		getContentPane().add(lblNewLabel);
 
+		// Creación del buttongroup de sexo
 		sexo = new ButtonGroup();
+		// Se añaden ambos botones del género
 		sexo.add(rdbtnHombre);
 		sexo.add(rdbtnMujer);
 
+		// Creación del buttongroup de raza
 		raza = new ButtonGroup();
+		// Se añaden todos los radiobutton al buttongroup de raza
 		raza.add(rdbtnHumano);
 		raza.add(rdbtnEnano);
 		raza.add(rdbtnElfoNoche);
@@ -728,7 +806,9 @@ public class CrearPersonaje extends VistaDefault {
 		raza.add(rdbtnDracthyr);
 		raza.add(rdbtnPandaAlianza);
 
+		// Creación del buttongroup de clase
 		clase = new ButtonGroup();
+		// Se añaden los radiobutton al buttongroup de clase
 		clase.add(btnGuerrero);
 		clase.add(btnCazador);
 		clase.add(rdbtnMago);
@@ -744,6 +824,9 @@ public class CrearPersonaje extends VistaDefault {
 
 	}
 
+	/**
+	 * Método que cambia la imagen
+	 */
 	public void cambiarImagenPersonaje(String rutaImagen) {
 		imagenPersonaje = new ImageIcon(rutaImagen);
 		personaje.setIcon(imagenPersonaje);
