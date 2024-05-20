@@ -1,14 +1,11 @@
 package views;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 
 import components.*;
-import control.*;
 import java.awt.Font;
 
 /**

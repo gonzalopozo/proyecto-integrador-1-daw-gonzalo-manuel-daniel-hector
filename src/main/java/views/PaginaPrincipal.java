@@ -2,20 +2,12 @@ package views;
 
 import javax.swing.*;
 import javax.swing.border.*;
-
 import control.*;
 import model.AccesoBD;
-import model.Personaje;
-
 import java.awt.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
-
-import java.awt.event.*;
-
-import java.io.IOException;
 import java.util.Enumeration;
 
 /**
@@ -35,7 +27,6 @@ public class PaginaPrincipal extends VistaDefault {
 	private JPanel panelPersonajes;
 	private ButtonGroup botonesPersonajes;
 	private ArrayList<String> nombresPersonajes;
-	private String nombrePersonaje;
 
 	private static int personajeSeleccionadoId;
 
@@ -199,11 +190,6 @@ public class PaginaPrincipal extends VistaDefault {
 		panelPersonajes.add(nuevoBotonPersonaje);
 
 		nuevoBotonPersonaje.addItemListener(new PersonajeSeleccionadoListener(this));
-
-		// PersonajeSeleccionadoListener itemListener = new
-		// PersonajeSeleccionadoListener();
-
-		// nuevoBotonPersonaje.addItemListener();
 
 		panelPersonajes.revalidate();
 		panelPersonajes.repaint();

@@ -23,16 +23,6 @@ public class DetallesPersonajesPartida extends VistaDefault {
         volver.setBounds(10, 327, 107, 23);
         getContentPane().add(volver);
 
-        // Object[][] datos = {};
-
-        // String[] nombresColumnas = {"Icono", "Nombre", "Raza", "Clase", "Nivel",
-        // "Salud", "Fuerza", "Destreza", "Sabiduría", "Carisma", "Inteligencia",
-        // "Constitución"};
-
-        // String[] nombresColumnas = {"Nombre", "Raza", "Clase", "Partida", "Nivel",
-        // "Salud", "Fuerza", "Destreza", "Sabiduría", "Carisma", "Inteligencia",
-        // "Constitución"};
-
         // Crear el modelo de datos con los datos y las columnas correspondientes a
         // mostrar en la tabla de datos de personajes de partida.
         DefaultTableModel model = new DefaultTableModel();

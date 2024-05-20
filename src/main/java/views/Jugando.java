@@ -1,11 +1,7 @@
 package views;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-
 import javax.swing.*;
 import components.*;
-import control.*;
 
 /**
  * clase que va a extender de la de vista default
@@ -35,9 +31,6 @@ public class Jugando extends VistaDefault {
         // Se establece la imagen de fondo para la vista
         fondo = new BackgroundPanel("src/main/resources/fondoJugando.jpg");
 
-        // getContentPane().setLayout(new BorderLayout());
-        // getContentPane().add(fondo);
-
         fondo.setLayout(null);
 
         this.setContentPane(fondo);
@@ -52,7 +45,6 @@ public class Jugando extends VistaDefault {
         continuar.setBounds(1040, 630, 200, 40);
         fondo.add(continuar);
 
-        // fondo.setLayout(new FlowLayout());
     }
 
 }

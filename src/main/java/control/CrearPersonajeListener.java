@@ -5,7 +5,6 @@ import java.sql.*;
 
 import javax.swing.*;
 
-import components.CircularToggleButton;
 import model.AccesoBD;
 import views.*;
 import main.*;
@@ -63,7 +62,8 @@ public class CrearPersonajeListener implements ActionListener {
             Connection c = accesoBD.getConexion();
 
             // Intenta crear el personaje en la BBDD y obtiene el resultado
-            boolean exitoso = accesoBD.crearPersonaje(c, nombrePersonaje, sexoPersonaje, razaPersonaje, clasePersonaje, App.getMiembroActualId());
+            boolean exitoso = accesoBD.crearPersonaje(c, nombrePersonaje, sexoPersonaje, razaPersonaje, clasePersonaje,
+                    App.getMiembroActualId());
 
             accesoBD.cerrarConexion(c);
 
@@ -76,20 +76,8 @@ public class CrearPersonajeListener implements ActionListener {
                 paginaPrincipal.hacerVisible();
             }
 
-            // JToggleButton nuevoBotonPersonaje = new JToggleButton(nombrePersonaje);
-            // paginaPrincipal.getBotonesPersonajes().add(nuevoBotonPersonaje);
-            // paginaPrincipal.getPanelPersonajes().add(nuevoBotonPersonaje);
-            // paginaPrincipal.getPanelPersonajes().revalidate();
-            // paginaPrincipal.getPanelPersonajes().repaint();
-
         }
 
     }
 
-    // public void actionPerformed(ActionEvent e) {
-    // if (crearPersonaje.getSexo().isSelected() &&
-    // crearPersonaje.getRaza().isSelected() &&
-    // crearPersonaje.getClase().isSelected() &&
-    // (crearPersonaje.getTxtNombrePersonaje().getText.length() > 0))
-    // }
 }

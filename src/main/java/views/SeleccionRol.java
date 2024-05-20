@@ -43,34 +43,14 @@ public class SeleccionRol extends VistaDefault {
 		toggleBtnJugador = new JToggleButton("JUGADOR"); // Botón para elegir el rol de jugador
 		toggleBtnJugador.setBounds(122, 83, 140, 23);
 		getContentPane().add(toggleBtnJugador); // Añadir el botón a la interfaz gráfica
-		/*
-		 * toggleBtnJugador.setFocusPainted(false); // Quitar el contorno al tener el
-		 * foco
-		 * toggleBtnJugador.setContentAreaFilled(false); // Quitar el área pintada
-		 * toggleBtnJugador.setBorderPainted(true); // Mostrar el borde
-		 * toggleBtnJugador.setOpaque(true); // Hacer el botón opaco
-		 */
 
 		toggleBtnGameMaster = new JToggleButton("GAME MASTER"); // Botón para elegir el rol de game master
 		toggleBtnGameMaster.setBounds(122, 49, 140, 23);
 		getContentPane().add(toggleBtnGameMaster); // Añadir el botón a la interfaz gráfica
-		/*
-		 * toggleBtnGameMaster.setFocusPainted(false); // Quitar el contorno al tener el
-		 * foco
-		 * toggleBtnGameMaster.setContentAreaFilled(false); // Quitar el área pintada
-		 * toggleBtnGameMaster.setBorderPainted(true); // Mostrar el borde
-		 * toggleBtnGameMaster.setOpaque(true); // Hacer el botón opaco
-		 */
 
 		btnGroupRoles = new ButtonGroup(); // Grupo de botones para elegir el rol
 		btnGroupRoles.add(toggleBtnJugador); // Añadir el botón de jugador al grupo
 		btnGroupRoles.add(toggleBtnGameMaster); // Añadir el botón de game master al grupo
-
-		/*
-		 * JButton btnNewButton_1_1 = new JButton("JUGADOR");
-		 * btnNewButton_1_1.setBounds(408, 361, 157, 23);
-		 * getContentPane().add(btnNewButton_1_1);
-		 */
 
 		volver = new JButton("VOLVER"); // Botón para volver
 		volver.setBounds(10, 163, 111, 23);

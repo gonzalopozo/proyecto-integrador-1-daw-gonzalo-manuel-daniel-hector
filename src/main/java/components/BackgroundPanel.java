@@ -3,10 +3,7 @@
  */
 package components;
 
-import java.awt.LayoutManager;
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.io.File;
 import javax.imageio.ImageIO;
 import java.io.IOException;

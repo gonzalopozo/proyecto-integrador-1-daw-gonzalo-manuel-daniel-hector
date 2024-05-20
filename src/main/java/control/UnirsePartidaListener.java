@@ -3,12 +3,8 @@ package control;
 import java.awt.event.*;
 import java.sql.*;
 
-import javax.swing.*;
-
-import components.CircularToggleButton;
 import model.AccesoBD;
 import views.*;
-import main.*;
 
 /**
  * Listener para unirse a la partida con un personaje. Implementa el

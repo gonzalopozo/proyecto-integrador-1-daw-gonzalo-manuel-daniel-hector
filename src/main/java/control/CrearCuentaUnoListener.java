@@ -1,14 +1,10 @@
 package control;
 
 import java.awt.event.*;
-import java.sql.*;
 
 import javax.swing.*;
 
-import components.CircularToggleButton;
-import model.AccesoBD;
 import views.*;
-import main.*;
 
 /**
  * Clase que implementa un ActionListener para el primer paso de creación de

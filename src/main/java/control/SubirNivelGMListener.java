@@ -3,9 +3,6 @@ package control;
 import java.awt.event.*;
 import java.sql.*;
 
-import javax.swing.*;
-
-import components.CircularToggleButton;
 import model.AccesoBD;
 import views.*;
 import main.*;
@@ -39,7 +36,7 @@ public class SubirNivelGMListener implements ActionListener {
         Connection c = accesoBD.getConexion(); // Conexión a la base de datos
 
         String nombrePersonajeSeleccionado = (String) jugandoGMVista.getPersonajesPartidaComboBox().getSelectedItem();
-        
+
         System.out.println(nombrePersonajeSeleccionado);
 
         // Nombre del personaje seleccionado en el combobox
@@ -50,13 +47,14 @@ public class SubirNivelGMListener implements ActionListener {
             System.out.println(c);
             System.out.println(nombrePersonajeSeleccionado);
             System.out.println(App.getmiembroActualId());
-            personajeId = accesoBD.devolverPersonajeId(c, nombrePersonajeSeleccionado, SeleccionarPartidaGM.getGameMasterId()); // Id
-                                                                                                                  // del
-                                                                                                                  // personaje
-                                                                                                                  // seleccionado
-                                                                                                                  // en
-                                                                                                                  // el
-                                                                                                                  // combobox
+            personajeId = accesoBD.devolverPersonajeId(c, nombrePersonajeSeleccionado,
+                    App.getMiembroActualId()); // Id
+            // del
+            // personaje
+            // seleccionado
+            // en
+            // el
+            // combobox
             System.out.println(personajeId);
         } catch (SQLException e1) {
             // TODO Auto-generated catch block
@@ -76,10 +74,11 @@ public class SubirNivelGMListener implements ActionListener {
         int[][] datosSubidaNivel = null; // Datos de la subida de nivel del personaje seleccionado en el combobox
 
         try {
-            datosSubidaNivel = accesoBD.subidaNivelPersonajeDatos(c, personajeId, SeleccionarPartidaGM.getPartidaSeleccionadaId()); 
+            datosSubidaNivel = accesoBD.subidaNivelPersonajeDatos(c, personajeId,
+                    SeleccionarPartidaGM.getPartidaSeleccionadaId());
             // Datos de la subida de nivel del seleccionado en el combobox
             // Id de la partida seleccionada
-            
+
         } catch (SQLException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();

@@ -16,12 +16,12 @@ VALUES
 ('Legolas','Hombre', 'Tauren', 'Cazador', 4),
 ('Padme', 'Mujer', 'Humano', 'Sacerdotisa', 5),
 ('Anakin','Hombre', 'Enano', 'Paladin', 6),
-('Ashoka', 'Mujer', 'No muerto', 'Pícara', 7),
-('Darth Maul', 'Hombre', 'Huargen ', 'Mago', 8),
-('Joselito', 'Hombre', 'Pandaren', 'Chamán', 9),
-('LeBron James', 'Hombre', 'Tauren', 'Caballero de la muerte', 10),
-('Pepe el del Madrid', 'Hombre', 'Troll', 'Druida', 11),
-('D`Angelo Russell', 'Hombre', 'Dracthyr', 'Evocador', 12);
+('Ashoka', 'Mujer', 'No muerto', 'Pícara', 1),
+('Darth Maul', 'Hombre', 'Huargen ', 'Mago', 2),
+('Joselito', 'Hombre', 'Pandaren', 'Chamán', 3),
+('LeBron James', 'Hombre', 'Tauren', 'Caballero de la muerte', 4),
+('Pepe el del Madrid', 'Hombre', 'Troll', 'Druida', 5),
+('D`Angelo Russell', 'Hombre', 'Dracthyr', 'Evocador', 6);
 
 INSERT INTO partidas (nombre, game_master_id, ambientacion, esta_en_curso, num_sesion, duración, fecha)
 VALUES

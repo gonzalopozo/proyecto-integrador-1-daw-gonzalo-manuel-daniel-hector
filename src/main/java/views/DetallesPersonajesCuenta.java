@@ -27,9 +27,6 @@ public class DetallesPersonajesCuenta extends VistaDefault {
         volver.setBounds(10, 327, 107, 23);
         getContentPane().add(volver);
 
-        // String[] nombresColumnas = {"Nombre", "Raza", "Clase", "Partida", "Nivel",
-        // "Salud", "Fuerza", "Destreza", "Sabiduría", "Carisma", "Inteligencia",
-        // "Constitución"};
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nombre");
         model.addColumn("Raza");
@@ -54,19 +51,6 @@ public class DetallesPersonajesCuenta extends VistaDefault {
 
         // Crear la JTable con el modelo de datos y el modelo de columnas
         tablaDatos = new JTable(model, columnModel);
-
-        // String[][] datos = {
-        // {"Pepe el del Madrid", "Troll", "Druida", "La batalla por el templo del Tigre
-        // Blanco", "70", "50000", "10000", "1000", "1000", "3000", "1000", "450"},
-        // {"LeBron James", "Tauren", "Caballero de la muerte", "Liberación de los
-        // elfos", "50", "15000", "300", "10000", "1800", "800", "1750", "100"},
-        // {"D'Angelo Russell", "Dracthyr", "Evocador", "Lucha contra el Rey Exánime",
-        // "40", "20000", "7000", "5000", "10000", "5000", "3000", "500"}
-        // };
-
-        // for (String[] fila : datos) {
-        // model.addRow(fila);
-        // }
 
         scrBarraHorizontal = new JScrollPane(tablaDatos); // Crear un scroll para la tabla
         scrBarraHorizontal.setBounds(10, 11, 564, 302); // Establecer las dimensiones del scroll

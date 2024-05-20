@@ -7,7 +7,7 @@ import java.awt.event.*;
 // Clase que define un botón circular que se puede alternar
 public class CircularToggleButton extends JToggleButton {
     private Image image; // Imagen que se mostrará en el botón
-    private Color hoverColor = new Color(247, 178, 44); // Color de fondo cuando el mouse está sobre el botón
+    private Color hoverColor = new Color(247, 178, 44); // Color de fondo
     private Color borderColor = new Color(25, 69, 122); // Color del borde
     private int borderThickness = 2; // Grosor del borde
     public String atributo; // Atributo adicional que puede ser utilizado externamente

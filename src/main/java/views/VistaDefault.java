@@ -5,8 +5,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-import control.MoverseListener;
-
 /**
  * clase padre de la que extenderán todas las demás, la cual extiende a su vez
  * de el JFrame

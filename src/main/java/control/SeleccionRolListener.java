@@ -52,7 +52,7 @@ public class SeleccionRolListener implements ActionListener {
 				.isSelected((ButtonModel) seleccionRol.getToggleBtnJugador().getModel())) {
 			// Si se selecciona el rol de jugador
 			System.out.println(App.getMiembroActualId());
-			AccesoBD accesobd = new AccesoBD();
+			AccesoBD accesobd = new AccesoBD(); // Se crea un objeto de acceso a la base de datos
 			Connection c = accesobd.getConexion();
 			try {
 				// Se obtienen los nombres de los personajes del miembro actual

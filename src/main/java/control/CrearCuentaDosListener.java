@@ -5,7 +5,6 @@ import java.sql.*;
 
 import javax.swing.*;
 
-import components.CircularToggleButton;
 import model.AccesoBD;
 import views.*;
 import main.*;

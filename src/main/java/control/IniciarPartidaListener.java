@@ -6,10 +6,8 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-import components.CircularToggleButton;
 import model.AccesoBD;
 import views.*;
-import main.*;
 
 /**
  * Listener para manejar el evento de iniciar una partida.

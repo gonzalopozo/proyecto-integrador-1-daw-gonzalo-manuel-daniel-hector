@@ -39,12 +39,6 @@ public class PaginaPrincipalGM extends VistaDefault {
 		volver.setBounds(10, 330, 105, 23);
 		getContentPane().add(volver);
 
-		// botonContinuar2 = new JButton ("NUEVA PARTIDA");
-		// continuar.setForeground(Color.BLACK);
-		// continuar.setBackground(new Color(247, 178, 44));
-		// continuar.setBounds(408, 314, 184, 23);
-		// getContentPane().add(botonContinuar2);
-
 	}
 
 	/**

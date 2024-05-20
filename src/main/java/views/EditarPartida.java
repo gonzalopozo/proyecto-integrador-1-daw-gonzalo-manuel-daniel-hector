@@ -2,9 +2,6 @@ package views;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-
-import control.*;
 
 //clase que va a extender de la de vista default
 public class EditarPartida extends VistaDefault {
@@ -42,7 +39,7 @@ public class EditarPartida extends VistaDefault {
         continuar.setFont(new Font("Arial", Font.BOLD, 14));
         continuar.setForeground(new Color(42, 42, 42));
         continuar.setBackground(new Color(247, 178, 44));
-        continuar.setBounds(198, 329, 188, 31);
+        continuar.setBounds(188, 329, 210, 31);
         getContentPane().add(continuar);
 
         lblNombrePartida = new JLabel("NUEVO NOMBRE");

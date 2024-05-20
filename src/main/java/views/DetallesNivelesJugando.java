@@ -27,15 +27,6 @@ public class DetallesNivelesJugando extends VistaDefaultDialog {
         volver.setBounds(10, 327, 107, 23);
         getContentPane().add(volver);
 
-        // Object[][] datos = {};
-
-        // String[] nombresColumnas = {"Icono", "Nombre", "Raza", "Clase", "Nivel",
-        // "Salud", "Fuerza", "Destreza", "Sabiduría", "Carisma", "Inteligencia",
-        // "Constitución"};
-
-        // String[] nombresColumnas = {"Nombre", "Raza", "Clase", "Partida", "Nivel",
-        // "Salud", "Fuerza", "Destreza", "Sabiduría", "Carisma", "Inteligencia",
-        // "Constitución"};
         DefaultTableModel model = new DefaultTableModel(); // Crear modelo de datos
         model.addColumn("Nivel");
         model.addColumn("Salud");

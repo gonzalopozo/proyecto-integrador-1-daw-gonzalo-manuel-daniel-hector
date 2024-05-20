@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
 
 public class SeleccionarPartidaGM extends VistaDefault {
@@ -28,8 +27,6 @@ public class SeleccionarPartidaGM extends VistaDefault {
 
 	private static int partidaSeleccionadaId;
 	private static int gameMasterId;
-
-	
 
 	public static int getGameMasterId() {
 		return gameMasterId;
@@ -70,18 +67,6 @@ public class SeleccionarPartidaGM extends VistaDefault {
 		lblSeleccionarPartida.setBounds(188, 54, 208, 14);
 		getContentPane().add(lblSeleccionarPartida);
 
-		// btnPartida1 = new JButton("PARTIDA #1");
-		// btnPartida1.setBounds(188, 111, 208, 23);
-		// getContentPane().add(btnPartida1);
-
-		// btnPartida2 = new JButton("PARTIDA #2");
-		// btnPartida2.setBounds(188, 148, 208, 23);
-		// getContentPane().add(btnPartida2);
-
-		// btnPartida3 = new JButton("PARTIDA #3");
-		// btnPartida3.setBounds(188, 182, 208, 23);
-		// getContentPane().add(btnPartida3);
-
 		continuar = new JButton("INICIAR PARTIDA");
 		continuar.setBounds(188, 264, 223, 31);
 		getContentPane().add(continuar);
@@ -96,10 +81,6 @@ public class SeleccionarPartidaGM extends VistaDefault {
 		getContentPane().add(btnEditarPartida);
 
 		botonesPartidas = new ButtonGroup();
-
-		// JScrollBar scrollBar = new JScrollBar();
-		// scrollBar.setBounds(406, 123, 17, 64);
-		// getContentPane().add(scrollBar);
 
 		panelPartidas = new JPanel();
 		panelPartidas.setBounds(155, 79, 273, 175);
@@ -121,12 +102,6 @@ public class SeleccionarPartidaGM extends VistaDefault {
 			acceso.cerrarConexion(c);
 		}
 
-		// System.out.println(Arrays.toString(nombresPersonajesArray));
-
-		// for (String nombrePartida : nombresPartidasArray) {
-		// System.out.println(nombrePartida);
-		// agregarBotonPartida(nombrePartida);
-		// }
 		for (String nombrePartida : nombresPartidasArray) {
 			agregarBotonPartida(nombrePartida);
 		}
@@ -166,11 +141,6 @@ public class SeleccionarPartidaGM extends VistaDefault {
 		panelPartidas.add(nuevoBotonPartida);
 
 		nuevoBotonPartida.addItemListener(new PartidaSeleccionadaListener(this));
-
-		// PersonajeSeleccionadoListener itemListener = new
-		// PersonajeSeleccionadoListener();
-
-		// nuevoBotonPersonaje.addItemListener();
 
 		panelPartidas.revalidate();
 		panelPartidas.repaint();

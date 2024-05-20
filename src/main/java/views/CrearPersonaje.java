@@ -354,8 +354,6 @@ public class CrearPersonaje extends VistaDefault {
 		logoHorda.setIcon(imgHorda);
 		logoHorda.setBounds(876, 22, 98, 98);
 		getContentPane().add(logoHorda);
-		ImageIcon imgHombre = new ImageIcon("src/main/resources/iconoHombre.png");
-		ImageIcon imgMujer = new ImageIcon("src/main/resources/iconoMujer.png");
 
 		// Creación del file para poner la ruta de la imagen
 		File iconoHuman = new File("src/main/resources/humano.png"); // Ruta de tu imagen
@@ -771,8 +769,6 @@ public class CrearPersonaje extends VistaDefault {
 		personaje.setHorizontalAlignment(SwingConstants.CENTER);
 		personaje.setBounds(342, 151, 300, 300);
 		getContentPane().add(personaje);
-		// ImageIcon orco = new ImageIcon("src/main/resources/enanoBailongo.gif");
-		// personaje.setIcon(orco);
 
 		// Creación del textfield del nombre del personaje
 		txtNombrePersonaje = new JTextField();

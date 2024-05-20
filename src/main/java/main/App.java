@@ -14,15 +14,13 @@ public class App {
     private final static Color COLOR_BIANCA = new Color(249, 247, 238);
     private final static Color COLOR_LIGHTING_YELLOW = new Color(247, 178, 44);
     private final static Color COLOR_ALLPORTS = new Color(25, 69, 122);
-    private final static Color COLOR_REGAL_BLUE = new Color(19, 27, 66);
     private final static Color COLOR_NERO = new Color(42, 42, 42);
-    private final static Color COLOR_BLUE_LABEL = new Color(38, 102, 165);
     private final static Font LABEL_FONT_BOLD = new Font("Arial", Font.BOLD, 14);
     private final static Font LABEL_FONT = new Font("Arial", Font.PLAIN, 12);
 
     private static Login login;
     private static CrearCuenta crearCuenta;
-    
+
     private static CrearCuentaDos crearCuentaDos;
     private static CuentaCreada cuentaCreada;
     private static CrearPartida crearPartida;

@@ -4,8 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-import control.*;
-
 /**
  * clase que va a extender de la de vista default
  */

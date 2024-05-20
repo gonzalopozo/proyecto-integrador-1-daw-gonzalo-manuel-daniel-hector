@@ -64,10 +64,4 @@ public class CrearPartidaListener implements ActionListener {
         }
 
     }
-
-    // public void actionPerformed(ActionEvent e) {
-    // if (crearPartida.getSexo().isSelected() &&
-    // crearPartida.getRaza().isSelected() && crearPartida.getClase().isSelected()
-    // && (crearPartida.getTxtNombrePersonaje().getText.length() > 0))
-    // }
 }
